@@ -18,6 +18,6 @@ true false
 
 
 def run_test():
-    t_analizar('if')
+    t_analizar(list_types)
 
 run_test()

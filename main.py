@@ -10,5 +10,6 @@ if __name__ == "__main__":
         system("python test/test.py")
 
     #normal flow
-    print('The best project than ever!')
+    else:
+        print('The best project than ever!')
     
