@@ -7,3 +7,7 @@ Es necesario instalar los siguientes paquetes y/o dependencias, estas se encuent
 ```
 pip install -r requiments.txt
 ```
+## Correr test
+```
+python .\main.py test
+```

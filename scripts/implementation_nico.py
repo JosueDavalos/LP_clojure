@@ -66,9 +66,9 @@ def t_analizar(texto):
 
 cont=True
 
-while cont:
-    data = input(">> ")
-    if data!="salir":
-        t_analizar(data)
-    else:
-        cont= False
+# while cont:
+#     data = input(">> ")
+#     if data!="salir":
+#         t_analizar(data)
+#     else:
+#         cont= False
