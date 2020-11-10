@@ -18,6 +18,8 @@ true false
 
 
 def run_test():
-    t_analizar(list_types)
+    test = open('test/sentencias.txt', 'r', encoding="utf8")
+    for line in test:
+        t_analizar(line.strip())
 
 run_test()
