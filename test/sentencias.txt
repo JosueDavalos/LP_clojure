@@ -1,10 +1,6 @@
 true false
 1 0 11 5697
-"hola mundo" "hola"mundo"
-:key1 :keyss 
-'(1 2 3 4 4) 
-#(1 2 4 4)
-{:hola "mundo"}
+"hola mundo"
 
 ( def x 42 )
 (def y -1.5 )
@@ -14,14 +10,6 @@ nil
 
 (def str1 “metodo 1”)
 (def str2 (srt “metodo” “2”))
-(def lista1 ‘(1 2 3 4))
-(def lista2 (list (1 2 3 4)))
-(def set1 (set ‘(1 5 9 6)))
-(der set2 #{1 5 9 6})
-(def mapa1 {“a” “a1”, “b” “b1”})
-(def mapa2 (hash-map "a" "b"))
-(def vector1 (vector 1 2 3))
-(def vector2 [1 2 3])
 
 +
 -
@@ -33,22 +21,13 @@ nil
 ||
 !
 ==
-====
+===
 !=
 
 (println "Hello, world!")
-user=> (read-line)
 
-if ( = 2 2)
-(println "Values are equal")
-(println "Values are not equal"))
+
 (loop [x 10]
 (when (> x 1)
 (println x)
 (recur (- x 2))))
-(while ( < @x 5 )
-(do
-(println @x) (swap! x inc))
-
-(list* 1 [2,3])
-(first (list 1 2,3))

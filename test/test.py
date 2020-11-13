@@ -3,23 +3,17 @@ sys.path.append(".")
 
 from scripts.implementation import *
 
-
-list_types = '''
-true false
-1 0 11 5697
-"hola mundo" "hola"mundo"
-:key1 :keyss 
-'(1 2 3 4 4) 
-#(1 2 4 4)
-{:hola "mundo"}
-'''
+argv = sys.argv
+name_file = argv[-1]
 
 
+def run_test(file):
+    print('Running test..... %s'%file.upper())
 
-
-def run_test():
-    test = open('test/sentencias.txt', 'r', encoding="utf8")
+    test = open('test/%s'%file, 'r', encoding="utf8")
     for line in test:
         t_analizar(line.strip())
 
-run_test()
+
+
+run_test(name_file)

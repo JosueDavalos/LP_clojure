@@ -1,38 +1,43 @@
+from scripts.token import *
 import ply.lex as lex
 
-reservadas={
-    "def": "DEF",
-    "nil": "NULL",
-    "hash-map": "HASHMAP",
-    "sorted-map": "SORTEDMAP",
-    "list": "LIST",
-    "vector": "PVECTOR",
-    "set": "SET",
-    "str": "STR"
-}
 
-tokens = [
-    "ENTERO",
-    "FLOTANTE",
-    "BOOLEANO",
-    "CHAR",
-    "STRING",
-    "LISTA",
-    "CONJUNTO",
-    "MAPA",
-    "VECTOR",
-    "VARIABLE",
-    "CDER",
-    "CIZQ"
-]+ list(reservadas.values())
+
 
 t_ENTERO = r"([1-9][0-9]*|0)"
 t_FLOTANTE = r"([1-9]\d*|0)+[.]\d+"
 t_BOOLEANO = r"(true|false)"
 t_CHAR = r"[/]."
-t_STRING = r"[\"].+[\"]"
-t_CDER = r"[)]"
-t_CIZQ = r"[(]"
+t_PAR_DER = r"[)]"
+t_PAR_IZQ = r"[(]"
+t_COR_DER = r"\["
+t_COR_IZQ = r"\]"
+t_SUMA = r'\+'
+t_RESTA = r'\-'
+t_EQUAL_OP = r'\='
+t_PRODUCTO = r'\*'
+t_STRING = r'\".*\"'
+t_DIVISION = r'\/'
+t_POTENCIA = r'\*\*'
+t_AND = r'\&\&'
+t_OR = r'\|\|'
+t_NOT = r'\!'
+t_EQUAL = r'\=\='
+t_EQUAL_2 = r'\=\=\='
+t_NOT_EQUAL = r'\!\='
+t_MAYOR_QUE = r'\>'
+t_MENOR_QUE = r'\<'
+
+
+
+
+# t_ENTERO = r"([1-9][0-9]*|0)"
+# t_FLOTANTE = r"([1-9]\d*|0)+[.]\d+"
+# t_BOOLEANO = r"(true|false)"
+# t_CHAR = r"[/]."
+# t_STRING = r"[\"].+[\"]"
+# t_CDER = r"[)]"
+# t_CIZQ = r"[(]"
 #t_LISTA = r""
 #t_CONJUNTO = r""
 #t_MAPA = r""
@@ -54,17 +59,17 @@ def t_VARIABLE(t):
     t.type = reservadas.get(t.value, 'VARIABLE')  # Check for reserved words
     return t
 
-lexer = lex.lex()
+# lexer = lex.lex()
 
-def t_analizar(texto):
-    lexer.input(texto)
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break  # No more input
-        print(tok)
+# def t_analizar(texto):
+#     lexer.input(texto)
+#     while True:
+#         tok = lexer.token()
+#         if not tok:
+#             break  # No more input
+#         print(tok)
 
-cont=True
+# cont=True
 
 # while cont:
 #     data = input(">> ")
