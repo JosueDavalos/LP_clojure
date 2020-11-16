@@ -1,0 +1,3 @@
+(list* lista2 [listaa])
+(first lista)
+( defn nombre [argumentos] (bloque de códigoN) )

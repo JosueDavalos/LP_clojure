@@ -3,7 +3,6 @@ reservadas={
     "nil": "NULL",
     "hash-map": "HASHMAP",
     "sorted-map": "SORTEDMAP",
-    "list": "LIST",
     "vector": "VECTOR",
     "set": "SET",
     "str": "STR",
@@ -11,7 +10,11 @@ reservadas={
     'do':'DO',
     'when':'WHEN',
     'println':'PRINTLN',
-    'recur': 'RECUR'
+    'recur': 'RECUR',
+    'defn': 'DEFN',
+    'first': 'METODOFIRST',
+    "list": "LIST",
+    "nth" : "METODONTH"
 }
 
 tokens = [
@@ -23,6 +26,7 @@ tokens = [
     "LISTA",
     "CONJUNTO",
     "MAPA",
+    "FUNCION",
     "VARIABLE",
     "PAR_DER",
     "PAR_IZQ",
@@ -41,5 +45,6 @@ tokens = [
     "EQUAL_2",
     "NOT_EQUAL",
     "MAYOR_QUE",
-    "MENOR_QUE"
+    "MENOR_QUE",
+    "ARGS"
 ]+ list(reservadas.values())
