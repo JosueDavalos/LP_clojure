@@ -54,9 +54,9 @@ def t_error(t):
     print("No es reconocido '%s'" % t.value[0])
     t.lexer.skip(1)
 
-def t_VARIABLE(t):
+def t_NOMBRE(t):
     r"(_|[a-zA-Z])[a-zA-Z\d_]+"
-    t.type = reservadas.get(t.value, 'VARIABLE')  # Check for reserved words
+    t.type = reservadas.get(t.value, 'NOMBRE')  # Check for reserved words
     return t
 
 # lexer = lex.lex()
