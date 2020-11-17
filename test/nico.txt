@@ -1,0 +1,58 @@
+(def str “cadena de text(o”)
+
+(def var_lista ( list 10 20 36))
+
+(def var_set (set ‘(10 20 36)))
+
+(def var_mapa (sorted-map "a" "b"))
+
+(def var_vector [10 20 36]))
+
+( def valor_entero 50 )
+
+( def valor_flotante 0.99 )
+
+( def valor_booleano true )
+
+( defn func []
+    (def x 1)
+    (println x) )
+
+/e
+
+nil
+
+(true && false)
+
+(true || false)
+
+( !false )
+
+( 10 == 10 )
+
+( 100 === 10 )
+
+( 10 != 20 )
+
+( + 2 5 )
+
+( - 2 5)
+
+( * 5 2 )
+
+( ** 5 2 )
+
+( / 10 2 )
+
+( println "Hello, world!" )
+
+( read-line )
+
+( if ( = 1 30
+    (println "equal")
+    (println "not equal"))
+
+( doseq [x [0 1 2]]
+   (println x)))
+
+( first lista )

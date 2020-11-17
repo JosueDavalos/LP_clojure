@@ -15,15 +15,17 @@ reservadas={
     'first': 'METODOFIRST',
     "list": "LISTA",
     "nth" : "METODONTH",
-    "not":"NOT",
-    "if":"IF"
+    "if":"IF",
+    "doseq": "DOSEQ", 
+    "true": "TRUE",
+    "false": "FALSE",
+    "not":"NOT"
 }
 
 tokens = [
     "ENTERO",
     "NOMBRE",
     "FLOTANTE",
-    "BOOLEANO",
     "CHAR",
     "STRING",
     "PAR_DER",
