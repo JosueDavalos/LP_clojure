@@ -13,9 +13,12 @@
 (> x 0)
 (<= 8 1)
 (>= 4 0)
+(not (and true false))
+(or true false)
 
 (println "Tu nombre: ")
 (println "Tu edad: ")
+(print "Hola PRofe")
 (println "Hola desde un programita en Clojure")
 
 (if false "a" "b")

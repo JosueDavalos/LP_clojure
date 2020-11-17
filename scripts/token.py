@@ -7,6 +7,7 @@ reservadas={
     "set": "CONJUNTO",
     "str": "STR",
     'loop':'LOOP',
+    'while':'WHILE',
     'do':'DO',
     'when':'WHEN',
     'println':'PRINTLN',
@@ -20,7 +21,10 @@ reservadas={
     "true": "TRUE",
     "false": "FALSE",
     "not":"NOT",
-    "read-line": "READLINE"
+    "read-line": "READLINE",
+    'and':'AND',
+    'or':"OR",
+    'print':'PRINT'
 }
 
 tokens = list(reservadas.values())+[
@@ -36,9 +40,6 @@ tokens = list(reservadas.values())+[
     "REST",
     "PRODUCT",
     "DIVISION",
-    "POW",
-    'AND',
-    "OR",
     'EQUAL_OP',
     "EQUAL",
     "EQUAL_2",
