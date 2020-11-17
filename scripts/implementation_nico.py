@@ -3,11 +3,12 @@ import ply.lex as lex
 
 t_ENTERO = r"([1-9][0-9]*|0)"
 t_FLOTANTE = r"([1-9]\d*|0)+[.]\d+"
-t_CHAR = r"[/]."
+t_CHAR = r"[/]\S"
 t_PAR_DER = r"[)]"
 t_PAR_IZQ = r"[(]"
 t_COR_DER = r"\["
 t_COR_IZQ = r"\]"
+t_COM_SIM = r"‘"
 
 
 t_ignore = ' \t'

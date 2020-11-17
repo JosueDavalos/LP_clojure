@@ -1,4 +1,4 @@
-(def str “cadena de text(o”)
+(def str "cadena de texto")
 
 (def var_lista ( list 10 20 36))
 

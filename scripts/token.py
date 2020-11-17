@@ -1,5 +1,5 @@
 reservadas={
-    "def": "VARIABLE",
+    "def": "DEF",
     "nil": "NULL",
     "hash-map": "HASHMAP",
     "sorted-map": "SORTEDMAP",
@@ -11,19 +11,19 @@ reservadas={
     'when':'WHEN',
     'println':'PRINTLN',
     'recur': 'RECUR',
-    'defn': 'FUNCION',
+    'defn': 'DEFN',
     'first': 'METODOFIRST',
     "list": "LISTA",
     "nth" : "METODONTH",
     "doseq": "DOSEQ", 
     "true": "TRUE",
     "false": "FALSE",
-    "not":"NOT"
+    "not":"NOT",
+    "read-line": "READLINE"
 }
 
-tokens = [
+tokens = list(reservadas.values())+[
     "ENTERO",
-    "NOMBRE",
     "FLOTANTE",
     "CHAR",
     "STRING",
@@ -44,5 +44,7 @@ tokens = [
     "NOT_EQUAL",
     "GREATER_THAN",
     "LESS_THAN",
-    "ARGS"
-]+ list(reservadas.values())
+    "ARGS",
+    "COM_SIM",
+    "NOMBRE"
+]
