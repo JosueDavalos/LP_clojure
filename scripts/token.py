@@ -14,11 +14,13 @@ reservadas={
     'defn': 'FUNCION',
     'first': 'METODOFIRST',
     "list": "LISTA",
-    "nth" : "METODONTH"
+    "nth" : "METODONTH",
+    "not":"NOT"
 }
 
 tokens = [
     "ENTERO",
+    "NOMBRE",
     "FLOTANTE",
     "BOOLEANO",
     "CHAR",
@@ -27,19 +29,18 @@ tokens = [
     "PAR_IZQ",
     "COR_DER",
     "COR_IZQ",
-    "SUMA",
-    "RESTA",
-    "PRODUCTO",
+    "SUM",
+    "REST",
+    "PRODUCT",
     "DIVISION",
-    "POTENCIA",
+    "POW",
     'AND',
     "OR",
-    "NOT",
     'EQUAL_OP',
     "EQUAL",
     "EQUAL_2",
     "NOT_EQUAL",
-    "MAYOR_QUE",
-    "MENOR_QUE",
+    "GREATER_THAN",
+    "LESS_THAN",
     "ARGS"
 ]+ list(reservadas.values())
