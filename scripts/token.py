@@ -15,6 +15,7 @@ reservadas={
     'first': 'METODOFIRST',
     "list": "LISTA",
     "nth" : "METODONTH",
+    "if":"IF",
     "doseq": "DOSEQ", 
     "true": "TRUE",
     "false": "FALSE",
@@ -45,6 +46,8 @@ tokens = list(reservadas.values())+[
     "GREATER_THAN",
     "LESS_THAN",
     "ARGS",
+    "GREATER_THAN_EQUAL",
+    "LESS_THAN_EQUAL",
     "COM_SIM",
     "NOMBRE"
-]
+]+ list(reservadas.values())
