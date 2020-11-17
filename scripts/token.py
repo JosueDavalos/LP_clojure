@@ -50,4 +50,4 @@ tokens = list(reservadas.values())+[
     "LESS_THAN_EQUAL",
     "COM_SIM",
     "NOMBRE"
-]+ list(reservadas.values())
+]
