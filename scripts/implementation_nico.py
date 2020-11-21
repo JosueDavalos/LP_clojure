@@ -35,8 +35,8 @@ def p_estructura_vector(p):
     '''
 
 def p_estructura_mapa(p):
-    '''estructura : LLAV_IZQ STRING STRING LLAV_DER
-                  | PAR_IZQ mapas STRING STRING PAR_DER
+    '''estructura : LLAV_IZQ parclaves LLAV_DER
+                  | PAR_IZQ mapas parclaves PAR_DER
     '''
 
 def p_mapas(p):
@@ -47,6 +47,10 @@ def p_mapas(p):
 def p_compuesto(p):
     '''compuesto : valor
                  | valor compuesto
+    '''
+def p_parclaves(p):
+    '''parclaves : STRING STRING
+                 | STRING STRING parclaves
     '''
 
 def p_valor(p):

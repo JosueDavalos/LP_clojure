@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'DEF NULL HASHMAP SORTEDMAP MAP VECTOR CONJUNTO STR LOOP WHILE DO WHEN PRINTLN RECUR DEFN METODOFIRST LISTA METODONTH IF DOSEQ TRUE FALSE READLINE NOT AND OR ENTERO FLOTANTE CHAR STRING PAR_DER PAR_IZQ COR_DER COR_IZQ SUM REST PRODUCT DIVISION EQUAL NOT_EQUAL GREATER_THAN LESS_THAN GREATER_THAN_EQUAL LESS_THAN_EQUAL COM_SIM NOMBRE HASH LLAV_IZQ LLAV_DERalgoritmo : variable\n                 | expresion\n    variable : PAR_IZQ DEF NOMBRE expresion PAR_DERexpresion : valor\n                 | estructura\n    estructura : PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER\n                  | COM_SIM PAR_IZQ valor PAR_DER\n    estructura : PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER\n                  | HASH LLAV_IZQ valor LLAV_DER\n    estructura : PAR_IZQ VECTOR valor PAR_DER\n                  | COR_IZQ valor COR_DER\n    estructura : LLAV_IZQ STRING STRING LLAV_DER\n                  | PAR_IZQ mapas STRING STRING PAR_DER\n    mapas : SORTEDMAP REST MAP\n             | HASHMAP REST MAP\n    compuesto : valor\n                 | compuesto\n    valor : numero\n             | NOMBRE\n             | booleano\n             | cadena\n    cadena : STRING\n              | PAR_IZQ STR STRING STRING PAR_DER\n    booleano : TRUE\n                | FALSE\n    numero : ENTERO\n              | FLOTANTE\n    '
+_lr_signature = 'DEF NULL HASHMAP SORTEDMAP MAP VECTOR CONJUNTO STR LOOP WHILE DO WHEN PRINTLN RECUR DEFN METODOFIRST LISTA METODONTH IF DOSEQ TRUE FALSE READLINE NOT AND OR ENTERO FLOTANTE CHAR STRING PAR_DER PAR_IZQ COR_DER COR_IZQ SUM REST PRODUCT DIVISION EQUAL NOT_EQUAL GREATER_THAN LESS_THAN GREATER_THAN_EQUAL LESS_THAN_EQUAL COM_SIM NOMBRE HASH LLAV_IZQ LLAV_DERalgoritmo : variable\n                 | expresion\n    variable : PAR_IZQ DEF NOMBRE expresion PAR_DERexpresion : valor\n                 | estructura\n    estructura : PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER\n                  | COM_SIM PAR_IZQ compuesto PAR_DER\n    estructura : PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER\n                  | HASH LLAV_IZQ compuesto LLAV_DER\n    estructura : PAR_IZQ VECTOR compuesto PAR_DER\n                  | COR_IZQ compuesto COR_DER\n    estructura : LLAV_IZQ parclaves LLAV_DER\n                  | PAR_IZQ mapas parclaves PAR_DER\n    mapas : SORTEDMAP REST MAP\n             | HASHMAP REST MAP\n    compuesto : valor\n                 | valor compuesto\n    parclaves : STRING STRING\n                 | STRING STRING parclaves\n    valor : numero\n             | NOMBRE\n             | booleano\n             | cadena\n    cadena : STRING\n              | PAR_IZQ STR STRING STRING PAR_DER\n    booleano : TRUE\n                | FALSE\n    numero : ENTERO\n              | FLOTANTE\n    '
     
-_lr_action_items = {'PAR_IZQ':([0,11,14,21,23,28,29,33,34,35,48,],[4,28,32,34,32,32,32,45,32,48,32,]),'NOMBRE':([0,14,20,23,28,29,33,34,48,],[5,5,33,5,5,5,5,5,5,]),'COM_SIM':([0,22,33,],[11,35,11,]),'HASH':([0,33,],[12,12,]),'COR_IZQ':([0,33,],[14,14,]),'LLAV_IZQ':([0,12,33,],[13,29,13,]),'ENTERO':([0,14,23,28,29,33,34,48,],[16,16,16,16,16,16,16,16,]),'FLOTANTE':([0,14,23,28,29,33,34,48,],[17,17,17,17,17,17,17,17,]),'TRUE':([0,14,23,28,29,33,34,48,],[18,18,18,18,18,18,18,18,]),'FALSE':([0,14,23,28,29,33,34,48,],[19,19,19,19,19,19,19,19,]),'STRING':([0,13,14,23,24,25,28,29,30,33,34,37,38,48,52,53,],[15,30,15,15,37,38,15,15,43,15,15,50,51,15,-14,-15,]),'$end':([1,2,3,5,6,7,8,9,10,15,16,17,18,19,44,49,54,55,56,57,60,61,62,64,],[0,-1,-2,-19,-4,-5,-18,-20,-21,-22,-26,-27,-24,-25,-11,-10,-7,-9,-12,-3,-13,-23,-6,-8,]),'DEF':([4,],[20,]),'LISTA':([4,45,],[21,21,]),'CONJUNTO':([4,45,],[22,22,]),'VECTOR':([4,45,],[23,23,]),'STR':([4,32,45,],[25,25,25,]),'SORTEDMAP':([4,45,],[26,26,]),'HASHMAP':([4,45,],[27,27,]),'COR_DER':([5,8,9,10,15,16,17,18,19,31,61,],[-19,-18,-20,-21,-22,-26,-27,-24,-25,44,-23,]),'PAR_DER':([5,6,7,8,9,10,15,16,17,18,19,36,41,44,46,47,49,50,51,54,55,56,58,59,60,61,62,63,64,],[-19,-4,-5,-18,-20,-21,-22,-26,-27,-24,-25,49,54,-11,57,58,-10,60,61,-7,-9,-12,62,63,-13,-23,-6,64,-8,]),'LLAV_DER':([5,8,9,10,15,16,17,18,19,42,43,61,],[-19,-18,-20,-21,-22,-26,-27,-24,-25,55,56,-23,]),'REST':([26,27,],[39,40,]),'MAP':([39,40,],[52,53,]),}
+_lr_action_items = {'PAR_IZQ':([0,5,8,9,10,11,14,15,16,17,18,19,21,23,28,29,33,35,36,37,52,64,],[4,-21,-20,-22,-23,28,34,-28,-29,-26,-27,-24,36,34,34,34,34,49,34,52,34,-25,]),'NOMBRE':([0,5,8,9,10,14,15,16,17,18,19,20,23,28,29,33,35,36,52,64,],[5,-21,-20,-22,-23,5,-28,-29,-26,-27,-24,35,5,5,5,5,5,5,5,-25,]),'COM_SIM':([0,22,35,],[11,37,11,]),'HASH':([0,35,],[12,12,]),'COR_IZQ':([0,35,],[14,14,]),'LLAV_IZQ':([0,12,35,],[13,29,13,]),'ENTERO':([0,5,8,9,10,14,15,16,17,18,19,23,28,29,33,35,36,52,64,],[15,-21,-20,-22,-23,15,-28,-29,-26,-27,-24,15,15,15,15,15,15,15,-25,]),'FLOTANTE':([0,5,8,9,10,14,15,16,17,18,19,23,28,29,33,35,36,52,64,],[16,-21,-20,-22,-23,16,-28,-29,-26,-27,-24,16,16,16,16,16,16,16,-25,]),'TRUE':([0,5,8,9,10,14,15,16,17,18,19,23,28,29,33,35,36,52,64,],[17,-21,-20,-22,-23,17,-28,-29,-26,-27,-24,17,17,17,17,17,17,17,-25,]),'FALSE':([0,5,8,9,10,14,15,16,17,18,19,23,28,29,33,35,36,52,64,],[18,-21,-20,-22,-23,18,-28,-29,-26,-27,-24,18,18,18,18,18,18,18,-25,]),'STRING':([0,5,8,9,10,13,14,15,16,17,18,19,23,24,25,28,29,31,33,35,36,40,46,52,56,57,64,],[19,-21,-20,-22,-23,31,19,-28,-29,-26,-27,-24,19,31,40,19,19,46,19,19,19,55,31,19,-14,-15,-25,]),'$end':([1,2,3,5,6,7,8,9,10,15,16,17,18,19,45,47,53,54,58,59,61,64,65,67,],[0,-1,-2,-21,-4,-5,-20,-22,-23,-28,-29,-26,-27,-24,-12,-11,-10,-13,-7,-9,-3,-25,-6,-8,]),'DEF':([4,],[20,]),'LISTA':([4,49,],[21,21,]),'CONJUNTO':([4,49,],[22,22,]),'VECTOR':([4,49,],[23,23,]),'STR':([4,34,49,],[25,25,25,]),'SORTEDMAP':([4,49,],[26,26,]),'HASHMAP':([4,49,],[27,27,]),'COR_DER':([5,8,9,10,15,16,17,18,19,32,33,48,64,],[-21,-20,-22,-23,-28,-29,-26,-27,-24,47,-16,-17,-25,]),'PAR_DER':([5,6,7,8,9,10,15,16,17,18,19,33,38,39,43,45,46,47,48,50,51,53,54,55,58,59,60,62,63,64,65,66,67,],[-21,-4,-5,-20,-22,-23,-28,-29,-26,-27,-24,-16,53,54,58,-12,-18,-11,-17,61,62,-10,-13,64,-7,-9,-19,65,66,-25,-6,67,-8,]),'LLAV_DER':([5,8,9,10,15,16,17,18,19,30,33,44,46,48,60,64,],[-21,-20,-22,-23,-28,-29,-26,-27,-24,45,-16,59,-18,-17,-19,-25,]),'REST':([26,27,],[41,42,]),'MAP':([41,42,],[56,57,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'algoritmo':([0,],[1,]),'variable':([0,],[2,]),'expresion':([0,33,],[3,46,]),'valor':([0,14,23,28,29,33,34,48,],[6,31,36,41,42,6,47,59,]),'estructura':([0,33,],[7,7,]),'numero':([0,14,23,28,29,33,34,48,],[8,8,8,8,8,8,8,8,]),'booleano':([0,14,23,28,29,33,34,48,],[9,9,9,9,9,9,9,9,]),'cadena':([0,14,23,28,29,33,34,48,],[10,10,10,10,10,10,10,10,]),'mapas':([4,45,],[24,24,]),}
+_lr_goto_items = {'algoritmo':([0,],[1,]),'variable':([0,],[2,]),'expresion':([0,35,],[3,50,]),'valor':([0,14,23,28,29,33,35,36,52,],[6,33,33,33,33,33,6,33,33,]),'estructura':([0,35,],[7,7,]),'numero':([0,14,23,28,29,33,35,36,52,],[8,8,8,8,8,8,8,8,8,]),'booleano':([0,14,23,28,29,33,35,36,52,],[9,9,9,9,9,9,9,9,9,]),'cadena':([0,14,23,28,29,33,35,36,52,],[10,10,10,10,10,10,10,10,10,]),'mapas':([4,49,],[24,24,]),'parclaves':([13,24,46,],[30,39,60,]),'compuesto':([14,23,28,29,33,36,52,],[32,38,43,44,48,51,63,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -31,26 +31,28 @@ _lr_productions = [
   ('variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER','variable',5,'p_variable','implementation_nico.py',14),
   ('expresion -> valor','expresion',1,'p_expresion','implementation_nico.py',17),
   ('expresion -> estructura','expresion',1,'p_expresion','implementation_nico.py',18),
-  ('estructura -> PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER','estructura',6,'p_estructura_lista','implementation_nico.py',22),
-  ('estructura -> COM_SIM PAR_IZQ valor PAR_DER','estructura',4,'p_estructura_lista','implementation_nico.py',23),
-  ('estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER','estructura',7,'p_estructura_conjunto','implementation_nico.py',27),
-  ('estructura -> HASH LLAV_IZQ valor LLAV_DER','estructura',4,'p_estructura_conjunto','implementation_nico.py',28),
-  ('estructura -> PAR_IZQ VECTOR valor PAR_DER','estructura',4,'p_estructura_vector','implementation_nico.py',32),
-  ('estructura -> COR_IZQ valor COR_DER','estructura',3,'p_estructura_vector','implementation_nico.py',33),
-  ('estructura -> LLAV_IZQ STRING STRING LLAV_DER','estructura',4,'p_estructura_mapa','implementation_nico.py',37),
-  ('estructura -> PAR_IZQ mapas STRING STRING PAR_DER','estructura',5,'p_estructura_mapa','implementation_nico.py',38),
-  ('mapas -> SORTEDMAP REST MAP','mapas',3,'p_mapas','implementation_nico.py',42),
-  ('mapas -> HASHMAP REST MAP','mapas',3,'p_mapas','implementation_nico.py',43),
-  ('compuesto -> valor','compuesto',1,'p_compuesto','implementation_nico.py',47),
-  ('compuesto -> compuesto','compuesto',1,'p_compuesto','implementation_nico.py',48),
-  ('valor -> numero','valor',1,'p_valor','implementation_nico.py',52),
-  ('valor -> NOMBRE','valor',1,'p_valor','implementation_nico.py',53),
-  ('valor -> booleano','valor',1,'p_valor','implementation_nico.py',54),
-  ('valor -> cadena','valor',1,'p_valor','implementation_nico.py',55),
-  ('cadena -> STRING','cadena',1,'p_cadena','implementation_nico.py',59),
-  ('cadena -> PAR_IZQ STR STRING STRING PAR_DER','cadena',5,'p_cadena','implementation_nico.py',60),
-  ('booleano -> TRUE','booleano',1,'p_booleano','implementation_nico.py',64),
-  ('booleano -> FALSE','booleano',1,'p_booleano','implementation_nico.py',65),
-  ('numero -> ENTERO','numero',1,'p_numero','implementation_nico.py',69),
-  ('numero -> FLOTANTE','numero',1,'p_numero','implementation_nico.py',70),
+  ('estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER','estructura',6,'p_estructura_lista','implementation_nico.py',22),
+  ('estructura -> COM_SIM PAR_IZQ compuesto PAR_DER','estructura',4,'p_estructura_lista','implementation_nico.py',23),
+  ('estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER','estructura',7,'p_estructura_conjunto','implementation_nico.py',27),
+  ('estructura -> HASH LLAV_IZQ compuesto LLAV_DER','estructura',4,'p_estructura_conjunto','implementation_nico.py',28),
+  ('estructura -> PAR_IZQ VECTOR compuesto PAR_DER','estructura',4,'p_estructura_vector','implementation_nico.py',33),
+  ('estructura -> COR_IZQ compuesto COR_DER','estructura',3,'p_estructura_vector','implementation_nico.py',34),
+  ('estructura -> LLAV_IZQ parclaves LLAV_DER','estructura',3,'p_estructura_mapa','implementation_nico.py',38),
+  ('estructura -> PAR_IZQ mapas parclaves PAR_DER','estructura',4,'p_estructura_mapa','implementation_nico.py',39),
+  ('mapas -> SORTEDMAP REST MAP','mapas',3,'p_mapas','implementation_nico.py',43),
+  ('mapas -> HASHMAP REST MAP','mapas',3,'p_mapas','implementation_nico.py',44),
+  ('compuesto -> valor','compuesto',1,'p_compuesto','implementation_nico.py',48),
+  ('compuesto -> valor compuesto','compuesto',2,'p_compuesto','implementation_nico.py',49),
+  ('parclaves -> STRING STRING','parclaves',2,'p_parclaves','implementation_nico.py',52),
+  ('parclaves -> STRING STRING parclaves','parclaves',3,'p_parclaves','implementation_nico.py',53),
+  ('valor -> numero','valor',1,'p_valor','implementation_nico.py',57),
+  ('valor -> NOMBRE','valor',1,'p_valor','implementation_nico.py',58),
+  ('valor -> booleano','valor',1,'p_valor','implementation_nico.py',59),
+  ('valor -> cadena','valor',1,'p_valor','implementation_nico.py',60),
+  ('cadena -> STRING','cadena',1,'p_cadena','implementation_nico.py',64),
+  ('cadena -> PAR_IZQ STR STRING STRING PAR_DER','cadena',5,'p_cadena','implementation_nico.py',65),
+  ('booleano -> TRUE','booleano',1,'p_booleano','implementation_nico.py',69),
+  ('booleano -> FALSE','booleano',1,'p_booleano','implementation_nico.py',70),
+  ('numero -> ENTERO','numero',1,'p_numero','implementation_nico.py',74),
+  ('numero -> FLOTANTE','numero',1,'p_numero','implementation_nico.py',75),
 ]
