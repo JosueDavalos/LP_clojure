@@ -43,6 +43,11 @@ def p_mapas(p):
              | HASHMAP REST MAP
     '''
 
+def p_compuesto(p):
+    '''compuesto : valor
+                 | compuesto
+    '''
+
 def p_valor(p):
     '''valor : numero
              | NOMBRE
