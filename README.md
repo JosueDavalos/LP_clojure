@@ -2,7 +2,7 @@
 
 ## Integrantes
 - Josue Davalos
-- Nicol Agila
+- Nicole Agila
 - Sebastian Benalcazar
 
 ## Instalación de paquetes

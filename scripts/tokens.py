@@ -1,8 +1,9 @@
 reservadas={
     "def": "DEF",
     "nil": "NULL",
-    "hash-map": "HASHMAP",
-    "sorted-map": "SORTEDMAP",
+    "hash": "HASHMAP",
+    "sorted": "SORTEDMAP",
+    "map": "MAP",
     "vector": "VECTOR",
     "set": "CONJUNTO",
     "str": "STR",

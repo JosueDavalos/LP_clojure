@@ -16,7 +16,7 @@ def p_variable(p):
 def p_expresion(p):
     '''expresion : valor
                  | estructura
-                 | cadena'''
+    '''
 
 def p_estructura_lista(p):
     '''estructura : PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER
@@ -39,19 +39,20 @@ def p_estructura_mapa(p):
     '''
 
 def p_mapas(p):
-    '''mapas : SORTEDMAP
-             | HASHMAP
+    '''mapas : SORTEDMAP REST MAP
+             | HASHMAP REST MAP
     '''
 
 def p_valor(p):
     '''valor : numero
              | NOMBRE
              | booleano
+             | cadena
     '''
 
 def p_cadena(p):
     '''cadena : STRING
-              | PAR_IZQ STR STRING PAR_DER
+              | PAR_IZQ STR STRING STRING PAR_DER
     '''
 
 def p_booleano(p):

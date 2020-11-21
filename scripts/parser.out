@@ -1,0 +1,894 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    NULL
+    LOOP
+    WHILE
+    DO
+    WHEN
+    PRINTLN
+    RECUR
+    DEFN
+    METODOFIRST
+    METODONTH
+    IF
+    DOSEQ
+    READLINE
+    NOT
+    AND
+    OR
+    CHAR
+    SUM
+    PRODUCT
+    DIVISION
+    EQUAL
+    NOT_EQUAL
+    GREATER_THAN
+    LESS_THAN
+    GREATER_THAN_EQUAL
+    LESS_THAN_EQUAL
+
+Grammar
+
+Rule 0     S' -> algoritmo
+Rule 1     algoritmo -> variable
+Rule 2     algoritmo -> expresion
+Rule 3     variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER
+Rule 4     expresion -> valor
+Rule 5     expresion -> estructura
+Rule 6     estructura -> PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER
+Rule 7     estructura -> COM_SIM PAR_IZQ valor PAR_DER
+Rule 8     estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER
+Rule 9     estructura -> HASH LLAV_IZQ valor LLAV_DER
+Rule 10    estructura -> PAR_IZQ VECTOR valor PAR_DER
+Rule 11    estructura -> COR_IZQ valor COR_DER
+Rule 12    estructura -> LLAV_IZQ STRING STRING LLAV_DER
+Rule 13    estructura -> PAR_IZQ mapas STRING STRING PAR_DER
+Rule 14    mapas -> SORTEDMAP REST MAP
+Rule 15    mapas -> HASHMAP REST MAP
+Rule 16    valor -> numero
+Rule 17    valor -> NOMBRE
+Rule 18    valor -> booleano
+Rule 19    valor -> cadena
+Rule 20    valor -> valor
+Rule 21    cadena -> STRING
+Rule 22    cadena -> PAR_IZQ STR STRING STRING PAR_DER
+Rule 23    booleano -> TRUE
+Rule 24    booleano -> FALSE
+Rule 25    numero -> ENTERO
+Rule 26    numero -> FLOTANTE
+
+Terminals, with rules where they appear
+
+AND                  : 
+CHAR                 : 
+COM_SIM              : 7 8
+CONJUNTO             : 8
+COR_DER              : 11
+COR_IZQ              : 11
+DEF                  : 3
+DEFN                 : 
+DIVISION             : 
+DO                   : 
+DOSEQ                : 
+ENTERO               : 25
+EQUAL                : 
+FALSE                : 24
+FLOTANTE             : 26
+GREATER_THAN         : 
+GREATER_THAN_EQUAL   : 
+HASH                 : 9
+HASHMAP              : 15
+IF                   : 
+LESS_THAN            : 
+LESS_THAN_EQUAL      : 
+LISTA                : 6
+LLAV_DER             : 9 12
+LLAV_IZQ             : 9 12
+LOOP                 : 
+MAP                  : 14 15
+METODOFIRST          : 
+METODONTH            : 
+NOMBRE               : 3 17
+NOT                  : 
+NOT_EQUAL            : 
+NULL                 : 
+OR                   : 
+PAR_DER              : 3 6 6 7 8 8 10 13 22
+PAR_IZQ              : 3 6 6 7 8 8 10 13 22
+PRINTLN              : 
+PRODUCT              : 
+READLINE             : 
+RECUR                : 
+REST                 : 14 15
+SORTEDMAP            : 14
+STR                  : 22
+STRING               : 12 12 13 13 21 22 22
+SUM                  : 
+TRUE                 : 23
+VECTOR               : 10
+WHEN                 : 
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+algoritmo            : 0
+booleano             : 18
+cadena               : 19
+estructura           : 5
+expresion            : 2 3
+mapas                : 13
+numero               : 16
+valor                : 4 6 7 8 9 10 11 20
+variable             : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . algoritmo
+    (1) algoritmo -> . variable
+    (2) algoritmo -> . expresion
+    (3) variable -> . PAR_IZQ DEF NOMBRE expresion PAR_DER
+    (4) expresion -> . valor
+    (5) expresion -> . estructura
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (6) estructura -> . PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER
+    (7) estructura -> . COM_SIM PAR_IZQ valor PAR_DER
+    (8) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER
+    (9) estructura -> . HASH LLAV_IZQ valor LLAV_DER
+    (10) estructura -> . PAR_IZQ VECTOR valor PAR_DER
+    (11) estructura -> . COR_IZQ valor COR_DER
+    (12) estructura -> . LLAV_IZQ STRING STRING LLAV_DER
+    (13) estructura -> . PAR_IZQ mapas STRING STRING PAR_DER
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    PAR_IZQ         shift and go to state 4
+    NOMBRE          shift and go to state 5
+    COM_SIM         shift and go to state 11
+    HASH            shift and go to state 12
+    COR_IZQ         shift and go to state 14
+    LLAV_IZQ        shift and go to state 13
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+
+    algoritmo                      shift and go to state 1
+    variable                       shift and go to state 2
+    expresion                      shift and go to state 3
+    valor                          shift and go to state 6
+    estructura                     shift and go to state 7
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 1
+
+    (0) S' -> algoritmo .
+
+
+
+state 2
+
+    (1) algoritmo -> variable .
+
+    $end            reduce using rule 1 (algoritmo -> variable .)
+
+
+state 3
+
+    (2) algoritmo -> expresion .
+
+    $end            reduce using rule 2 (algoritmo -> expresion .)
+
+
+state 4
+
+    (3) variable -> PAR_IZQ . DEF NOMBRE expresion PAR_DER
+    (6) estructura -> PAR_IZQ . LISTA PAR_IZQ valor PAR_DER PAR_DER
+    (8) estructura -> PAR_IZQ . CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER
+    (10) estructura -> PAR_IZQ . VECTOR valor PAR_DER
+    (13) estructura -> PAR_IZQ . mapas STRING STRING PAR_DER
+    (22) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
+    (14) mapas -> . SORTEDMAP REST MAP
+    (15) mapas -> . HASHMAP REST MAP
+
+    DEF             shift and go to state 20
+    LISTA           shift and go to state 21
+    CONJUNTO        shift and go to state 22
+    VECTOR          shift and go to state 23
+    STR             shift and go to state 25
+    SORTEDMAP       shift and go to state 26
+    HASHMAP         shift and go to state 27
+
+    mapas                          shift and go to state 24
+
+state 5
+
+    (17) valor -> NOMBRE .
+
+    $end            reduce using rule 17 (valor -> NOMBRE .)
+    COR_DER         reduce using rule 17 (valor -> NOMBRE .)
+    PAR_DER         reduce using rule 17 (valor -> NOMBRE .)
+    LLAV_DER        reduce using rule 17 (valor -> NOMBRE .)
+
+
+state 6
+
+    (4) expresion -> valor .
+    (20) valor -> valor .
+
+  ! reduce/reduce conflict for $end resolved using rule 4 (expresion -> valor .)
+  ! reduce/reduce conflict for PAR_DER resolved using rule 4 (expresion -> valor .)
+    $end            reduce using rule 4 (expresion -> valor .)
+    PAR_DER         reduce using rule 4 (expresion -> valor .)
+
+  ! $end            [ reduce using rule 20 (valor -> valor .) ]
+  ! PAR_DER         [ reduce using rule 20 (valor -> valor .) ]
+
+
+state 7
+
+    (5) expresion -> estructura .
+
+    $end            reduce using rule 5 (expresion -> estructura .)
+    PAR_DER         reduce using rule 5 (expresion -> estructura .)
+
+
+state 8
+
+    (16) valor -> numero .
+
+    $end            reduce using rule 16 (valor -> numero .)
+    COR_DER         reduce using rule 16 (valor -> numero .)
+    PAR_DER         reduce using rule 16 (valor -> numero .)
+    LLAV_DER        reduce using rule 16 (valor -> numero .)
+
+
+state 9
+
+    (18) valor -> booleano .
+
+    $end            reduce using rule 18 (valor -> booleano .)
+    COR_DER         reduce using rule 18 (valor -> booleano .)
+    PAR_DER         reduce using rule 18 (valor -> booleano .)
+    LLAV_DER        reduce using rule 18 (valor -> booleano .)
+
+
+state 10
+
+    (19) valor -> cadena .
+
+    $end            reduce using rule 19 (valor -> cadena .)
+    COR_DER         reduce using rule 19 (valor -> cadena .)
+    PAR_DER         reduce using rule 19 (valor -> cadena .)
+    LLAV_DER        reduce using rule 19 (valor -> cadena .)
+
+
+state 11
+
+    (7) estructura -> COM_SIM . PAR_IZQ valor PAR_DER
+
+    PAR_IZQ         shift and go to state 28
+
+
+state 12
+
+    (9) estructura -> HASH . LLAV_IZQ valor LLAV_DER
+
+    LLAV_IZQ        shift and go to state 29
+
+
+state 13
+
+    (12) estructura -> LLAV_IZQ . STRING STRING LLAV_DER
+
+    STRING          shift and go to state 30
+
+
+state 14
+
+    (11) estructura -> COR_IZQ . valor COR_DER
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 5
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+    PAR_IZQ         shift and go to state 32
+
+    valor                          shift and go to state 31
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 15
+
+    (21) cadena -> STRING .
+
+    $end            reduce using rule 21 (cadena -> STRING .)
+    COR_DER         reduce using rule 21 (cadena -> STRING .)
+    PAR_DER         reduce using rule 21 (cadena -> STRING .)
+    LLAV_DER        reduce using rule 21 (cadena -> STRING .)
+
+
+state 16
+
+    (25) numero -> ENTERO .
+
+    $end            reduce using rule 25 (numero -> ENTERO .)
+    COR_DER         reduce using rule 25 (numero -> ENTERO .)
+    PAR_DER         reduce using rule 25 (numero -> ENTERO .)
+    LLAV_DER        reduce using rule 25 (numero -> ENTERO .)
+
+
+state 17
+
+    (26) numero -> FLOTANTE .
+
+    $end            reduce using rule 26 (numero -> FLOTANTE .)
+    COR_DER         reduce using rule 26 (numero -> FLOTANTE .)
+    PAR_DER         reduce using rule 26 (numero -> FLOTANTE .)
+    LLAV_DER        reduce using rule 26 (numero -> FLOTANTE .)
+
+
+state 18
+
+    (23) booleano -> TRUE .
+
+    $end            reduce using rule 23 (booleano -> TRUE .)
+    COR_DER         reduce using rule 23 (booleano -> TRUE .)
+    PAR_DER         reduce using rule 23 (booleano -> TRUE .)
+    LLAV_DER        reduce using rule 23 (booleano -> TRUE .)
+
+
+state 19
+
+    (24) booleano -> FALSE .
+
+    $end            reduce using rule 24 (booleano -> FALSE .)
+    COR_DER         reduce using rule 24 (booleano -> FALSE .)
+    PAR_DER         reduce using rule 24 (booleano -> FALSE .)
+    LLAV_DER        reduce using rule 24 (booleano -> FALSE .)
+
+
+state 20
+
+    (3) variable -> PAR_IZQ DEF . NOMBRE expresion PAR_DER
+
+    NOMBRE          shift and go to state 33
+
+
+state 21
+
+    (6) estructura -> PAR_IZQ LISTA . PAR_IZQ valor PAR_DER PAR_DER
+
+    PAR_IZQ         shift and go to state 34
+
+
+state 22
+
+    (8) estructura -> PAR_IZQ CONJUNTO . COM_SIM PAR_IZQ valor PAR_DER PAR_DER
+
+    COM_SIM         shift and go to state 35
+
+
+state 23
+
+    (10) estructura -> PAR_IZQ VECTOR . valor PAR_DER
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 5
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+    PAR_IZQ         shift and go to state 32
+
+    valor                          shift and go to state 36
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 24
+
+    (13) estructura -> PAR_IZQ mapas . STRING STRING PAR_DER
+
+    STRING          shift and go to state 37
+
+
+state 25
+
+    (22) cadena -> PAR_IZQ STR . STRING STRING PAR_DER
+
+    STRING          shift and go to state 38
+
+
+state 26
+
+    (14) mapas -> SORTEDMAP . REST MAP
+
+    REST            shift and go to state 39
+
+
+state 27
+
+    (15) mapas -> HASHMAP . REST MAP
+
+    REST            shift and go to state 40
+
+
+state 28
+
+    (7) estructura -> COM_SIM PAR_IZQ . valor PAR_DER
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 5
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+    PAR_IZQ         shift and go to state 32
+
+    valor                          shift and go to state 41
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 29
+
+    (9) estructura -> HASH LLAV_IZQ . valor LLAV_DER
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 5
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+    PAR_IZQ         shift and go to state 32
+
+    valor                          shift and go to state 42
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 30
+
+    (12) estructura -> LLAV_IZQ STRING . STRING LLAV_DER
+
+    STRING          shift and go to state 43
+
+
+state 31
+
+    (11) estructura -> COR_IZQ valor . COR_DER
+    (20) valor -> valor .
+
+  ! shift/reduce conflict for COR_DER resolved as shift
+    COR_DER         shift and go to state 44
+
+  ! COR_DER         [ reduce using rule 20 (valor -> valor .) ]
+
+
+state 32
+
+    (22) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
+
+    STR             shift and go to state 25
+
+
+state 33
+
+    (3) variable -> PAR_IZQ DEF NOMBRE . expresion PAR_DER
+    (4) expresion -> . valor
+    (5) expresion -> . estructura
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (6) estructura -> . PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER
+    (7) estructura -> . COM_SIM PAR_IZQ valor PAR_DER
+    (8) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER
+    (9) estructura -> . HASH LLAV_IZQ valor LLAV_DER
+    (10) estructura -> . PAR_IZQ VECTOR valor PAR_DER
+    (11) estructura -> . COR_IZQ valor COR_DER
+    (12) estructura -> . LLAV_IZQ STRING STRING LLAV_DER
+    (13) estructura -> . PAR_IZQ mapas STRING STRING PAR_DER
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 5
+    PAR_IZQ         shift and go to state 45
+    COM_SIM         shift and go to state 11
+    HASH            shift and go to state 12
+    COR_IZQ         shift and go to state 14
+    LLAV_IZQ        shift and go to state 13
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+
+    expresion                      shift and go to state 46
+    valor                          shift and go to state 6
+    estructura                     shift and go to state 7
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 34
+
+    (6) estructura -> PAR_IZQ LISTA PAR_IZQ . valor PAR_DER PAR_DER
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 5
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+    PAR_IZQ         shift and go to state 32
+
+    valor                          shift and go to state 47
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 35
+
+    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM . PAR_IZQ valor PAR_DER PAR_DER
+
+    PAR_IZQ         shift and go to state 48
+
+
+state 36
+
+    (10) estructura -> PAR_IZQ VECTOR valor . PAR_DER
+    (20) valor -> valor .
+
+  ! shift/reduce conflict for PAR_DER resolved as shift
+    PAR_DER         shift and go to state 49
+
+  ! PAR_DER         [ reduce using rule 20 (valor -> valor .) ]
+
+
+state 37
+
+    (13) estructura -> PAR_IZQ mapas STRING . STRING PAR_DER
+
+    STRING          shift and go to state 50
+
+
+state 38
+
+    (22) cadena -> PAR_IZQ STR STRING . STRING PAR_DER
+
+    STRING          shift and go to state 51
+
+
+state 39
+
+    (14) mapas -> SORTEDMAP REST . MAP
+
+    MAP             shift and go to state 52
+
+
+state 40
+
+    (15) mapas -> HASHMAP REST . MAP
+
+    MAP             shift and go to state 53
+
+
+state 41
+
+    (7) estructura -> COM_SIM PAR_IZQ valor . PAR_DER
+    (20) valor -> valor .
+
+  ! shift/reduce conflict for PAR_DER resolved as shift
+    PAR_DER         shift and go to state 54
+
+  ! PAR_DER         [ reduce using rule 20 (valor -> valor .) ]
+
+
+state 42
+
+    (9) estructura -> HASH LLAV_IZQ valor . LLAV_DER
+    (20) valor -> valor .
+
+  ! shift/reduce conflict for LLAV_DER resolved as shift
+    LLAV_DER        shift and go to state 55
+
+  ! LLAV_DER        [ reduce using rule 20 (valor -> valor .) ]
+
+
+state 43
+
+    (12) estructura -> LLAV_IZQ STRING STRING . LLAV_DER
+
+    LLAV_DER        shift and go to state 56
+
+
+state 44
+
+    (11) estructura -> COR_IZQ valor COR_DER .
+
+    $end            reduce using rule 11 (estructura -> COR_IZQ valor COR_DER .)
+    PAR_DER         reduce using rule 11 (estructura -> COR_IZQ valor COR_DER .)
+
+
+state 45
+
+    (6) estructura -> PAR_IZQ . LISTA PAR_IZQ valor PAR_DER PAR_DER
+    (8) estructura -> PAR_IZQ . CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER
+    (10) estructura -> PAR_IZQ . VECTOR valor PAR_DER
+    (13) estructura -> PAR_IZQ . mapas STRING STRING PAR_DER
+    (22) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
+    (14) mapas -> . SORTEDMAP REST MAP
+    (15) mapas -> . HASHMAP REST MAP
+
+    LISTA           shift and go to state 21
+    CONJUNTO        shift and go to state 22
+    VECTOR          shift and go to state 23
+    STR             shift and go to state 25
+    SORTEDMAP       shift and go to state 26
+    HASHMAP         shift and go to state 27
+
+    mapas                          shift and go to state 24
+
+state 46
+
+    (3) variable -> PAR_IZQ DEF NOMBRE expresion . PAR_DER
+
+    PAR_DER         shift and go to state 57
+
+
+state 47
+
+    (6) estructura -> PAR_IZQ LISTA PAR_IZQ valor . PAR_DER PAR_DER
+    (20) valor -> valor .
+
+  ! shift/reduce conflict for PAR_DER resolved as shift
+    PAR_DER         shift and go to state 58
+
+  ! PAR_DER         [ reduce using rule 20 (valor -> valor .) ]
+
+
+state 48
+
+    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ . valor PAR_DER PAR_DER
+    (16) valor -> . numero
+    (17) valor -> . NOMBRE
+    (18) valor -> . booleano
+    (19) valor -> . cadena
+    (20) valor -> . valor
+    (25) numero -> . ENTERO
+    (26) numero -> . FLOTANTE
+    (23) booleano -> . TRUE
+    (24) booleano -> . FALSE
+    (21) cadena -> . STRING
+    (22) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 5
+    ENTERO          shift and go to state 16
+    FLOTANTE        shift and go to state 17
+    TRUE            shift and go to state 18
+    FALSE           shift and go to state 19
+    STRING          shift and go to state 15
+    PAR_IZQ         shift and go to state 32
+
+    valor                          shift and go to state 59
+    numero                         shift and go to state 8
+    booleano                       shift and go to state 9
+    cadena                         shift and go to state 10
+
+state 49
+
+    (10) estructura -> PAR_IZQ VECTOR valor PAR_DER .
+
+    $end            reduce using rule 10 (estructura -> PAR_IZQ VECTOR valor PAR_DER .)
+    PAR_DER         reduce using rule 10 (estructura -> PAR_IZQ VECTOR valor PAR_DER .)
+
+
+state 50
+
+    (13) estructura -> PAR_IZQ mapas STRING STRING . PAR_DER
+
+    PAR_DER         shift and go to state 60
+
+
+state 51
+
+    (22) cadena -> PAR_IZQ STR STRING STRING . PAR_DER
+
+    PAR_DER         shift and go to state 61
+
+
+state 52
+
+    (14) mapas -> SORTEDMAP REST MAP .
+
+    STRING          reduce using rule 14 (mapas -> SORTEDMAP REST MAP .)
+
+
+state 53
+
+    (15) mapas -> HASHMAP REST MAP .
+
+    STRING          reduce using rule 15 (mapas -> HASHMAP REST MAP .)
+
+
+state 54
+
+    (7) estructura -> COM_SIM PAR_IZQ valor PAR_DER .
+
+    $end            reduce using rule 7 (estructura -> COM_SIM PAR_IZQ valor PAR_DER .)
+    PAR_DER         reduce using rule 7 (estructura -> COM_SIM PAR_IZQ valor PAR_DER .)
+
+
+state 55
+
+    (9) estructura -> HASH LLAV_IZQ valor LLAV_DER .
+
+    $end            reduce using rule 9 (estructura -> HASH LLAV_IZQ valor LLAV_DER .)
+    PAR_DER         reduce using rule 9 (estructura -> HASH LLAV_IZQ valor LLAV_DER .)
+
+
+state 56
+
+    (12) estructura -> LLAV_IZQ STRING STRING LLAV_DER .
+
+    $end            reduce using rule 12 (estructura -> LLAV_IZQ STRING STRING LLAV_DER .)
+    PAR_DER         reduce using rule 12 (estructura -> LLAV_IZQ STRING STRING LLAV_DER .)
+
+
+state 57
+
+    (3) variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .
+
+    $end            reduce using rule 3 (variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .)
+
+
+state 58
+
+    (6) estructura -> PAR_IZQ LISTA PAR_IZQ valor PAR_DER . PAR_DER
+
+    PAR_DER         shift and go to state 62
+
+
+state 59
+
+    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor . PAR_DER PAR_DER
+    (20) valor -> valor .
+
+  ! shift/reduce conflict for PAR_DER resolved as shift
+    PAR_DER         shift and go to state 63
+
+  ! PAR_DER         [ reduce using rule 20 (valor -> valor .) ]
+
+
+state 60
+
+    (13) estructura -> PAR_IZQ mapas STRING STRING PAR_DER .
+
+    $end            reduce using rule 13 (estructura -> PAR_IZQ mapas STRING STRING PAR_DER .)
+    PAR_DER         reduce using rule 13 (estructura -> PAR_IZQ mapas STRING STRING PAR_DER .)
+
+
+state 61
+
+    (22) cadena -> PAR_IZQ STR STRING STRING PAR_DER .
+
+    $end            reduce using rule 22 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    COR_DER         reduce using rule 22 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    PAR_DER         reduce using rule 22 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    LLAV_DER        reduce using rule 22 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+
+
+state 62
+
+    (6) estructura -> PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER .
+
+    $end            reduce using rule 6 (estructura -> PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER .)
+    PAR_DER         reduce using rule 6 (estructura -> PAR_IZQ LISTA PAR_IZQ valor PAR_DER PAR_DER .)
+
+
+state 63
+
+    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER . PAR_DER
+
+    PAR_DER         shift and go to state 64
+
+
+state 64
+
+    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER .
+
+    $end            reduce using rule 8 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER .)
+    PAR_DER         reduce using rule 8 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ valor PAR_DER PAR_DER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for COR_DER in state 31 resolved as shift
+WARNING: shift/reduce conflict for PAR_DER in state 36 resolved as shift
+WARNING: shift/reduce conflict for PAR_DER in state 41 resolved as shift
+WARNING: shift/reduce conflict for LLAV_DER in state 42 resolved as shift
+WARNING: shift/reduce conflict for PAR_DER in state 47 resolved as shift
+WARNING: shift/reduce conflict for PAR_DER in state 59 resolved as shift
+WARNING: reduce/reduce conflict in state 6 resolved using rule (expresion -> valor)
+WARNING: rejected rule (valor -> valor) in state 6
+WARNING: Rule (valor -> valor) is never reduced
