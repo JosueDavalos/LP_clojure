@@ -23,7 +23,7 @@ nil
 ( read-line )
 if ( = 2 2
 (loop [x 1] (when (true) (println x) )))
-(while ( < @x 5 ) (do (println @x) (swap! x inc)))
+(while ( < x 5 ) (do (println x) (swap! x inc)))
 (nth lista2 1)
 (first lista)
 ( defn nombre [argumentos] (bloque de códigoN) )
