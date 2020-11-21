@@ -8,25 +8,21 @@ t_PAR_DER = r"[)]"
 t_PAR_IZQ = r"[(]"
 t_COR_DER = r"\["
 t_COR_IZQ = r"\]"
-t_COM_SIM = r"‘"
+t_COM_SIM = r"'"
 t_SUM = r'\+'
 t_REST = r'\-'
-t_EQUAL_OP = r'\='
 t_PRODUCT = r'\*'
 t_STRING = r'\"[^\"]*\"'
 t_DIVISION = r'\/'
-t_AND = r'and'
-t_OR = r'or'
-t_NOT = r'not'
-t_EQUAL = r'\=\='
-t_EQUAL_2 = r'\=\=\='
-t_NOT_EQUAL = r'\!\='
+t_EQUAL = r'\='
+t_NOT_EQUAL = r'not\='
 t_GREATER_THAN = r'\>'
 t_LESS_THAN = r'\<'
 t_GREATER_THAN_EQUAL = r'\>\='
 t_LESS_THAN_EQUAL = r'\<\='
-t_ARGS = r"^\[(\w)*(\s\w+)*\]$"
-
+t_HASH = r'\#'
+t_LLAV_IZQ = r'{' 
+t_LLAV_DER = r'}'
 
 t_ignore = ' \t'
 t_ignore_CM = r";.+"

@@ -2,7 +2,6 @@ from scripts.lexico import lexer
 from scripts.sintactico import parser
 
 
-
 def t_analizar_lexico(texto):
     lexer.input(texto)
     while True:

@@ -20,11 +20,10 @@ reservadas={
     "doseq": "DOSEQ", 
     "true": "TRUE",
     "false": "FALSE",
-    "not":"NOT",
     "read-line": "READLINE",
+    "not":"NOT",
     'and':'AND',
-    'or':"OR",
-    'print':'PRINT'
+    'or':"OR"
 }
 
 tokens = list(reservadas.values())+[
@@ -40,15 +39,15 @@ tokens = list(reservadas.values())+[
     "REST",
     "PRODUCT",
     "DIVISION",
-    'EQUAL_OP',
     "EQUAL",
-    "EQUAL_2",
     "NOT_EQUAL",
     "GREATER_THAN",
     "LESS_THAN",
-    "ARGS",
     "GREATER_THAN_EQUAL",
     "LESS_THAN_EQUAL",
     "COM_SIM",
-    "NOMBRE"
+    "NOMBRE",
+    "HASH",
+    "LLAV_IZQ",
+    "LLAV_DER"
 ]

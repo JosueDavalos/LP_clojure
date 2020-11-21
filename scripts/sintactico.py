@@ -4,6 +4,4 @@ from scripts.implementation_sebas import *
 
 import ply.yacc as yacc
 
-
-
 parser = yacc.yacc() 

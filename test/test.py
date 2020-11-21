@@ -1,7 +1,7 @@
 import sys
-sys.path.append(".")
-
 from scripts.implementation import *
+
+sys.path.append(".")
 
 argv = sys.argv
 name_file = argv[-1]
@@ -18,7 +18,5 @@ def run_test(file):
             # t_analizar_lexico(setencia)
             t_analizar_sintaxis(setencia)
             print()
-
-
 
 run_test(name_file)
