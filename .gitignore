@@ -1,2 +1,3 @@
 #virtual environment
-env/
+env/ .out parsetab.py
+
