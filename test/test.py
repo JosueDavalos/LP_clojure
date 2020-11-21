@@ -12,7 +12,12 @@ def run_test(file):
 
     test = open('test/%s'%file, 'r', encoding="utf8")
     for line in test:
-        t_analizar(line.strip())
+        setencia  = line.strip()
+        if len(setencia)!=0 : 
+            print('-'*5,setencia,'-'*5)
+            # t_analizar_lexico(setencia)
+            t_analizar_sintaxis(setencia)
+            print()
 
 
 

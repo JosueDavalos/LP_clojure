@@ -1,14 +1,17 @@
-from scripts.implementation_josue import *
-from scripts.implementation_nico import *
-from scripts.implementation_sebas import *
+from scripts.lexico import lexer
+from scripts.sintactico import parser
 
 
-lexer = lex.lex()
 
-def t_analizar(texto):
+def t_analizar_lexico(texto):
     lexer.input(texto)
     while True:
         tok = lexer.token()
         if not tok:
             break  # No more input
         print(tok)
+
+
+def t_analizar_sintaxis(texto):
+    result = parser.parse(texto)
+    print(result)
