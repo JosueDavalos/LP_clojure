@@ -1,3 +1,6 @@
 #virtual environment
-env/ .out parsetab.py *.pyc
+env/ 
+*.out
+parsetab.py 
+*.pyc
 

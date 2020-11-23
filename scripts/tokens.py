@@ -12,6 +12,7 @@ reservadas={
     'do':'DO',
     'when':'WHEN',
     'println':'PRINTLN',
+    'print':'PRINT',
     'recur': 'RECUR',
     'defn': 'DEFN',
     'first': 'METODOFIRST',

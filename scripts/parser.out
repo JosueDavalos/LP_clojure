@@ -1,133 +1,174 @@
-Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    NULL
-    LOOP
-    WHILE
-    DO
-    WHEN
-    PRINTLN
-    RECUR
+    CHAR
     DEFN
+    DOSEQ
     METODOFIRST
     METODONTH
-    IF
-    DOSEQ
+    NULL
     READLINE
-    NOT
-    AND
-    OR
-    CHAR
-    SUM
-    PRODUCT
-    DIVISION
-    EQUAL
-    NOT_EQUAL
-    GREATER_THAN
-    LESS_THAN
-    GREATER_THAN_EQUAL
-    LESS_THAN_EQUAL
 
 Grammar
 
 Rule 0     S' -> algoritmo
 Rule 1     algoritmo -> variable
 Rule 2     algoritmo -> expresion
-Rule 3     variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER
-Rule 4     expresion -> valor
-Rule 5     expresion -> estructura
-Rule 6     estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
-Rule 7     estructura -> COM_SIM PAR_IZQ compuesto PAR_DER
-Rule 8     estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
-Rule 9     estructura -> HASH LLAV_IZQ compuesto LLAV_DER
-Rule 10    estructura -> PAR_IZQ VECTOR compuesto PAR_DER
-Rule 11    estructura -> COR_IZQ compuesto COR_DER
-Rule 12    estructura -> LLAV_IZQ parclaves LLAV_DER
-Rule 13    estructura -> PAR_IZQ mapas parclaves PAR_DER
-Rule 14    mapas -> SORTEDMAP REST MAP
-Rule 15    mapas -> HASHMAP REST MAP
-Rule 16    compuesto -> valor
-Rule 17    compuesto -> valor compuesto
-Rule 18    parclaves -> STRING STRING
-Rule 19    parclaves -> STRING STRING parclaves
-Rule 20    valor -> numero
-Rule 21    valor -> NOMBRE
-Rule 22    valor -> booleano
-Rule 23    valor -> cadena
-Rule 24    cadena -> STRING
-Rule 25    cadena -> PAR_IZQ STR STRING STRING PAR_DER
-Rule 26    booleano -> TRUE
-Rule 27    booleano -> FALSE
-Rule 28    numero -> ENTERO
-Rule 29    numero -> FLOTANTE
+Rule 3     algoritmo -> imprimir
+Rule 4     algoritmo -> controlStructures
+Rule 5     variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER
+Rule 6     expresion -> valor
+Rule 7     expresion -> estructura
+Rule 8     expresion -> expresionAritmetica
+Rule 9     expresion -> comparation
+Rule 10    expresion -> comparationLogic
+Rule 11    controlStructures -> if
+Rule 12    controlStructures -> while
+Rule 13    controlStructures -> loop
+Rule 14    loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER
+Rule 15    when -> PAR_IZQ WHEN comparation algoritmo recur PAR_DER
+Rule 16    recur -> PAR_IZQ RECUR expresionAritmetica PAR_DER
+Rule 17    while -> PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER
+Rule 18    if -> PAR_IZQ IF booleanExpresion expresion expresion PAR_DER
+Rule 19    if -> PAR_IZQ IF booleanExpresion expresion PAR_DER
+Rule 20    booleanExpresion -> FALSE
+Rule 21    booleanExpresion -> TRUE
+Rule 22    booleanExpresion -> comparationLogic
+Rule 23    booleanExpresion -> comparation
+Rule 24    imprimir -> PAR_IZQ imprimirOptions expresion PAR_DER
+Rule 25    comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER
+Rule 26    comparationLogic -> PAR_IZQ NOT valor PAR_DER
+Rule 27    comparation -> PAR_IZQ operadorCompare valor valor PAR_DER
+Rule 28    expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER
+Rule 29    numberSerie -> numero
+Rule 30    numberSerie -> NOMBRE
+Rule 31    numberSerie -> expresionAritmetica
+Rule 32    numberSerie -> numero numberSerie
+Rule 33    numberSerie -> NOMBRE numberSerie
+Rule 34    numberSerie -> expresionAritmetica numberSerie
+Rule 35    estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+Rule 36    estructura -> COM_SIM PAR_IZQ compuesto PAR_DER
+Rule 37    estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+Rule 38    estructura -> HASH LLAV_IZQ compuesto LLAV_DER
+Rule 39    estructura -> PAR_IZQ VECTOR compuesto PAR_DER
+Rule 40    estructura -> COR_IZQ compuesto COR_DER
+Rule 41    estructura -> LLAV_IZQ parclaves LLAV_DER
+Rule 42    estructura -> PAR_IZQ mapas parclaves PAR_DER
+Rule 43    mapas -> SORTEDMAP REST MAP
+Rule 44    mapas -> HASHMAP REST MAP
+Rule 45    compuesto -> valor
+Rule 46    compuesto -> valor compuesto
+Rule 47    parclaves -> STRING STRING
+Rule 48    parclaves -> STRING STRING parclaves
+Rule 49    valor -> numero
+Rule 50    valor -> NOMBRE
+Rule 51    valor -> booleano
+Rule 52    valor -> cadena
+Rule 53    cadena -> STRING
+Rule 54    cadena -> PAR_IZQ STR STRING STRING PAR_DER
+Rule 55    booleano -> TRUE
+Rule 56    booleano -> FALSE
+Rule 57    numero -> ENTERO
+Rule 58    numero -> FLOTANTE
+Rule 59    operadorMath -> SUM
+Rule 60    operadorMath -> REST
+Rule 61    operadorMath -> PRODUCT
+Rule 62    operadorMath -> DIVISION
+Rule 63    operadorCompare -> EQUAL
+Rule 64    operadorCompare -> NOT_EQUAL
+Rule 65    operadorCompare -> GREATER_THAN
+Rule 66    operadorCompare -> LESS_THAN
+Rule 67    operadorCompare -> GREATER_THAN_EQUAL
+Rule 68    operadorCompare -> LESS_THAN_EQUAL
+Rule 69    operadorLogic -> AND
+Rule 70    operadorLogic -> OR
+Rule 71    imprimirOptions -> PRINT
+Rule 72    imprimirOptions -> PRINTLN
 
 Terminals, with rules where they appear
 
-AND                  : 
+AND                  : 69
 CHAR                 : 
-COM_SIM              : 7 8
-CONJUNTO             : 8
-COR_DER              : 11
-COR_IZQ              : 11
-DEF                  : 3
+COM_SIM              : 36 37
+CONJUNTO             : 37
+COR_DER              : 14 40
+COR_IZQ              : 14 40
+DEF                  : 5
 DEFN                 : 
-DIVISION             : 
-DO                   : 
+DIVISION             : 62
+DO                   : 17
 DOSEQ                : 
-ENTERO               : 28
-EQUAL                : 
-FALSE                : 27
-FLOTANTE             : 29
-GREATER_THAN         : 
-GREATER_THAN_EQUAL   : 
-HASH                 : 9
-HASHMAP              : 15
-IF                   : 
-LESS_THAN            : 
-LESS_THAN_EQUAL      : 
-LISTA                : 6
-LLAV_DER             : 9 12
-LLAV_IZQ             : 9 12
-LOOP                 : 
-MAP                  : 14 15
+ENTERO               : 57
+EQUAL                : 63
+FALSE                : 20 56
+FLOTANTE             : 58
+GREATER_THAN         : 65
+GREATER_THAN_EQUAL   : 67
+HASH                 : 38
+HASHMAP              : 44
+IF                   : 18 19
+LESS_THAN            : 66
+LESS_THAN_EQUAL      : 68
+LISTA                : 35
+LLAV_DER             : 38 41
+LLAV_IZQ             : 38 41
+LOOP                 : 14
+MAP                  : 43 44
 METODOFIRST          : 
 METODONTH            : 
-NOMBRE               : 3 21
-NOT                  : 
-NOT_EQUAL            : 
+NOMBRE               : 5 30 33 50
+NOT                  : 26
+NOT_EQUAL            : 64
 NULL                 : 
-OR                   : 
-PAR_DER              : 3 6 6 7 8 8 10 13 25
-PAR_IZQ              : 3 6 6 7 8 8 10 13 25
-PRINTLN              : 
-PRODUCT              : 
+OR                   : 70
+PAR_DER              : 5 14 15 16 17 18 19 24 25 26 27 28 35 35 36 37 37 39 42 54
+PAR_IZQ              : 5 14 15 16 17 17 18 19 24 25 26 27 28 35 35 36 37 37 39 42 54
+PRINT                : 71
+PRINTLN              : 72
+PRODUCT              : 61
 READLINE             : 
-RECUR                : 
-REST                 : 14 15
-SORTEDMAP            : 14
-STR                  : 25
-STRING               : 18 18 19 19 24 25 25
-SUM                  : 
-TRUE                 : 26
-VECTOR               : 10
-WHEN                 : 
-WHILE                : 
+RECUR                : 16
+REST                 : 43 44 60
+SORTEDMAP            : 43
+STR                  : 54
+STRING               : 47 47 48 48 53 54 54
+SUM                  : 59
+TRUE                 : 21 55
+VECTOR               : 39
+WHEN                 : 15
+WHILE                : 17
 error                : 
 
 Nonterminals, with rules where they appear
 
-algoritmo            : 0
-booleano             : 22
-cadena               : 23
-compuesto            : 6 7 8 9 10 11 17
-estructura           : 5
-expresion            : 2 3
-mapas                : 13
-numero               : 20
-parclaves            : 12 13 19
-valor                : 4 16 17
+algoritmo            : 15 17 0
+booleanExpresion     : 18 19
+booleano             : 51
+cadena               : 52
+comparation          : 9 15 17 23
+comparationLogic     : 10 22
+compuesto            : 14 35 36 37 38 39 40 46
+controlStructures    : 4
+estructura           : 7
+expresion            : 2 5 18 18 19 24
+expresionAritmetica  : 8 16 31 34
+if                   : 11
+imprimir             : 3
+imprimirOptions      : 24
+loop                 : 13
+mapas                : 42
+numberSerie          : 28 32 33 34
+numero               : 29 32 49
+operadorCompare      : 27
+operadorLogic        : 25
+operadorMath         : 28
+parclaves            : 41 42 48
+recur                : 15
+valor                : 6 25 25 26 27 27 45 46
 variable             : 1
+when                 : 14
+while                : 12
 
 Parsing method: LALR
 
@@ -136,48 +177,73 @@ state 0
     (0) S' -> . algoritmo
     (1) algoritmo -> . variable
     (2) algoritmo -> . expresion
-    (3) variable -> . PAR_IZQ DEF NOMBRE expresion PAR_DER
-    (4) expresion -> . valor
-    (5) expresion -> . estructura
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (6) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
-    (7) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
-    (8) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
-    (9) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
-    (10) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
-    (11) estructura -> . COR_IZQ compuesto COR_DER
-    (12) estructura -> . LLAV_IZQ parclaves LLAV_DER
-    (13) estructura -> . PAR_IZQ mapas parclaves PAR_DER
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (3) algoritmo -> . imprimir
+    (4) algoritmo -> . controlStructures
+    (5) variable -> . PAR_IZQ DEF NOMBRE expresion PAR_DER
+    (6) expresion -> . valor
+    (7) expresion -> . estructura
+    (8) expresion -> . expresionAritmetica
+    (9) expresion -> . comparation
+    (10) expresion -> . comparationLogic
+    (24) imprimir -> . PAR_IZQ imprimirOptions expresion PAR_DER
+    (11) controlStructures -> . if
+    (12) controlStructures -> . while
+    (13) controlStructures -> . loop
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (35) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (36) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
+    (37) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (38) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
+    (39) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
+    (40) estructura -> . COR_IZQ compuesto COR_DER
+    (41) estructura -> . LLAV_IZQ parclaves LLAV_DER
+    (42) estructura -> . PAR_IZQ mapas parclaves PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (18) if -> . PAR_IZQ IF booleanExpresion expresion expresion PAR_DER
+    (19) if -> . PAR_IZQ IF booleanExpresion expresion PAR_DER
+    (17) while -> . PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER
+    (14) loop -> . PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    PAR_IZQ         shift and go to state 4
-    NOMBRE          shift and go to state 5
-    COM_SIM         shift and go to state 11
-    HASH            shift and go to state 12
-    COR_IZQ         shift and go to state 14
-    LLAV_IZQ        shift and go to state 13
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
+    PAR_IZQ         shift and go to state 6
+    NOMBRE          shift and go to state 7
+    COM_SIM         shift and go to state 19
+    HASH            shift and go to state 20
+    COR_IZQ         shift and go to state 22
+    LLAV_IZQ        shift and go to state 21
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
 
     algoritmo                      shift and go to state 1
     variable                       shift and go to state 2
     expresion                      shift and go to state 3
-    valor                          shift and go to state 6
-    estructura                     shift and go to state 7
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
+    imprimir                       shift and go to state 4
+    controlStructures              shift and go to state 5
+    valor                          shift and go to state 8
+    estructura                     shift and go to state 9
+    expresionAritmetica            shift and go to state 10
+    comparation                    shift and go to state 11
+    comparationLogic               shift and go to state 12
+    if                             shift and go to state 13
+    while                          shift and go to state 14
+    loop                           shift and go to state 15
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 1
 
@@ -190,6 +256,8 @@ state 2
     (1) algoritmo -> variable .
 
     $end            reduce using rule 1 (algoritmo -> variable .)
+    PAR_DER         reduce using rule 1 (algoritmo -> variable .)
+    PAR_IZQ         reduce using rule 1 (algoritmo -> variable .)
 
 
 state 3
@@ -197,805 +265,2355 @@ state 3
     (2) algoritmo -> expresion .
 
     $end            reduce using rule 2 (algoritmo -> expresion .)
+    PAR_DER         reduce using rule 2 (algoritmo -> expresion .)
+    PAR_IZQ         reduce using rule 2 (algoritmo -> expresion .)
 
 
 state 4
 
-    (3) variable -> PAR_IZQ . DEF NOMBRE expresion PAR_DER
-    (6) estructura -> PAR_IZQ . LISTA PAR_IZQ compuesto PAR_DER PAR_DER
-    (8) estructura -> PAR_IZQ . CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
-    (10) estructura -> PAR_IZQ . VECTOR compuesto PAR_DER
-    (13) estructura -> PAR_IZQ . mapas parclaves PAR_DER
-    (25) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
-    (14) mapas -> . SORTEDMAP REST MAP
-    (15) mapas -> . HASHMAP REST MAP
+    (3) algoritmo -> imprimir .
 
-    DEF             shift and go to state 20
-    LISTA           shift and go to state 21
-    CONJUNTO        shift and go to state 22
-    VECTOR          shift and go to state 23
-    STR             shift and go to state 25
-    SORTEDMAP       shift and go to state 26
-    HASHMAP         shift and go to state 27
+    $end            reduce using rule 3 (algoritmo -> imprimir .)
+    PAR_DER         reduce using rule 3 (algoritmo -> imprimir .)
+    PAR_IZQ         reduce using rule 3 (algoritmo -> imprimir .)
 
-    mapas                          shift and go to state 24
 
 state 5
 
-    (21) valor -> NOMBRE .
+    (4) algoritmo -> controlStructures .
 
-    $end            reduce using rule 21 (valor -> NOMBRE .)
-    NOMBRE          reduce using rule 21 (valor -> NOMBRE .)
-    ENTERO          reduce using rule 21 (valor -> NOMBRE .)
-    FLOTANTE        reduce using rule 21 (valor -> NOMBRE .)
-    TRUE            reduce using rule 21 (valor -> NOMBRE .)
-    FALSE           reduce using rule 21 (valor -> NOMBRE .)
-    STRING          reduce using rule 21 (valor -> NOMBRE .)
-    PAR_IZQ         reduce using rule 21 (valor -> NOMBRE .)
-    COR_DER         reduce using rule 21 (valor -> NOMBRE .)
-    PAR_DER         reduce using rule 21 (valor -> NOMBRE .)
-    LLAV_DER        reduce using rule 21 (valor -> NOMBRE .)
+    $end            reduce using rule 4 (algoritmo -> controlStructures .)
+    PAR_DER         reduce using rule 4 (algoritmo -> controlStructures .)
+    PAR_IZQ         reduce using rule 4 (algoritmo -> controlStructures .)
 
 
 state 6
 
-    (4) expresion -> valor .
+    (5) variable -> PAR_IZQ . DEF NOMBRE expresion PAR_DER
+    (24) imprimir -> PAR_IZQ . imprimirOptions expresion PAR_DER
+    (35) estructura -> PAR_IZQ . LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (37) estructura -> PAR_IZQ . CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (39) estructura -> PAR_IZQ . VECTOR compuesto PAR_DER
+    (42) estructura -> PAR_IZQ . mapas parclaves PAR_DER
+    (28) expresionAritmetica -> PAR_IZQ . operadorMath numberSerie PAR_DER
+    (27) comparation -> PAR_IZQ . operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> PAR_IZQ . operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> PAR_IZQ . NOT valor PAR_DER
+    (18) if -> PAR_IZQ . IF booleanExpresion expresion expresion PAR_DER
+    (19) if -> PAR_IZQ . IF booleanExpresion expresion PAR_DER
+    (17) while -> PAR_IZQ . WHILE comparation PAR_IZQ DO algoritmo PAR_DER
+    (14) loop -> PAR_IZQ . LOOP COR_IZQ compuesto COR_DER when PAR_DER
+    (54) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
+    (71) imprimirOptions -> . PRINT
+    (72) imprimirOptions -> . PRINTLN
+    (43) mapas -> . SORTEDMAP REST MAP
+    (44) mapas -> . HASHMAP REST MAP
+    (59) operadorMath -> . SUM
+    (60) operadorMath -> . REST
+    (61) operadorMath -> . PRODUCT
+    (62) operadorMath -> . DIVISION
+    (63) operadorCompare -> . EQUAL
+    (64) operadorCompare -> . NOT_EQUAL
+    (65) operadorCompare -> . GREATER_THAN
+    (66) operadorCompare -> . LESS_THAN
+    (67) operadorCompare -> . GREATER_THAN_EQUAL
+    (68) operadorCompare -> . LESS_THAN_EQUAL
+    (69) operadorLogic -> . AND
+    (70) operadorLogic -> . OR
 
-    $end            reduce using rule 4 (expresion -> valor .)
-    PAR_DER         reduce using rule 4 (expresion -> valor .)
+    DEF             shift and go to state 28
+    LISTA           shift and go to state 30
+    CONJUNTO        shift and go to state 31
+    VECTOR          shift and go to state 32
+    NOT             shift and go to state 37
+    IF              shift and go to state 38
+    WHILE           shift and go to state 39
+    LOOP            shift and go to state 40
+    STR             shift and go to state 41
+    PRINT           shift and go to state 42
+    PRINTLN         shift and go to state 43
+    SORTEDMAP       shift and go to state 44
+    HASHMAP         shift and go to state 46
+    SUM             shift and go to state 47
+    REST            shift and go to state 45
+    PRODUCT         shift and go to state 48
+    DIVISION        shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOT_EQUAL       shift and go to state 51
+    GREATER_THAN    shift and go to state 52
+    LESS_THAN       shift and go to state 53
+    GREATER_THAN_EQUAL shift and go to state 54
+    LESS_THAN_EQUAL shift and go to state 55
+    AND             shift and go to state 56
+    OR              shift and go to state 57
 
+    imprimirOptions                shift and go to state 29
+    mapas                          shift and go to state 33
+    operadorMath                   shift and go to state 34
+    operadorCompare                shift and go to state 35
+    operadorLogic                  shift and go to state 36
 
 state 7
 
-    (5) expresion -> estructura .
+    (50) valor -> NOMBRE .
 
-    $end            reduce using rule 5 (expresion -> estructura .)
-    PAR_DER         reduce using rule 5 (expresion -> estructura .)
+    $end            reduce using rule 50 (valor -> NOMBRE .)
+    NOMBRE          reduce using rule 50 (valor -> NOMBRE .)
+    ENTERO          reduce using rule 50 (valor -> NOMBRE .)
+    FLOTANTE        reduce using rule 50 (valor -> NOMBRE .)
+    TRUE            reduce using rule 50 (valor -> NOMBRE .)
+    FALSE           reduce using rule 50 (valor -> NOMBRE .)
+    STRING          reduce using rule 50 (valor -> NOMBRE .)
+    PAR_IZQ         reduce using rule 50 (valor -> NOMBRE .)
+    COR_DER         reduce using rule 50 (valor -> NOMBRE .)
+    PAR_DER         reduce using rule 50 (valor -> NOMBRE .)
+    LLAV_DER        reduce using rule 50 (valor -> NOMBRE .)
+    COM_SIM         reduce using rule 50 (valor -> NOMBRE .)
+    HASH            reduce using rule 50 (valor -> NOMBRE .)
+    COR_IZQ         reduce using rule 50 (valor -> NOMBRE .)
+    LLAV_IZQ        reduce using rule 50 (valor -> NOMBRE .)
 
 
 state 8
 
-    (20) valor -> numero .
+    (6) expresion -> valor .
 
-    $end            reduce using rule 20 (valor -> numero .)
-    NOMBRE          reduce using rule 20 (valor -> numero .)
-    ENTERO          reduce using rule 20 (valor -> numero .)
-    FLOTANTE        reduce using rule 20 (valor -> numero .)
-    TRUE            reduce using rule 20 (valor -> numero .)
-    FALSE           reduce using rule 20 (valor -> numero .)
-    STRING          reduce using rule 20 (valor -> numero .)
-    PAR_IZQ         reduce using rule 20 (valor -> numero .)
-    COR_DER         reduce using rule 20 (valor -> numero .)
-    PAR_DER         reduce using rule 20 (valor -> numero .)
-    LLAV_DER        reduce using rule 20 (valor -> numero .)
+    $end            reduce using rule 6 (expresion -> valor .)
+    PAR_DER         reduce using rule 6 (expresion -> valor .)
+    NOMBRE          reduce using rule 6 (expresion -> valor .)
+    PAR_IZQ         reduce using rule 6 (expresion -> valor .)
+    COM_SIM         reduce using rule 6 (expresion -> valor .)
+    HASH            reduce using rule 6 (expresion -> valor .)
+    COR_IZQ         reduce using rule 6 (expresion -> valor .)
+    LLAV_IZQ        reduce using rule 6 (expresion -> valor .)
+    ENTERO          reduce using rule 6 (expresion -> valor .)
+    FLOTANTE        reduce using rule 6 (expresion -> valor .)
+    TRUE            reduce using rule 6 (expresion -> valor .)
+    FALSE           reduce using rule 6 (expresion -> valor .)
+    STRING          reduce using rule 6 (expresion -> valor .)
 
 
 state 9
 
-    (22) valor -> booleano .
+    (7) expresion -> estructura .
 
-    $end            reduce using rule 22 (valor -> booleano .)
-    NOMBRE          reduce using rule 22 (valor -> booleano .)
-    ENTERO          reduce using rule 22 (valor -> booleano .)
-    FLOTANTE        reduce using rule 22 (valor -> booleano .)
-    TRUE            reduce using rule 22 (valor -> booleano .)
-    FALSE           reduce using rule 22 (valor -> booleano .)
-    STRING          reduce using rule 22 (valor -> booleano .)
-    PAR_IZQ         reduce using rule 22 (valor -> booleano .)
-    COR_DER         reduce using rule 22 (valor -> booleano .)
-    PAR_DER         reduce using rule 22 (valor -> booleano .)
-    LLAV_DER        reduce using rule 22 (valor -> booleano .)
+    $end            reduce using rule 7 (expresion -> estructura .)
+    PAR_DER         reduce using rule 7 (expresion -> estructura .)
+    NOMBRE          reduce using rule 7 (expresion -> estructura .)
+    PAR_IZQ         reduce using rule 7 (expresion -> estructura .)
+    COM_SIM         reduce using rule 7 (expresion -> estructura .)
+    HASH            reduce using rule 7 (expresion -> estructura .)
+    COR_IZQ         reduce using rule 7 (expresion -> estructura .)
+    LLAV_IZQ        reduce using rule 7 (expresion -> estructura .)
+    ENTERO          reduce using rule 7 (expresion -> estructura .)
+    FLOTANTE        reduce using rule 7 (expresion -> estructura .)
+    TRUE            reduce using rule 7 (expresion -> estructura .)
+    FALSE           reduce using rule 7 (expresion -> estructura .)
+    STRING          reduce using rule 7 (expresion -> estructura .)
 
 
 state 10
 
-    (23) valor -> cadena .
+    (8) expresion -> expresionAritmetica .
 
-    $end            reduce using rule 23 (valor -> cadena .)
-    NOMBRE          reduce using rule 23 (valor -> cadena .)
-    ENTERO          reduce using rule 23 (valor -> cadena .)
-    FLOTANTE        reduce using rule 23 (valor -> cadena .)
-    TRUE            reduce using rule 23 (valor -> cadena .)
-    FALSE           reduce using rule 23 (valor -> cadena .)
-    STRING          reduce using rule 23 (valor -> cadena .)
-    PAR_IZQ         reduce using rule 23 (valor -> cadena .)
-    COR_DER         reduce using rule 23 (valor -> cadena .)
-    PAR_DER         reduce using rule 23 (valor -> cadena .)
-    LLAV_DER        reduce using rule 23 (valor -> cadena .)
+    $end            reduce using rule 8 (expresion -> expresionAritmetica .)
+    PAR_DER         reduce using rule 8 (expresion -> expresionAritmetica .)
+    NOMBRE          reduce using rule 8 (expresion -> expresionAritmetica .)
+    PAR_IZQ         reduce using rule 8 (expresion -> expresionAritmetica .)
+    COM_SIM         reduce using rule 8 (expresion -> expresionAritmetica .)
+    HASH            reduce using rule 8 (expresion -> expresionAritmetica .)
+    COR_IZQ         reduce using rule 8 (expresion -> expresionAritmetica .)
+    LLAV_IZQ        reduce using rule 8 (expresion -> expresionAritmetica .)
+    ENTERO          reduce using rule 8 (expresion -> expresionAritmetica .)
+    FLOTANTE        reduce using rule 8 (expresion -> expresionAritmetica .)
+    TRUE            reduce using rule 8 (expresion -> expresionAritmetica .)
+    FALSE           reduce using rule 8 (expresion -> expresionAritmetica .)
+    STRING          reduce using rule 8 (expresion -> expresionAritmetica .)
 
 
 state 11
 
-    (7) estructura -> COM_SIM . PAR_IZQ compuesto PAR_DER
+    (9) expresion -> comparation .
 
-    PAR_IZQ         shift and go to state 28
+    $end            reduce using rule 9 (expresion -> comparation .)
+    PAR_DER         reduce using rule 9 (expresion -> comparation .)
+    NOMBRE          reduce using rule 9 (expresion -> comparation .)
+    PAR_IZQ         reduce using rule 9 (expresion -> comparation .)
+    COM_SIM         reduce using rule 9 (expresion -> comparation .)
+    HASH            reduce using rule 9 (expresion -> comparation .)
+    COR_IZQ         reduce using rule 9 (expresion -> comparation .)
+    LLAV_IZQ        reduce using rule 9 (expresion -> comparation .)
+    ENTERO          reduce using rule 9 (expresion -> comparation .)
+    FLOTANTE        reduce using rule 9 (expresion -> comparation .)
+    TRUE            reduce using rule 9 (expresion -> comparation .)
+    FALSE           reduce using rule 9 (expresion -> comparation .)
+    STRING          reduce using rule 9 (expresion -> comparation .)
 
 
 state 12
 
-    (9) estructura -> HASH . LLAV_IZQ compuesto LLAV_DER
+    (10) expresion -> comparationLogic .
 
-    LLAV_IZQ        shift and go to state 29
+    $end            reduce using rule 10 (expresion -> comparationLogic .)
+    PAR_DER         reduce using rule 10 (expresion -> comparationLogic .)
+    NOMBRE          reduce using rule 10 (expresion -> comparationLogic .)
+    PAR_IZQ         reduce using rule 10 (expresion -> comparationLogic .)
+    COM_SIM         reduce using rule 10 (expresion -> comparationLogic .)
+    HASH            reduce using rule 10 (expresion -> comparationLogic .)
+    COR_IZQ         reduce using rule 10 (expresion -> comparationLogic .)
+    LLAV_IZQ        reduce using rule 10 (expresion -> comparationLogic .)
+    ENTERO          reduce using rule 10 (expresion -> comparationLogic .)
+    FLOTANTE        reduce using rule 10 (expresion -> comparationLogic .)
+    TRUE            reduce using rule 10 (expresion -> comparationLogic .)
+    FALSE           reduce using rule 10 (expresion -> comparationLogic .)
+    STRING          reduce using rule 10 (expresion -> comparationLogic .)
 
 
 state 13
 
-    (12) estructura -> LLAV_IZQ . parclaves LLAV_DER
-    (18) parclaves -> . STRING STRING
-    (19) parclaves -> . STRING STRING parclaves
+    (11) controlStructures -> if .
 
-    STRING          shift and go to state 31
+    $end            reduce using rule 11 (controlStructures -> if .)
+    PAR_DER         reduce using rule 11 (controlStructures -> if .)
+    PAR_IZQ         reduce using rule 11 (controlStructures -> if .)
 
-    parclaves                      shift and go to state 30
 
 state 14
 
-    (11) estructura -> COR_IZQ . compuesto COR_DER
-    (16) compuesto -> . valor
-    (17) compuesto -> . valor compuesto
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (12) controlStructures -> while .
 
-    NOMBRE          shift and go to state 5
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
-    PAR_IZQ         shift and go to state 34
+    $end            reduce using rule 12 (controlStructures -> while .)
+    PAR_DER         reduce using rule 12 (controlStructures -> while .)
+    PAR_IZQ         reduce using rule 12 (controlStructures -> while .)
 
-    compuesto                      shift and go to state 32
-    valor                          shift and go to state 33
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
 
 state 15
 
-    (28) numero -> ENTERO .
+    (13) controlStructures -> loop .
 
-    $end            reduce using rule 28 (numero -> ENTERO .)
-    NOMBRE          reduce using rule 28 (numero -> ENTERO .)
-    ENTERO          reduce using rule 28 (numero -> ENTERO .)
-    FLOTANTE        reduce using rule 28 (numero -> ENTERO .)
-    TRUE            reduce using rule 28 (numero -> ENTERO .)
-    FALSE           reduce using rule 28 (numero -> ENTERO .)
-    STRING          reduce using rule 28 (numero -> ENTERO .)
-    PAR_IZQ         reduce using rule 28 (numero -> ENTERO .)
-    COR_DER         reduce using rule 28 (numero -> ENTERO .)
-    PAR_DER         reduce using rule 28 (numero -> ENTERO .)
-    LLAV_DER        reduce using rule 28 (numero -> ENTERO .)
+    $end            reduce using rule 13 (controlStructures -> loop .)
+    PAR_DER         reduce using rule 13 (controlStructures -> loop .)
+    PAR_IZQ         reduce using rule 13 (controlStructures -> loop .)
 
 
 state 16
 
-    (29) numero -> FLOTANTE .
+    (49) valor -> numero .
 
-    $end            reduce using rule 29 (numero -> FLOTANTE .)
-    NOMBRE          reduce using rule 29 (numero -> FLOTANTE .)
-    ENTERO          reduce using rule 29 (numero -> FLOTANTE .)
-    FLOTANTE        reduce using rule 29 (numero -> FLOTANTE .)
-    TRUE            reduce using rule 29 (numero -> FLOTANTE .)
-    FALSE           reduce using rule 29 (numero -> FLOTANTE .)
-    STRING          reduce using rule 29 (numero -> FLOTANTE .)
-    PAR_IZQ         reduce using rule 29 (numero -> FLOTANTE .)
-    COR_DER         reduce using rule 29 (numero -> FLOTANTE .)
-    PAR_DER         reduce using rule 29 (numero -> FLOTANTE .)
-    LLAV_DER        reduce using rule 29 (numero -> FLOTANTE .)
+    $end            reduce using rule 49 (valor -> numero .)
+    NOMBRE          reduce using rule 49 (valor -> numero .)
+    ENTERO          reduce using rule 49 (valor -> numero .)
+    FLOTANTE        reduce using rule 49 (valor -> numero .)
+    TRUE            reduce using rule 49 (valor -> numero .)
+    FALSE           reduce using rule 49 (valor -> numero .)
+    STRING          reduce using rule 49 (valor -> numero .)
+    PAR_IZQ         reduce using rule 49 (valor -> numero .)
+    COR_DER         reduce using rule 49 (valor -> numero .)
+    PAR_DER         reduce using rule 49 (valor -> numero .)
+    LLAV_DER        reduce using rule 49 (valor -> numero .)
+    COM_SIM         reduce using rule 49 (valor -> numero .)
+    HASH            reduce using rule 49 (valor -> numero .)
+    COR_IZQ         reduce using rule 49 (valor -> numero .)
+    LLAV_IZQ        reduce using rule 49 (valor -> numero .)
 
 
 state 17
 
-    (26) booleano -> TRUE .
+    (51) valor -> booleano .
 
-    $end            reduce using rule 26 (booleano -> TRUE .)
-    NOMBRE          reduce using rule 26 (booleano -> TRUE .)
-    ENTERO          reduce using rule 26 (booleano -> TRUE .)
-    FLOTANTE        reduce using rule 26 (booleano -> TRUE .)
-    TRUE            reduce using rule 26 (booleano -> TRUE .)
-    FALSE           reduce using rule 26 (booleano -> TRUE .)
-    STRING          reduce using rule 26 (booleano -> TRUE .)
-    PAR_IZQ         reduce using rule 26 (booleano -> TRUE .)
-    COR_DER         reduce using rule 26 (booleano -> TRUE .)
-    PAR_DER         reduce using rule 26 (booleano -> TRUE .)
-    LLAV_DER        reduce using rule 26 (booleano -> TRUE .)
+    $end            reduce using rule 51 (valor -> booleano .)
+    NOMBRE          reduce using rule 51 (valor -> booleano .)
+    ENTERO          reduce using rule 51 (valor -> booleano .)
+    FLOTANTE        reduce using rule 51 (valor -> booleano .)
+    TRUE            reduce using rule 51 (valor -> booleano .)
+    FALSE           reduce using rule 51 (valor -> booleano .)
+    STRING          reduce using rule 51 (valor -> booleano .)
+    PAR_IZQ         reduce using rule 51 (valor -> booleano .)
+    COR_DER         reduce using rule 51 (valor -> booleano .)
+    PAR_DER         reduce using rule 51 (valor -> booleano .)
+    LLAV_DER        reduce using rule 51 (valor -> booleano .)
+    COM_SIM         reduce using rule 51 (valor -> booleano .)
+    HASH            reduce using rule 51 (valor -> booleano .)
+    COR_IZQ         reduce using rule 51 (valor -> booleano .)
+    LLAV_IZQ        reduce using rule 51 (valor -> booleano .)
 
 
 state 18
 
-    (27) booleano -> FALSE .
+    (52) valor -> cadena .
 
-    $end            reduce using rule 27 (booleano -> FALSE .)
-    NOMBRE          reduce using rule 27 (booleano -> FALSE .)
-    ENTERO          reduce using rule 27 (booleano -> FALSE .)
-    FLOTANTE        reduce using rule 27 (booleano -> FALSE .)
-    TRUE            reduce using rule 27 (booleano -> FALSE .)
-    FALSE           reduce using rule 27 (booleano -> FALSE .)
-    STRING          reduce using rule 27 (booleano -> FALSE .)
-    PAR_IZQ         reduce using rule 27 (booleano -> FALSE .)
-    COR_DER         reduce using rule 27 (booleano -> FALSE .)
-    PAR_DER         reduce using rule 27 (booleano -> FALSE .)
-    LLAV_DER        reduce using rule 27 (booleano -> FALSE .)
+    $end            reduce using rule 52 (valor -> cadena .)
+    NOMBRE          reduce using rule 52 (valor -> cadena .)
+    ENTERO          reduce using rule 52 (valor -> cadena .)
+    FLOTANTE        reduce using rule 52 (valor -> cadena .)
+    TRUE            reduce using rule 52 (valor -> cadena .)
+    FALSE           reduce using rule 52 (valor -> cadena .)
+    STRING          reduce using rule 52 (valor -> cadena .)
+    PAR_IZQ         reduce using rule 52 (valor -> cadena .)
+    COR_DER         reduce using rule 52 (valor -> cadena .)
+    PAR_DER         reduce using rule 52 (valor -> cadena .)
+    LLAV_DER        reduce using rule 52 (valor -> cadena .)
+    COM_SIM         reduce using rule 52 (valor -> cadena .)
+    HASH            reduce using rule 52 (valor -> cadena .)
+    COR_IZQ         reduce using rule 52 (valor -> cadena .)
+    LLAV_IZQ        reduce using rule 52 (valor -> cadena .)
 
 
 state 19
 
-    (24) cadena -> STRING .
+    (36) estructura -> COM_SIM . PAR_IZQ compuesto PAR_DER
 
-    $end            reduce using rule 24 (cadena -> STRING .)
-    NOMBRE          reduce using rule 24 (cadena -> STRING .)
-    ENTERO          reduce using rule 24 (cadena -> STRING .)
-    FLOTANTE        reduce using rule 24 (cadena -> STRING .)
-    TRUE            reduce using rule 24 (cadena -> STRING .)
-    FALSE           reduce using rule 24 (cadena -> STRING .)
-    STRING          reduce using rule 24 (cadena -> STRING .)
-    PAR_IZQ         reduce using rule 24 (cadena -> STRING .)
-    COR_DER         reduce using rule 24 (cadena -> STRING .)
-    PAR_DER         reduce using rule 24 (cadena -> STRING .)
-    LLAV_DER        reduce using rule 24 (cadena -> STRING .)
+    PAR_IZQ         shift and go to state 58
 
 
 state 20
 
-    (3) variable -> PAR_IZQ DEF . NOMBRE expresion PAR_DER
+    (38) estructura -> HASH . LLAV_IZQ compuesto LLAV_DER
 
-    NOMBRE          shift and go to state 35
+    LLAV_IZQ        shift and go to state 59
 
 
 state 21
 
-    (6) estructura -> PAR_IZQ LISTA . PAR_IZQ compuesto PAR_DER PAR_DER
+    (41) estructura -> LLAV_IZQ . parclaves LLAV_DER
+    (47) parclaves -> . STRING STRING
+    (48) parclaves -> . STRING STRING parclaves
 
-    PAR_IZQ         shift and go to state 36
+    STRING          shift and go to state 61
 
+    parclaves                      shift and go to state 60
 
 state 22
 
-    (8) estructura -> PAR_IZQ CONJUNTO . COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (40) estructura -> COR_IZQ . compuesto COR_DER
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    COM_SIM         shift and go to state 37
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
+    compuesto                      shift and go to state 62
+    valor                          shift and go to state 63
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 23
 
-    (10) estructura -> PAR_IZQ VECTOR . compuesto PAR_DER
-    (16) compuesto -> . valor
-    (17) compuesto -> . valor compuesto
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (57) numero -> ENTERO .
 
-    NOMBRE          shift and go to state 5
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
-    PAR_IZQ         shift and go to state 34
+    $end            reduce using rule 57 (numero -> ENTERO .)
+    NOMBRE          reduce using rule 57 (numero -> ENTERO .)
+    ENTERO          reduce using rule 57 (numero -> ENTERO .)
+    FLOTANTE        reduce using rule 57 (numero -> ENTERO .)
+    TRUE            reduce using rule 57 (numero -> ENTERO .)
+    FALSE           reduce using rule 57 (numero -> ENTERO .)
+    STRING          reduce using rule 57 (numero -> ENTERO .)
+    PAR_IZQ         reduce using rule 57 (numero -> ENTERO .)
+    COR_DER         reduce using rule 57 (numero -> ENTERO .)
+    PAR_DER         reduce using rule 57 (numero -> ENTERO .)
+    LLAV_DER        reduce using rule 57 (numero -> ENTERO .)
+    COM_SIM         reduce using rule 57 (numero -> ENTERO .)
+    HASH            reduce using rule 57 (numero -> ENTERO .)
+    COR_IZQ         reduce using rule 57 (numero -> ENTERO .)
+    LLAV_IZQ        reduce using rule 57 (numero -> ENTERO .)
 
-    compuesto                      shift and go to state 38
-    valor                          shift and go to state 33
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
 
 state 24
 
-    (13) estructura -> PAR_IZQ mapas . parclaves PAR_DER
-    (18) parclaves -> . STRING STRING
-    (19) parclaves -> . STRING STRING parclaves
+    (58) numero -> FLOTANTE .
 
-    STRING          shift and go to state 31
+    $end            reduce using rule 58 (numero -> FLOTANTE .)
+    NOMBRE          reduce using rule 58 (numero -> FLOTANTE .)
+    ENTERO          reduce using rule 58 (numero -> FLOTANTE .)
+    FLOTANTE        reduce using rule 58 (numero -> FLOTANTE .)
+    TRUE            reduce using rule 58 (numero -> FLOTANTE .)
+    FALSE           reduce using rule 58 (numero -> FLOTANTE .)
+    STRING          reduce using rule 58 (numero -> FLOTANTE .)
+    PAR_IZQ         reduce using rule 58 (numero -> FLOTANTE .)
+    COR_DER         reduce using rule 58 (numero -> FLOTANTE .)
+    PAR_DER         reduce using rule 58 (numero -> FLOTANTE .)
+    LLAV_DER        reduce using rule 58 (numero -> FLOTANTE .)
+    COM_SIM         reduce using rule 58 (numero -> FLOTANTE .)
+    HASH            reduce using rule 58 (numero -> FLOTANTE .)
+    COR_IZQ         reduce using rule 58 (numero -> FLOTANTE .)
+    LLAV_IZQ        reduce using rule 58 (numero -> FLOTANTE .)
 
-    parclaves                      shift and go to state 39
 
 state 25
 
-    (25) cadena -> PAR_IZQ STR . STRING STRING PAR_DER
+    (55) booleano -> TRUE .
 
-    STRING          shift and go to state 40
+    $end            reduce using rule 55 (booleano -> TRUE .)
+    NOMBRE          reduce using rule 55 (booleano -> TRUE .)
+    ENTERO          reduce using rule 55 (booleano -> TRUE .)
+    FLOTANTE        reduce using rule 55 (booleano -> TRUE .)
+    TRUE            reduce using rule 55 (booleano -> TRUE .)
+    FALSE           reduce using rule 55 (booleano -> TRUE .)
+    STRING          reduce using rule 55 (booleano -> TRUE .)
+    PAR_IZQ         reduce using rule 55 (booleano -> TRUE .)
+    COR_DER         reduce using rule 55 (booleano -> TRUE .)
+    PAR_DER         reduce using rule 55 (booleano -> TRUE .)
+    LLAV_DER        reduce using rule 55 (booleano -> TRUE .)
+    COM_SIM         reduce using rule 55 (booleano -> TRUE .)
+    HASH            reduce using rule 55 (booleano -> TRUE .)
+    COR_IZQ         reduce using rule 55 (booleano -> TRUE .)
+    LLAV_IZQ        reduce using rule 55 (booleano -> TRUE .)
 
 
 state 26
 
-    (14) mapas -> SORTEDMAP . REST MAP
+    (56) booleano -> FALSE .
 
-    REST            shift and go to state 41
+    $end            reduce using rule 56 (booleano -> FALSE .)
+    NOMBRE          reduce using rule 56 (booleano -> FALSE .)
+    ENTERO          reduce using rule 56 (booleano -> FALSE .)
+    FLOTANTE        reduce using rule 56 (booleano -> FALSE .)
+    TRUE            reduce using rule 56 (booleano -> FALSE .)
+    FALSE           reduce using rule 56 (booleano -> FALSE .)
+    STRING          reduce using rule 56 (booleano -> FALSE .)
+    PAR_IZQ         reduce using rule 56 (booleano -> FALSE .)
+    COR_DER         reduce using rule 56 (booleano -> FALSE .)
+    PAR_DER         reduce using rule 56 (booleano -> FALSE .)
+    LLAV_DER        reduce using rule 56 (booleano -> FALSE .)
+    COM_SIM         reduce using rule 56 (booleano -> FALSE .)
+    HASH            reduce using rule 56 (booleano -> FALSE .)
+    COR_IZQ         reduce using rule 56 (booleano -> FALSE .)
+    LLAV_IZQ        reduce using rule 56 (booleano -> FALSE .)
 
 
 state 27
 
-    (15) mapas -> HASHMAP . REST MAP
+    (53) cadena -> STRING .
 
-    REST            shift and go to state 42
+    $end            reduce using rule 53 (cadena -> STRING .)
+    NOMBRE          reduce using rule 53 (cadena -> STRING .)
+    ENTERO          reduce using rule 53 (cadena -> STRING .)
+    FLOTANTE        reduce using rule 53 (cadena -> STRING .)
+    TRUE            reduce using rule 53 (cadena -> STRING .)
+    FALSE           reduce using rule 53 (cadena -> STRING .)
+    STRING          reduce using rule 53 (cadena -> STRING .)
+    PAR_IZQ         reduce using rule 53 (cadena -> STRING .)
+    COR_DER         reduce using rule 53 (cadena -> STRING .)
+    PAR_DER         reduce using rule 53 (cadena -> STRING .)
+    LLAV_DER        reduce using rule 53 (cadena -> STRING .)
+    COM_SIM         reduce using rule 53 (cadena -> STRING .)
+    HASH            reduce using rule 53 (cadena -> STRING .)
+    COR_IZQ         reduce using rule 53 (cadena -> STRING .)
+    LLAV_IZQ        reduce using rule 53 (cadena -> STRING .)
 
 
 state 28
 
-    (7) estructura -> COM_SIM PAR_IZQ . compuesto PAR_DER
-    (16) compuesto -> . valor
-    (17) compuesto -> . valor compuesto
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (5) variable -> PAR_IZQ DEF . NOMBRE expresion PAR_DER
 
-    NOMBRE          shift and go to state 5
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
-    PAR_IZQ         shift and go to state 34
+    NOMBRE          shift and go to state 65
 
-    compuesto                      shift and go to state 43
-    valor                          shift and go to state 33
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
 
 state 29
 
-    (9) estructura -> HASH LLAV_IZQ . compuesto LLAV_DER
-    (16) compuesto -> . valor
-    (17) compuesto -> . valor compuesto
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (24) imprimir -> PAR_IZQ imprimirOptions . expresion PAR_DER
+    (6) expresion -> . valor
+    (7) expresion -> . estructura
+    (8) expresion -> . expresionAritmetica
+    (9) expresion -> . comparation
+    (10) expresion -> . comparationLogic
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (35) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (36) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
+    (37) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (38) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
+    (39) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
+    (40) estructura -> . COR_IZQ compuesto COR_DER
+    (41) estructura -> . LLAV_IZQ parclaves LLAV_DER
+    (42) estructura -> . PAR_IZQ mapas parclaves PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    NOMBRE          shift and go to state 5
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
-    PAR_IZQ         shift and go to state 34
+    NOMBRE          shift and go to state 7
+    PAR_IZQ         shift and go to state 66
+    COM_SIM         shift and go to state 19
+    HASH            shift and go to state 20
+    COR_IZQ         shift and go to state 22
+    LLAV_IZQ        shift and go to state 21
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
 
-    compuesto                      shift and go to state 44
-    valor                          shift and go to state 33
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
+    expresion                      shift and go to state 67
+    valor                          shift and go to state 8
+    estructura                     shift and go to state 9
+    expresionAritmetica            shift and go to state 10
+    comparation                    shift and go to state 11
+    comparationLogic               shift and go to state 12
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 30
 
-    (12) estructura -> LLAV_IZQ parclaves . LLAV_DER
+    (35) estructura -> PAR_IZQ LISTA . PAR_IZQ compuesto PAR_DER PAR_DER
 
-    LLAV_DER        shift and go to state 45
+    PAR_IZQ         shift and go to state 68
 
 
 state 31
 
-    (18) parclaves -> STRING . STRING
-    (19) parclaves -> STRING . STRING parclaves
+    (37) estructura -> PAR_IZQ CONJUNTO . COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
 
-    STRING          shift and go to state 46
+    COM_SIM         shift and go to state 69
 
 
 state 32
 
-    (11) estructura -> COR_IZQ compuesto . COR_DER
+    (39) estructura -> PAR_IZQ VECTOR . compuesto PAR_DER
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    COR_DER         shift and go to state 47
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
+    compuesto                      shift and go to state 70
+    valor                          shift and go to state 63
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 33
 
-    (16) compuesto -> valor .
-    (17) compuesto -> valor . compuesto
-    (16) compuesto -> . valor
-    (17) compuesto -> . valor compuesto
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (42) estructura -> PAR_IZQ mapas . parclaves PAR_DER
+    (47) parclaves -> . STRING STRING
+    (48) parclaves -> . STRING STRING parclaves
 
-    COR_DER         reduce using rule 16 (compuesto -> valor .)
-    PAR_DER         reduce using rule 16 (compuesto -> valor .)
-    LLAV_DER        reduce using rule 16 (compuesto -> valor .)
-    NOMBRE          shift and go to state 5
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
-    PAR_IZQ         shift and go to state 34
+    STRING          shift and go to state 61
 
-    valor                          shift and go to state 33
-    compuesto                      shift and go to state 48
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
+    parclaves                      shift and go to state 71
 
 state 34
 
-    (25) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
+    (28) expresionAritmetica -> PAR_IZQ operadorMath . numberSerie PAR_DER
+    (29) numberSerie -> . numero
+    (30) numberSerie -> . NOMBRE
+    (31) numberSerie -> . expresionAritmetica
+    (32) numberSerie -> . numero numberSerie
+    (33) numberSerie -> . NOMBRE numberSerie
+    (34) numberSerie -> . expresionAritmetica numberSerie
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
 
-    STR             shift and go to state 25
+    NOMBRE          shift and go to state 75
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    PAR_IZQ         shift and go to state 72
 
+    numberSerie                    shift and go to state 73
+    numero                         shift and go to state 74
+    expresionAritmetica            shift and go to state 76
 
 state 35
 
-    (3) variable -> PAR_IZQ DEF NOMBRE . expresion PAR_DER
-    (4) expresion -> . valor
-    (5) expresion -> . estructura
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (6) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
-    (7) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
-    (8) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
-    (9) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
-    (10) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
-    (11) estructura -> . COR_IZQ compuesto COR_DER
-    (12) estructura -> . LLAV_IZQ parclaves LLAV_DER
-    (13) estructura -> . PAR_IZQ mapas parclaves PAR_DER
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (27) comparation -> PAR_IZQ operadorCompare . valor valor PAR_DER
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    NOMBRE          shift and go to state 5
-    PAR_IZQ         shift and go to state 49
-    COM_SIM         shift and go to state 11
-    HASH            shift and go to state 12
-    COR_IZQ         shift and go to state 14
-    LLAV_IZQ        shift and go to state 13
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
-    expresion                      shift and go to state 50
-    valor                          shift and go to state 6
-    estructura                     shift and go to state 7
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
+    valor                          shift and go to state 77
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 36
 
-    (6) estructura -> PAR_IZQ LISTA PAR_IZQ . compuesto PAR_DER PAR_DER
-    (16) compuesto -> . valor
-    (17) compuesto -> . valor compuesto
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (25) comparationLogic -> PAR_IZQ operadorLogic . valor valor PAR_DER
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    NOMBRE          shift and go to state 5
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
-    PAR_IZQ         shift and go to state 34
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
-    compuesto                      shift and go to state 51
-    valor                          shift and go to state 33
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
+    valor                          shift and go to state 78
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 37
 
-    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM . PAR_IZQ compuesto PAR_DER PAR_DER
+    (26) comparationLogic -> PAR_IZQ NOT . valor PAR_DER
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    PAR_IZQ         shift and go to state 52
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
+    valor                          shift and go to state 79
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 38
 
-    (10) estructura -> PAR_IZQ VECTOR compuesto . PAR_DER
+    (18) if -> PAR_IZQ IF . booleanExpresion expresion expresion PAR_DER
+    (19) if -> PAR_IZQ IF . booleanExpresion expresion PAR_DER
+    (20) booleanExpresion -> . FALSE
+    (21) booleanExpresion -> . TRUE
+    (22) booleanExpresion -> . comparationLogic
+    (23) booleanExpresion -> . comparation
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
 
-    PAR_DER         shift and go to state 53
+    FALSE           shift and go to state 82
+    TRUE            shift and go to state 83
+    PAR_IZQ         shift and go to state 80
 
+    booleanExpresion               shift and go to state 81
+    comparationLogic               shift and go to state 84
+    comparation                    shift and go to state 85
 
 state 39
 
-    (13) estructura -> PAR_IZQ mapas parclaves . PAR_DER
+    (17) while -> PAR_IZQ WHILE . comparation PAR_IZQ DO algoritmo PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
 
-    PAR_DER         shift and go to state 54
+    PAR_IZQ         shift and go to state 86
 
+    comparation                    shift and go to state 87
 
 state 40
 
-    (25) cadena -> PAR_IZQ STR STRING . STRING PAR_DER
+    (14) loop -> PAR_IZQ LOOP . COR_IZQ compuesto COR_DER when PAR_DER
 
-    STRING          shift and go to state 55
+    COR_IZQ         shift and go to state 88
 
 
 state 41
 
-    (14) mapas -> SORTEDMAP REST . MAP
+    (54) cadena -> PAR_IZQ STR . STRING STRING PAR_DER
 
-    MAP             shift and go to state 56
+    STRING          shift and go to state 89
 
 
 state 42
 
-    (15) mapas -> HASHMAP REST . MAP
+    (71) imprimirOptions -> PRINT .
 
-    MAP             shift and go to state 57
+    NOMBRE          reduce using rule 71 (imprimirOptions -> PRINT .)
+    PAR_IZQ         reduce using rule 71 (imprimirOptions -> PRINT .)
+    COM_SIM         reduce using rule 71 (imprimirOptions -> PRINT .)
+    HASH            reduce using rule 71 (imprimirOptions -> PRINT .)
+    COR_IZQ         reduce using rule 71 (imprimirOptions -> PRINT .)
+    LLAV_IZQ        reduce using rule 71 (imprimirOptions -> PRINT .)
+    ENTERO          reduce using rule 71 (imprimirOptions -> PRINT .)
+    FLOTANTE        reduce using rule 71 (imprimirOptions -> PRINT .)
+    TRUE            reduce using rule 71 (imprimirOptions -> PRINT .)
+    FALSE           reduce using rule 71 (imprimirOptions -> PRINT .)
+    STRING          reduce using rule 71 (imprimirOptions -> PRINT .)
 
 
 state 43
 
-    (7) estructura -> COM_SIM PAR_IZQ compuesto . PAR_DER
+    (72) imprimirOptions -> PRINTLN .
 
-    PAR_DER         shift and go to state 58
+    NOMBRE          reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    PAR_IZQ         reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    COM_SIM         reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    HASH            reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    COR_IZQ         reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    LLAV_IZQ        reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    ENTERO          reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    FLOTANTE        reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    TRUE            reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    FALSE           reduce using rule 72 (imprimirOptions -> PRINTLN .)
+    STRING          reduce using rule 72 (imprimirOptions -> PRINTLN .)
 
 
 state 44
 
-    (9) estructura -> HASH LLAV_IZQ compuesto . LLAV_DER
+    (43) mapas -> SORTEDMAP . REST MAP
 
-    LLAV_DER        shift and go to state 59
+    REST            shift and go to state 90
 
 
 state 45
 
-    (12) estructura -> LLAV_IZQ parclaves LLAV_DER .
+    (60) operadorMath -> REST .
 
-    $end            reduce using rule 12 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
-    PAR_DER         reduce using rule 12 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    NOMBRE          reduce using rule 60 (operadorMath -> REST .)
+    ENTERO          reduce using rule 60 (operadorMath -> REST .)
+    FLOTANTE        reduce using rule 60 (operadorMath -> REST .)
+    PAR_IZQ         reduce using rule 60 (operadorMath -> REST .)
 
 
 state 46
 
-    (18) parclaves -> STRING STRING .
-    (19) parclaves -> STRING STRING . parclaves
-    (18) parclaves -> . STRING STRING
-    (19) parclaves -> . STRING STRING parclaves
+    (44) mapas -> HASHMAP . REST MAP
 
-    LLAV_DER        reduce using rule 18 (parclaves -> STRING STRING .)
-    PAR_DER         reduce using rule 18 (parclaves -> STRING STRING .)
-    STRING          shift and go to state 31
+    REST            shift and go to state 91
 
-    parclaves                      shift and go to state 60
 
 state 47
 
-    (11) estructura -> COR_IZQ compuesto COR_DER .
+    (59) operadorMath -> SUM .
 
-    $end            reduce using rule 11 (estructura -> COR_IZQ compuesto COR_DER .)
-    PAR_DER         reduce using rule 11 (estructura -> COR_IZQ compuesto COR_DER .)
+    NOMBRE          reduce using rule 59 (operadorMath -> SUM .)
+    ENTERO          reduce using rule 59 (operadorMath -> SUM .)
+    FLOTANTE        reduce using rule 59 (operadorMath -> SUM .)
+    PAR_IZQ         reduce using rule 59 (operadorMath -> SUM .)
 
 
 state 48
 
-    (17) compuesto -> valor compuesto .
+    (61) operadorMath -> PRODUCT .
 
-    COR_DER         reduce using rule 17 (compuesto -> valor compuesto .)
-    PAR_DER         reduce using rule 17 (compuesto -> valor compuesto .)
-    LLAV_DER        reduce using rule 17 (compuesto -> valor compuesto .)
+    NOMBRE          reduce using rule 61 (operadorMath -> PRODUCT .)
+    ENTERO          reduce using rule 61 (operadorMath -> PRODUCT .)
+    FLOTANTE        reduce using rule 61 (operadorMath -> PRODUCT .)
+    PAR_IZQ         reduce using rule 61 (operadorMath -> PRODUCT .)
 
 
 state 49
 
-    (6) estructura -> PAR_IZQ . LISTA PAR_IZQ compuesto PAR_DER PAR_DER
-    (8) estructura -> PAR_IZQ . CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
-    (10) estructura -> PAR_IZQ . VECTOR compuesto PAR_DER
-    (13) estructura -> PAR_IZQ . mapas parclaves PAR_DER
-    (25) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
-    (14) mapas -> . SORTEDMAP REST MAP
-    (15) mapas -> . HASHMAP REST MAP
+    (62) operadorMath -> DIVISION .
 
-    LISTA           shift and go to state 21
-    CONJUNTO        shift and go to state 22
-    VECTOR          shift and go to state 23
-    STR             shift and go to state 25
-    SORTEDMAP       shift and go to state 26
-    HASHMAP         shift and go to state 27
+    NOMBRE          reduce using rule 62 (operadorMath -> DIVISION .)
+    ENTERO          reduce using rule 62 (operadorMath -> DIVISION .)
+    FLOTANTE        reduce using rule 62 (operadorMath -> DIVISION .)
+    PAR_IZQ         reduce using rule 62 (operadorMath -> DIVISION .)
 
-    mapas                          shift and go to state 24
 
 state 50
 
-    (3) variable -> PAR_IZQ DEF NOMBRE expresion . PAR_DER
+    (63) operadorCompare -> EQUAL .
 
-    PAR_DER         shift and go to state 61
+    NOMBRE          reduce using rule 63 (operadorCompare -> EQUAL .)
+    ENTERO          reduce using rule 63 (operadorCompare -> EQUAL .)
+    FLOTANTE        reduce using rule 63 (operadorCompare -> EQUAL .)
+    TRUE            reduce using rule 63 (operadorCompare -> EQUAL .)
+    FALSE           reduce using rule 63 (operadorCompare -> EQUAL .)
+    STRING          reduce using rule 63 (operadorCompare -> EQUAL .)
+    PAR_IZQ         reduce using rule 63 (operadorCompare -> EQUAL .)
 
 
 state 51
 
-    (6) estructura -> PAR_IZQ LISTA PAR_IZQ compuesto . PAR_DER PAR_DER
+    (64) operadorCompare -> NOT_EQUAL .
 
-    PAR_DER         shift and go to state 62
+    NOMBRE          reduce using rule 64 (operadorCompare -> NOT_EQUAL .)
+    ENTERO          reduce using rule 64 (operadorCompare -> NOT_EQUAL .)
+    FLOTANTE        reduce using rule 64 (operadorCompare -> NOT_EQUAL .)
+    TRUE            reduce using rule 64 (operadorCompare -> NOT_EQUAL .)
+    FALSE           reduce using rule 64 (operadorCompare -> NOT_EQUAL .)
+    STRING          reduce using rule 64 (operadorCompare -> NOT_EQUAL .)
+    PAR_IZQ         reduce using rule 64 (operadorCompare -> NOT_EQUAL .)
 
 
 state 52
 
-    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ . compuesto PAR_DER PAR_DER
-    (16) compuesto -> . valor
-    (17) compuesto -> . valor compuesto
-    (20) valor -> . numero
-    (21) valor -> . NOMBRE
-    (22) valor -> . booleano
-    (23) valor -> . cadena
-    (28) numero -> . ENTERO
-    (29) numero -> . FLOTANTE
-    (26) booleano -> . TRUE
-    (27) booleano -> . FALSE
-    (24) cadena -> . STRING
-    (25) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+    (65) operadorCompare -> GREATER_THAN .
 
-    NOMBRE          shift and go to state 5
-    ENTERO          shift and go to state 15
-    FLOTANTE        shift and go to state 16
-    TRUE            shift and go to state 17
-    FALSE           shift and go to state 18
-    STRING          shift and go to state 19
-    PAR_IZQ         shift and go to state 34
+    NOMBRE          reduce using rule 65 (operadorCompare -> GREATER_THAN .)
+    ENTERO          reduce using rule 65 (operadorCompare -> GREATER_THAN .)
+    FLOTANTE        reduce using rule 65 (operadorCompare -> GREATER_THAN .)
+    TRUE            reduce using rule 65 (operadorCompare -> GREATER_THAN .)
+    FALSE           reduce using rule 65 (operadorCompare -> GREATER_THAN .)
+    STRING          reduce using rule 65 (operadorCompare -> GREATER_THAN .)
+    PAR_IZQ         reduce using rule 65 (operadorCompare -> GREATER_THAN .)
 
-    compuesto                      shift and go to state 63
-    valor                          shift and go to state 33
-    numero                         shift and go to state 8
-    booleano                       shift and go to state 9
-    cadena                         shift and go to state 10
 
 state 53
 
-    (10) estructura -> PAR_IZQ VECTOR compuesto PAR_DER .
+    (66) operadorCompare -> LESS_THAN .
 
-    $end            reduce using rule 10 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
-    PAR_DER         reduce using rule 10 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    NOMBRE          reduce using rule 66 (operadorCompare -> LESS_THAN .)
+    ENTERO          reduce using rule 66 (operadorCompare -> LESS_THAN .)
+    FLOTANTE        reduce using rule 66 (operadorCompare -> LESS_THAN .)
+    TRUE            reduce using rule 66 (operadorCompare -> LESS_THAN .)
+    FALSE           reduce using rule 66 (operadorCompare -> LESS_THAN .)
+    STRING          reduce using rule 66 (operadorCompare -> LESS_THAN .)
+    PAR_IZQ         reduce using rule 66 (operadorCompare -> LESS_THAN .)
 
 
 state 54
 
-    (13) estructura -> PAR_IZQ mapas parclaves PAR_DER .
+    (67) operadorCompare -> GREATER_THAN_EQUAL .
 
-    $end            reduce using rule 13 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
-    PAR_DER         reduce using rule 13 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    NOMBRE          reduce using rule 67 (operadorCompare -> GREATER_THAN_EQUAL .)
+    ENTERO          reduce using rule 67 (operadorCompare -> GREATER_THAN_EQUAL .)
+    FLOTANTE        reduce using rule 67 (operadorCompare -> GREATER_THAN_EQUAL .)
+    TRUE            reduce using rule 67 (operadorCompare -> GREATER_THAN_EQUAL .)
+    FALSE           reduce using rule 67 (operadorCompare -> GREATER_THAN_EQUAL .)
+    STRING          reduce using rule 67 (operadorCompare -> GREATER_THAN_EQUAL .)
+    PAR_IZQ         reduce using rule 67 (operadorCompare -> GREATER_THAN_EQUAL .)
 
 
 state 55
 
-    (25) cadena -> PAR_IZQ STR STRING STRING . PAR_DER
+    (68) operadorCompare -> LESS_THAN_EQUAL .
 
-    PAR_DER         shift and go to state 64
+    NOMBRE          reduce using rule 68 (operadorCompare -> LESS_THAN_EQUAL .)
+    ENTERO          reduce using rule 68 (operadorCompare -> LESS_THAN_EQUAL .)
+    FLOTANTE        reduce using rule 68 (operadorCompare -> LESS_THAN_EQUAL .)
+    TRUE            reduce using rule 68 (operadorCompare -> LESS_THAN_EQUAL .)
+    FALSE           reduce using rule 68 (operadorCompare -> LESS_THAN_EQUAL .)
+    STRING          reduce using rule 68 (operadorCompare -> LESS_THAN_EQUAL .)
+    PAR_IZQ         reduce using rule 68 (operadorCompare -> LESS_THAN_EQUAL .)
 
 
 state 56
 
-    (14) mapas -> SORTEDMAP REST MAP .
+    (69) operadorLogic -> AND .
 
-    STRING          reduce using rule 14 (mapas -> SORTEDMAP REST MAP .)
+    NOMBRE          reduce using rule 69 (operadorLogic -> AND .)
+    ENTERO          reduce using rule 69 (operadorLogic -> AND .)
+    FLOTANTE        reduce using rule 69 (operadorLogic -> AND .)
+    TRUE            reduce using rule 69 (operadorLogic -> AND .)
+    FALSE           reduce using rule 69 (operadorLogic -> AND .)
+    STRING          reduce using rule 69 (operadorLogic -> AND .)
+    PAR_IZQ         reduce using rule 69 (operadorLogic -> AND .)
 
 
 state 57
 
-    (15) mapas -> HASHMAP REST MAP .
+    (70) operadorLogic -> OR .
 
-    STRING          reduce using rule 15 (mapas -> HASHMAP REST MAP .)
+    NOMBRE          reduce using rule 70 (operadorLogic -> OR .)
+    ENTERO          reduce using rule 70 (operadorLogic -> OR .)
+    FLOTANTE        reduce using rule 70 (operadorLogic -> OR .)
+    TRUE            reduce using rule 70 (operadorLogic -> OR .)
+    FALSE           reduce using rule 70 (operadorLogic -> OR .)
+    STRING          reduce using rule 70 (operadorLogic -> OR .)
+    PAR_IZQ         reduce using rule 70 (operadorLogic -> OR .)
 
 
 state 58
 
-    (7) estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .
+    (36) estructura -> COM_SIM PAR_IZQ . compuesto PAR_DER
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    $end            reduce using rule 7 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
-    PAR_DER         reduce using rule 7 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
+    compuesto                      shift and go to state 92
+    valor                          shift and go to state 63
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 59
 
-    (9) estructura -> HASH LLAV_IZQ compuesto LLAV_DER .
+    (38) estructura -> HASH LLAV_IZQ . compuesto LLAV_DER
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    $end            reduce using rule 9 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
-    PAR_DER         reduce using rule 9 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
+    compuesto                      shift and go to state 93
+    valor                          shift and go to state 63
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 60
 
-    (19) parclaves -> STRING STRING parclaves .
+    (41) estructura -> LLAV_IZQ parclaves . LLAV_DER
 
-    LLAV_DER        reduce using rule 19 (parclaves -> STRING STRING parclaves .)
-    PAR_DER         reduce using rule 19 (parclaves -> STRING STRING parclaves .)
+    LLAV_DER        shift and go to state 94
 
 
 state 61
 
-    (3) variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .
+    (47) parclaves -> STRING . STRING
+    (48) parclaves -> STRING . STRING parclaves
 
-    $end            reduce using rule 3 (variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .)
+    STRING          shift and go to state 95
 
 
 state 62
 
-    (6) estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER . PAR_DER
+    (40) estructura -> COR_IZQ compuesto . COR_DER
 
-    PAR_DER         shift and go to state 65
+    COR_DER         shift and go to state 96
 
 
 state 63
 
-    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto . PAR_DER PAR_DER
+    (45) compuesto -> valor .
+    (46) compuesto -> valor . compuesto
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    PAR_DER         shift and go to state 66
+    COR_DER         reduce using rule 45 (compuesto -> valor .)
+    PAR_DER         reduce using rule 45 (compuesto -> valor .)
+    LLAV_DER        reduce using rule 45 (compuesto -> valor .)
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
 
+    valor                          shift and go to state 63
+    compuesto                      shift and go to state 97
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 64
 
-    (25) cadena -> PAR_IZQ STR STRING STRING PAR_DER .
+    (54) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
 
-    $end            reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    NOMBRE          reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    ENTERO          reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    FLOTANTE        reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    TRUE            reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    FALSE           reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    STRING          reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    PAR_IZQ         reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    COR_DER         reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    PAR_DER         reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
-    LLAV_DER        reduce using rule 25 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    STR             shift and go to state 41
 
 
 state 65
 
-    (6) estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .
+    (5) variable -> PAR_IZQ DEF NOMBRE . expresion PAR_DER
+    (6) expresion -> . valor
+    (7) expresion -> . estructura
+    (8) expresion -> . expresionAritmetica
+    (9) expresion -> . comparation
+    (10) expresion -> . comparationLogic
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (35) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (36) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
+    (37) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (38) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
+    (39) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
+    (40) estructura -> . COR_IZQ compuesto COR_DER
+    (41) estructura -> . LLAV_IZQ parclaves LLAV_DER
+    (42) estructura -> . PAR_IZQ mapas parclaves PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
 
-    $end            reduce using rule 6 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
-    PAR_DER         reduce using rule 6 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    NOMBRE          shift and go to state 7
+    PAR_IZQ         shift and go to state 66
+    COM_SIM         shift and go to state 19
+    HASH            shift and go to state 20
+    COR_IZQ         shift and go to state 22
+    LLAV_IZQ        shift and go to state 21
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
 
+    expresion                      shift and go to state 98
+    valor                          shift and go to state 8
+    estructura                     shift and go to state 9
+    expresionAritmetica            shift and go to state 10
+    comparation                    shift and go to state 11
+    comparationLogic               shift and go to state 12
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
 
 state 66
 
-    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER . PAR_DER
+    (35) estructura -> PAR_IZQ . LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (37) estructura -> PAR_IZQ . CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (39) estructura -> PAR_IZQ . VECTOR compuesto PAR_DER
+    (42) estructura -> PAR_IZQ . mapas parclaves PAR_DER
+    (28) expresionAritmetica -> PAR_IZQ . operadorMath numberSerie PAR_DER
+    (27) comparation -> PAR_IZQ . operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> PAR_IZQ . operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> PAR_IZQ . NOT valor PAR_DER
+    (54) cadena -> PAR_IZQ . STR STRING STRING PAR_DER
+    (43) mapas -> . SORTEDMAP REST MAP
+    (44) mapas -> . HASHMAP REST MAP
+    (59) operadorMath -> . SUM
+    (60) operadorMath -> . REST
+    (61) operadorMath -> . PRODUCT
+    (62) operadorMath -> . DIVISION
+    (63) operadorCompare -> . EQUAL
+    (64) operadorCompare -> . NOT_EQUAL
+    (65) operadorCompare -> . GREATER_THAN
+    (66) operadorCompare -> . LESS_THAN
+    (67) operadorCompare -> . GREATER_THAN_EQUAL
+    (68) operadorCompare -> . LESS_THAN_EQUAL
+    (69) operadorLogic -> . AND
+    (70) operadorLogic -> . OR
 
-    PAR_DER         shift and go to state 67
+    LISTA           shift and go to state 30
+    CONJUNTO        shift and go to state 31
+    VECTOR          shift and go to state 32
+    NOT             shift and go to state 37
+    STR             shift and go to state 41
+    SORTEDMAP       shift and go to state 44
+    HASHMAP         shift and go to state 46
+    SUM             shift and go to state 47
+    REST            shift and go to state 45
+    PRODUCT         shift and go to state 48
+    DIVISION        shift and go to state 49
+    EQUAL           shift and go to state 50
+    NOT_EQUAL       shift and go to state 51
+    GREATER_THAN    shift and go to state 52
+    LESS_THAN       shift and go to state 53
+    GREATER_THAN_EQUAL shift and go to state 54
+    LESS_THAN_EQUAL shift and go to state 55
+    AND             shift and go to state 56
+    OR              shift and go to state 57
 
+    mapas                          shift and go to state 33
+    operadorMath                   shift and go to state 34
+    operadorCompare                shift and go to state 35
+    operadorLogic                  shift and go to state 36
 
 state 67
 
-    (8) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .
+    (24) imprimir -> PAR_IZQ imprimirOptions expresion . PAR_DER
 
-    $end            reduce using rule 8 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
-    PAR_DER         reduce using rule 8 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    PAR_DER         shift and go to state 99
+
+
+state 68
+
+    (35) estructura -> PAR_IZQ LISTA PAR_IZQ . compuesto PAR_DER PAR_DER
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
+
+    compuesto                      shift and go to state 100
+    valor                          shift and go to state 63
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 69
+
+    (37) estructura -> PAR_IZQ CONJUNTO COM_SIM . PAR_IZQ compuesto PAR_DER PAR_DER
+
+    PAR_IZQ         shift and go to state 101
+
+
+state 70
+
+    (39) estructura -> PAR_IZQ VECTOR compuesto . PAR_DER
+
+    PAR_DER         shift and go to state 102
+
+
+state 71
+
+    (42) estructura -> PAR_IZQ mapas parclaves . PAR_DER
+
+    PAR_DER         shift and go to state 103
+
+
+state 72
+
+    (28) expresionAritmetica -> PAR_IZQ . operadorMath numberSerie PAR_DER
+    (59) operadorMath -> . SUM
+    (60) operadorMath -> . REST
+    (61) operadorMath -> . PRODUCT
+    (62) operadorMath -> . DIVISION
+
+    SUM             shift and go to state 47
+    REST            shift and go to state 45
+    PRODUCT         shift and go to state 48
+    DIVISION        shift and go to state 49
+
+    operadorMath                   shift and go to state 34
+
+state 73
+
+    (28) expresionAritmetica -> PAR_IZQ operadorMath numberSerie . PAR_DER
+
+    PAR_DER         shift and go to state 104
+
+
+state 74
+
+    (29) numberSerie -> numero .
+    (32) numberSerie -> numero . numberSerie
+    (29) numberSerie -> . numero
+    (30) numberSerie -> . NOMBRE
+    (31) numberSerie -> . expresionAritmetica
+    (32) numberSerie -> . numero numberSerie
+    (33) numberSerie -> . NOMBRE numberSerie
+    (34) numberSerie -> . expresionAritmetica numberSerie
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+
+    PAR_DER         reduce using rule 29 (numberSerie -> numero .)
+    NOMBRE          shift and go to state 75
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    PAR_IZQ         shift and go to state 72
+
+    numero                         shift and go to state 74
+    numberSerie                    shift and go to state 105
+    expresionAritmetica            shift and go to state 76
+
+state 75
+
+    (30) numberSerie -> NOMBRE .
+    (33) numberSerie -> NOMBRE . numberSerie
+    (29) numberSerie -> . numero
+    (30) numberSerie -> . NOMBRE
+    (31) numberSerie -> . expresionAritmetica
+    (32) numberSerie -> . numero numberSerie
+    (33) numberSerie -> . NOMBRE numberSerie
+    (34) numberSerie -> . expresionAritmetica numberSerie
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+
+    PAR_DER         reduce using rule 30 (numberSerie -> NOMBRE .)
+    NOMBRE          shift and go to state 75
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    PAR_IZQ         shift and go to state 72
+
+    numberSerie                    shift and go to state 106
+    numero                         shift and go to state 74
+    expresionAritmetica            shift and go to state 76
+
+state 76
+
+    (31) numberSerie -> expresionAritmetica .
+    (34) numberSerie -> expresionAritmetica . numberSerie
+    (29) numberSerie -> . numero
+    (30) numberSerie -> . NOMBRE
+    (31) numberSerie -> . expresionAritmetica
+    (32) numberSerie -> . numero numberSerie
+    (33) numberSerie -> . NOMBRE numberSerie
+    (34) numberSerie -> . expresionAritmetica numberSerie
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+
+    PAR_DER         reduce using rule 31 (numberSerie -> expresionAritmetica .)
+    NOMBRE          shift and go to state 75
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    PAR_IZQ         shift and go to state 72
+
+    expresionAritmetica            shift and go to state 76
+    numberSerie                    shift and go to state 107
+    numero                         shift and go to state 74
+
+state 77
+
+    (27) comparation -> PAR_IZQ operadorCompare valor . valor PAR_DER
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
+
+    valor                          shift and go to state 108
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 78
+
+    (25) comparationLogic -> PAR_IZQ operadorLogic valor . valor PAR_DER
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
+
+    valor                          shift and go to state 109
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 79
+
+    (26) comparationLogic -> PAR_IZQ NOT valor . PAR_DER
+
+    PAR_DER         shift and go to state 110
+
+
+state 80
+
+    (25) comparationLogic -> PAR_IZQ . operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> PAR_IZQ . NOT valor PAR_DER
+    (27) comparation -> PAR_IZQ . operadorCompare valor valor PAR_DER
+    (69) operadorLogic -> . AND
+    (70) operadorLogic -> . OR
+    (63) operadorCompare -> . EQUAL
+    (64) operadorCompare -> . NOT_EQUAL
+    (65) operadorCompare -> . GREATER_THAN
+    (66) operadorCompare -> . LESS_THAN
+    (67) operadorCompare -> . GREATER_THAN_EQUAL
+    (68) operadorCompare -> . LESS_THAN_EQUAL
+
+    NOT             shift and go to state 37
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+    EQUAL           shift and go to state 50
+    NOT_EQUAL       shift and go to state 51
+    GREATER_THAN    shift and go to state 52
+    LESS_THAN       shift and go to state 53
+    GREATER_THAN_EQUAL shift and go to state 54
+    LESS_THAN_EQUAL shift and go to state 55
+
+    operadorLogic                  shift and go to state 36
+    operadorCompare                shift and go to state 35
+
+state 81
+
+    (18) if -> PAR_IZQ IF booleanExpresion . expresion expresion PAR_DER
+    (19) if -> PAR_IZQ IF booleanExpresion . expresion PAR_DER
+    (6) expresion -> . valor
+    (7) expresion -> . estructura
+    (8) expresion -> . expresionAritmetica
+    (9) expresion -> . comparation
+    (10) expresion -> . comparationLogic
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (35) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (36) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
+    (37) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (38) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
+    (39) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
+    (40) estructura -> . COR_IZQ compuesto COR_DER
+    (41) estructura -> . LLAV_IZQ parclaves LLAV_DER
+    (42) estructura -> . PAR_IZQ mapas parclaves PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 7
+    PAR_IZQ         shift and go to state 66
+    COM_SIM         shift and go to state 19
+    HASH            shift and go to state 20
+    COR_IZQ         shift and go to state 22
+    LLAV_IZQ        shift and go to state 21
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+
+    expresion                      shift and go to state 111
+    valor                          shift and go to state 8
+    estructura                     shift and go to state 9
+    expresionAritmetica            shift and go to state 10
+    comparation                    shift and go to state 11
+    comparationLogic               shift and go to state 12
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 82
+
+    (20) booleanExpresion -> FALSE .
+
+    NOMBRE          reduce using rule 20 (booleanExpresion -> FALSE .)
+    PAR_IZQ         reduce using rule 20 (booleanExpresion -> FALSE .)
+    COM_SIM         reduce using rule 20 (booleanExpresion -> FALSE .)
+    HASH            reduce using rule 20 (booleanExpresion -> FALSE .)
+    COR_IZQ         reduce using rule 20 (booleanExpresion -> FALSE .)
+    LLAV_IZQ        reduce using rule 20 (booleanExpresion -> FALSE .)
+    ENTERO          reduce using rule 20 (booleanExpresion -> FALSE .)
+    FLOTANTE        reduce using rule 20 (booleanExpresion -> FALSE .)
+    TRUE            reduce using rule 20 (booleanExpresion -> FALSE .)
+    FALSE           reduce using rule 20 (booleanExpresion -> FALSE .)
+    STRING          reduce using rule 20 (booleanExpresion -> FALSE .)
+
+
+state 83
+
+    (21) booleanExpresion -> TRUE .
+
+    NOMBRE          reduce using rule 21 (booleanExpresion -> TRUE .)
+    PAR_IZQ         reduce using rule 21 (booleanExpresion -> TRUE .)
+    COM_SIM         reduce using rule 21 (booleanExpresion -> TRUE .)
+    HASH            reduce using rule 21 (booleanExpresion -> TRUE .)
+    COR_IZQ         reduce using rule 21 (booleanExpresion -> TRUE .)
+    LLAV_IZQ        reduce using rule 21 (booleanExpresion -> TRUE .)
+    ENTERO          reduce using rule 21 (booleanExpresion -> TRUE .)
+    FLOTANTE        reduce using rule 21 (booleanExpresion -> TRUE .)
+    TRUE            reduce using rule 21 (booleanExpresion -> TRUE .)
+    FALSE           reduce using rule 21 (booleanExpresion -> TRUE .)
+    STRING          reduce using rule 21 (booleanExpresion -> TRUE .)
+
+
+state 84
+
+    (22) booleanExpresion -> comparationLogic .
+
+    NOMBRE          reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    PAR_IZQ         reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    COM_SIM         reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    HASH            reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    COR_IZQ         reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    LLAV_IZQ        reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    ENTERO          reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    FLOTANTE        reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    TRUE            reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    FALSE           reduce using rule 22 (booleanExpresion -> comparationLogic .)
+    STRING          reduce using rule 22 (booleanExpresion -> comparationLogic .)
+
+
+state 85
+
+    (23) booleanExpresion -> comparation .
+
+    NOMBRE          reduce using rule 23 (booleanExpresion -> comparation .)
+    PAR_IZQ         reduce using rule 23 (booleanExpresion -> comparation .)
+    COM_SIM         reduce using rule 23 (booleanExpresion -> comparation .)
+    HASH            reduce using rule 23 (booleanExpresion -> comparation .)
+    COR_IZQ         reduce using rule 23 (booleanExpresion -> comparation .)
+    LLAV_IZQ        reduce using rule 23 (booleanExpresion -> comparation .)
+    ENTERO          reduce using rule 23 (booleanExpresion -> comparation .)
+    FLOTANTE        reduce using rule 23 (booleanExpresion -> comparation .)
+    TRUE            reduce using rule 23 (booleanExpresion -> comparation .)
+    FALSE           reduce using rule 23 (booleanExpresion -> comparation .)
+    STRING          reduce using rule 23 (booleanExpresion -> comparation .)
+
+
+state 86
+
+    (27) comparation -> PAR_IZQ . operadorCompare valor valor PAR_DER
+    (63) operadorCompare -> . EQUAL
+    (64) operadorCompare -> . NOT_EQUAL
+    (65) operadorCompare -> . GREATER_THAN
+    (66) operadorCompare -> . LESS_THAN
+    (67) operadorCompare -> . GREATER_THAN_EQUAL
+    (68) operadorCompare -> . LESS_THAN_EQUAL
+
+    EQUAL           shift and go to state 50
+    NOT_EQUAL       shift and go to state 51
+    GREATER_THAN    shift and go to state 52
+    LESS_THAN       shift and go to state 53
+    GREATER_THAN_EQUAL shift and go to state 54
+    LESS_THAN_EQUAL shift and go to state 55
+
+    operadorCompare                shift and go to state 35
+
+state 87
+
+    (17) while -> PAR_IZQ WHILE comparation . PAR_IZQ DO algoritmo PAR_DER
+
+    PAR_IZQ         shift and go to state 112
+
+
+state 88
+
+    (14) loop -> PAR_IZQ LOOP COR_IZQ . compuesto COR_DER when PAR_DER
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
+
+    compuesto                      shift and go to state 113
+    valor                          shift and go to state 63
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 89
+
+    (54) cadena -> PAR_IZQ STR STRING . STRING PAR_DER
+
+    STRING          shift and go to state 114
+
+
+state 90
+
+    (43) mapas -> SORTEDMAP REST . MAP
+
+    MAP             shift and go to state 115
+
+
+state 91
+
+    (44) mapas -> HASHMAP REST . MAP
+
+    MAP             shift and go to state 116
+
+
+state 92
+
+    (36) estructura -> COM_SIM PAR_IZQ compuesto . PAR_DER
+
+    PAR_DER         shift and go to state 117
+
+
+state 93
+
+    (38) estructura -> HASH LLAV_IZQ compuesto . LLAV_DER
+
+    LLAV_DER        shift and go to state 118
+
+
+state 94
+
+    (41) estructura -> LLAV_IZQ parclaves LLAV_DER .
+
+    $end            reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    PAR_DER         reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    NOMBRE          reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    PAR_IZQ         reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    COM_SIM         reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    HASH            reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    COR_IZQ         reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    LLAV_IZQ        reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    ENTERO          reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    FLOTANTE        reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    TRUE            reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    FALSE           reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+    STRING          reduce using rule 41 (estructura -> LLAV_IZQ parclaves LLAV_DER .)
+
+
+state 95
+
+    (47) parclaves -> STRING STRING .
+    (48) parclaves -> STRING STRING . parclaves
+    (47) parclaves -> . STRING STRING
+    (48) parclaves -> . STRING STRING parclaves
+
+    LLAV_DER        reduce using rule 47 (parclaves -> STRING STRING .)
+    PAR_DER         reduce using rule 47 (parclaves -> STRING STRING .)
+    STRING          shift and go to state 61
+
+    parclaves                      shift and go to state 119
+
+state 96
+
+    (40) estructura -> COR_IZQ compuesto COR_DER .
+
+    $end            reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    PAR_DER         reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    NOMBRE          reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    PAR_IZQ         reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    COM_SIM         reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    HASH            reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    COR_IZQ         reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    LLAV_IZQ        reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    ENTERO          reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    FLOTANTE        reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    TRUE            reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    FALSE           reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+    STRING          reduce using rule 40 (estructura -> COR_IZQ compuesto COR_DER .)
+
+
+state 97
+
+    (46) compuesto -> valor compuesto .
+
+    COR_DER         reduce using rule 46 (compuesto -> valor compuesto .)
+    PAR_DER         reduce using rule 46 (compuesto -> valor compuesto .)
+    LLAV_DER        reduce using rule 46 (compuesto -> valor compuesto .)
+
+
+state 98
+
+    (5) variable -> PAR_IZQ DEF NOMBRE expresion . PAR_DER
+
+    PAR_DER         shift and go to state 120
+
+
+state 99
+
+    (24) imprimir -> PAR_IZQ imprimirOptions expresion PAR_DER .
+
+    $end            reduce using rule 24 (imprimir -> PAR_IZQ imprimirOptions expresion PAR_DER .)
+    PAR_DER         reduce using rule 24 (imprimir -> PAR_IZQ imprimirOptions expresion PAR_DER .)
+    PAR_IZQ         reduce using rule 24 (imprimir -> PAR_IZQ imprimirOptions expresion PAR_DER .)
+
+
+state 100
+
+    (35) estructura -> PAR_IZQ LISTA PAR_IZQ compuesto . PAR_DER PAR_DER
+
+    PAR_DER         shift and go to state 121
+
+
+state 101
+
+    (37) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ . compuesto PAR_DER PAR_DER
+    (45) compuesto -> . valor
+    (46) compuesto -> . valor compuesto
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    NOMBRE          shift and go to state 7
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+    PAR_IZQ         shift and go to state 64
+
+    compuesto                      shift and go to state 122
+    valor                          shift and go to state 63
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 102
+
+    (39) estructura -> PAR_IZQ VECTOR compuesto PAR_DER .
+
+    $end            reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    PAR_DER         reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    NOMBRE          reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    PAR_IZQ         reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    COM_SIM         reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    HASH            reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    COR_IZQ         reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    LLAV_IZQ        reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    ENTERO          reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    FLOTANTE        reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    TRUE            reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    FALSE           reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+    STRING          reduce using rule 39 (estructura -> PAR_IZQ VECTOR compuesto PAR_DER .)
+
+
+state 103
+
+    (42) estructura -> PAR_IZQ mapas parclaves PAR_DER .
+
+    $end            reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    PAR_DER         reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    NOMBRE          reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    PAR_IZQ         reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    COM_SIM         reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    HASH            reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    COR_IZQ         reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    LLAV_IZQ        reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    ENTERO          reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    FLOTANTE        reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    TRUE            reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    FALSE           reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+    STRING          reduce using rule 42 (estructura -> PAR_IZQ mapas parclaves PAR_DER .)
+
+
+state 104
+
+    (28) expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .
+
+    $end            reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    PAR_DER         reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    NOMBRE          reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    ENTERO          reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    FLOTANTE        reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    PAR_IZQ         reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    COM_SIM         reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    HASH            reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    COR_IZQ         reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    LLAV_IZQ        reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    TRUE            reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    FALSE           reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+    STRING          reduce using rule 28 (expresionAritmetica -> PAR_IZQ operadorMath numberSerie PAR_DER .)
+
+
+state 105
+
+    (32) numberSerie -> numero numberSerie .
+
+    PAR_DER         reduce using rule 32 (numberSerie -> numero numberSerie .)
+
+
+state 106
+
+    (33) numberSerie -> NOMBRE numberSerie .
+
+    PAR_DER         reduce using rule 33 (numberSerie -> NOMBRE numberSerie .)
+
+
+state 107
+
+    (34) numberSerie -> expresionAritmetica numberSerie .
+
+    PAR_DER         reduce using rule 34 (numberSerie -> expresionAritmetica numberSerie .)
+
+
+state 108
+
+    (27) comparation -> PAR_IZQ operadorCompare valor valor . PAR_DER
+
+    PAR_DER         shift and go to state 123
+
+
+state 109
+
+    (25) comparationLogic -> PAR_IZQ operadorLogic valor valor . PAR_DER
+
+    PAR_DER         shift and go to state 124
+
+
+state 110
+
+    (26) comparationLogic -> PAR_IZQ NOT valor PAR_DER .
+
+    $end            reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    PAR_DER         reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    NOMBRE          reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    PAR_IZQ         reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    COM_SIM         reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    HASH            reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    COR_IZQ         reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    LLAV_IZQ        reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    ENTERO          reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    FLOTANTE        reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    TRUE            reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    FALSE           reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+    STRING          reduce using rule 26 (comparationLogic -> PAR_IZQ NOT valor PAR_DER .)
+
+
+state 111
+
+    (18) if -> PAR_IZQ IF booleanExpresion expresion . expresion PAR_DER
+    (19) if -> PAR_IZQ IF booleanExpresion expresion . PAR_DER
+    (6) expresion -> . valor
+    (7) expresion -> . estructura
+    (8) expresion -> . expresionAritmetica
+    (9) expresion -> . comparation
+    (10) expresion -> . comparationLogic
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (35) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (36) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
+    (37) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (38) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
+    (39) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
+    (40) estructura -> . COR_IZQ compuesto COR_DER
+    (41) estructura -> . LLAV_IZQ parclaves LLAV_DER
+    (42) estructura -> . PAR_IZQ mapas parclaves PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    PAR_DER         shift and go to state 126
+    NOMBRE          shift and go to state 7
+    PAR_IZQ         shift and go to state 66
+    COM_SIM         shift and go to state 19
+    HASH            shift and go to state 20
+    COR_IZQ         shift and go to state 22
+    LLAV_IZQ        shift and go to state 21
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+
+    expresion                      shift and go to state 125
+    valor                          shift and go to state 8
+    estructura                     shift and go to state 9
+    expresionAritmetica            shift and go to state 10
+    comparation                    shift and go to state 11
+    comparationLogic               shift and go to state 12
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 112
+
+    (17) while -> PAR_IZQ WHILE comparation PAR_IZQ . DO algoritmo PAR_DER
+
+    DO              shift and go to state 127
+
+
+state 113
+
+    (14) loop -> PAR_IZQ LOOP COR_IZQ compuesto . COR_DER when PAR_DER
+
+    COR_DER         shift and go to state 128
+
+
+state 114
+
+    (54) cadena -> PAR_IZQ STR STRING STRING . PAR_DER
+
+    PAR_DER         shift and go to state 129
+
+
+state 115
+
+    (43) mapas -> SORTEDMAP REST MAP .
+
+    STRING          reduce using rule 43 (mapas -> SORTEDMAP REST MAP .)
+
+
+state 116
+
+    (44) mapas -> HASHMAP REST MAP .
+
+    STRING          reduce using rule 44 (mapas -> HASHMAP REST MAP .)
+
+
+state 117
+
+    (36) estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .
+
+    $end            reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    PAR_DER         reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    NOMBRE          reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    PAR_IZQ         reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    COM_SIM         reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    HASH            reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    COR_IZQ         reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    LLAV_IZQ        reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    ENTERO          reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    FLOTANTE        reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    TRUE            reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    FALSE           reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+    STRING          reduce using rule 36 (estructura -> COM_SIM PAR_IZQ compuesto PAR_DER .)
+
+
+state 118
+
+    (38) estructura -> HASH LLAV_IZQ compuesto LLAV_DER .
+
+    $end            reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    PAR_DER         reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    NOMBRE          reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    PAR_IZQ         reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    COM_SIM         reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    HASH            reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    COR_IZQ         reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    LLAV_IZQ        reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    ENTERO          reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    FLOTANTE        reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    TRUE            reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    FALSE           reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+    STRING          reduce using rule 38 (estructura -> HASH LLAV_IZQ compuesto LLAV_DER .)
+
+
+state 119
+
+    (48) parclaves -> STRING STRING parclaves .
+
+    LLAV_DER        reduce using rule 48 (parclaves -> STRING STRING parclaves .)
+    PAR_DER         reduce using rule 48 (parclaves -> STRING STRING parclaves .)
+
+
+state 120
+
+    (5) variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .
+
+    $end            reduce using rule 5 (variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .)
+    PAR_DER         reduce using rule 5 (variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .)
+    PAR_IZQ         reduce using rule 5 (variable -> PAR_IZQ DEF NOMBRE expresion PAR_DER .)
+
+
+state 121
+
+    (35) estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER . PAR_DER
+
+    PAR_DER         shift and go to state 130
+
+
+state 122
+
+    (37) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto . PAR_DER PAR_DER
+
+    PAR_DER         shift and go to state 131
+
+
+state 123
+
+    (27) comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .
+
+    $end            reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    PAR_DER         reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    NOMBRE          reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    PAR_IZQ         reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    COM_SIM         reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    HASH            reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    COR_IZQ         reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    LLAV_IZQ        reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    ENTERO          reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    FLOTANTE        reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    TRUE            reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    FALSE           reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+    STRING          reduce using rule 27 (comparation -> PAR_IZQ operadorCompare valor valor PAR_DER .)
+
+
+state 124
+
+    (25) comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .
+
+    $end            reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    PAR_DER         reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    NOMBRE          reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    PAR_IZQ         reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    COM_SIM         reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    HASH            reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    COR_IZQ         reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    LLAV_IZQ        reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    ENTERO          reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    FLOTANTE        reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    TRUE            reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    FALSE           reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+    STRING          reduce using rule 25 (comparationLogic -> PAR_IZQ operadorLogic valor valor PAR_DER .)
+
+
+state 125
+
+    (18) if -> PAR_IZQ IF booleanExpresion expresion expresion . PAR_DER
+
+    PAR_DER         shift and go to state 132
+
+
+state 126
+
+    (19) if -> PAR_IZQ IF booleanExpresion expresion PAR_DER .
+
+    $end            reduce using rule 19 (if -> PAR_IZQ IF booleanExpresion expresion PAR_DER .)
+    PAR_DER         reduce using rule 19 (if -> PAR_IZQ IF booleanExpresion expresion PAR_DER .)
+    PAR_IZQ         reduce using rule 19 (if -> PAR_IZQ IF booleanExpresion expresion PAR_DER .)
+
+
+state 127
+
+    (17) while -> PAR_IZQ WHILE comparation PAR_IZQ DO . algoritmo PAR_DER
+    (1) algoritmo -> . variable
+    (2) algoritmo -> . expresion
+    (3) algoritmo -> . imprimir
+    (4) algoritmo -> . controlStructures
+    (5) variable -> . PAR_IZQ DEF NOMBRE expresion PAR_DER
+    (6) expresion -> . valor
+    (7) expresion -> . estructura
+    (8) expresion -> . expresionAritmetica
+    (9) expresion -> . comparation
+    (10) expresion -> . comparationLogic
+    (24) imprimir -> . PAR_IZQ imprimirOptions expresion PAR_DER
+    (11) controlStructures -> . if
+    (12) controlStructures -> . while
+    (13) controlStructures -> . loop
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (35) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (36) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
+    (37) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (38) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
+    (39) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
+    (40) estructura -> . COR_IZQ compuesto COR_DER
+    (41) estructura -> . LLAV_IZQ parclaves LLAV_DER
+    (42) estructura -> . PAR_IZQ mapas parclaves PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (18) if -> . PAR_IZQ IF booleanExpresion expresion expresion PAR_DER
+    (19) if -> . PAR_IZQ IF booleanExpresion expresion PAR_DER
+    (17) while -> . PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER
+    (14) loop -> . PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    PAR_IZQ         shift and go to state 6
+    NOMBRE          shift and go to state 7
+    COM_SIM         shift and go to state 19
+    HASH            shift and go to state 20
+    COR_IZQ         shift and go to state 22
+    LLAV_IZQ        shift and go to state 21
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+
+    comparation                    shift and go to state 11
+    algoritmo                      shift and go to state 133
+    variable                       shift and go to state 2
+    expresion                      shift and go to state 3
+    imprimir                       shift and go to state 4
+    controlStructures              shift and go to state 5
+    valor                          shift and go to state 8
+    estructura                     shift and go to state 9
+    expresionAritmetica            shift and go to state 10
+    comparationLogic               shift and go to state 12
+    if                             shift and go to state 13
+    while                          shift and go to state 14
+    loop                           shift and go to state 15
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 128
+
+    (14) loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER . when PAR_DER
+    (15) when -> . PAR_IZQ WHEN comparation algoritmo recur PAR_DER
+
+    PAR_IZQ         shift and go to state 134
+
+    when                           shift and go to state 135
+
+state 129
+
+    (54) cadena -> PAR_IZQ STR STRING STRING PAR_DER .
+
+    $end            reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    NOMBRE          reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    ENTERO          reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    FLOTANTE        reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    TRUE            reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    FALSE           reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    STRING          reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    PAR_IZQ         reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    COR_DER         reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    PAR_DER         reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    LLAV_DER        reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    COM_SIM         reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    HASH            reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    COR_IZQ         reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+    LLAV_IZQ        reduce using rule 54 (cadena -> PAR_IZQ STR STRING STRING PAR_DER .)
+
+
+state 130
+
+    (35) estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .
+
+    $end            reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    PAR_DER         reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    NOMBRE          reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    PAR_IZQ         reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    COM_SIM         reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    HASH            reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    COR_IZQ         reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    LLAV_IZQ        reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    ENTERO          reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    FLOTANTE        reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    TRUE            reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    FALSE           reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+    STRING          reduce using rule 35 (estructura -> PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER .)
+
+
+state 131
+
+    (37) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER . PAR_DER
+
+    PAR_DER         shift and go to state 136
+
+
+state 132
+
+    (18) if -> PAR_IZQ IF booleanExpresion expresion expresion PAR_DER .
+
+    $end            reduce using rule 18 (if -> PAR_IZQ IF booleanExpresion expresion expresion PAR_DER .)
+    PAR_DER         reduce using rule 18 (if -> PAR_IZQ IF booleanExpresion expresion expresion PAR_DER .)
+    PAR_IZQ         reduce using rule 18 (if -> PAR_IZQ IF booleanExpresion expresion expresion PAR_DER .)
+
+
+state 133
+
+    (17) while -> PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo . PAR_DER
+
+    PAR_DER         shift and go to state 137
+
+
+state 134
+
+    (15) when -> PAR_IZQ . WHEN comparation algoritmo recur PAR_DER
+
+    WHEN            shift and go to state 138
+
+
+state 135
+
+    (14) loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER when . PAR_DER
+
+    PAR_DER         shift and go to state 139
+
+
+state 136
+
+    (37) estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .
+
+    $end            reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    PAR_DER         reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    NOMBRE          reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    PAR_IZQ         reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    COM_SIM         reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    HASH            reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    COR_IZQ         reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    LLAV_IZQ        reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    ENTERO          reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    FLOTANTE        reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    TRUE            reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    FALSE           reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+    STRING          reduce using rule 37 (estructura -> PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER .)
+
+
+state 137
+
+    (17) while -> PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER .
+
+    $end            reduce using rule 17 (while -> PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER .)
+    PAR_DER         reduce using rule 17 (while -> PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER .)
+    PAR_IZQ         reduce using rule 17 (while -> PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER .)
+
+
+state 138
+
+    (15) when -> PAR_IZQ WHEN . comparation algoritmo recur PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+
+    PAR_IZQ         shift and go to state 86
+
+    comparation                    shift and go to state 140
+
+state 139
+
+    (14) loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER .
+
+    $end            reduce using rule 14 (loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER .)
+    PAR_DER         reduce using rule 14 (loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER .)
+    PAR_IZQ         reduce using rule 14 (loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER .)
+
+
+state 140
+
+    (15) when -> PAR_IZQ WHEN comparation . algoritmo recur PAR_DER
+    (1) algoritmo -> . variable
+    (2) algoritmo -> . expresion
+    (3) algoritmo -> . imprimir
+    (4) algoritmo -> . controlStructures
+    (5) variable -> . PAR_IZQ DEF NOMBRE expresion PAR_DER
+    (6) expresion -> . valor
+    (7) expresion -> . estructura
+    (8) expresion -> . expresionAritmetica
+    (9) expresion -> . comparation
+    (10) expresion -> . comparationLogic
+    (24) imprimir -> . PAR_IZQ imprimirOptions expresion PAR_DER
+    (11) controlStructures -> . if
+    (12) controlStructures -> . while
+    (13) controlStructures -> . loop
+    (49) valor -> . numero
+    (50) valor -> . NOMBRE
+    (51) valor -> . booleano
+    (52) valor -> . cadena
+    (35) estructura -> . PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
+    (36) estructura -> . COM_SIM PAR_IZQ compuesto PAR_DER
+    (37) estructura -> . PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
+    (38) estructura -> . HASH LLAV_IZQ compuesto LLAV_DER
+    (39) estructura -> . PAR_IZQ VECTOR compuesto PAR_DER
+    (40) estructura -> . COR_IZQ compuesto COR_DER
+    (41) estructura -> . LLAV_IZQ parclaves LLAV_DER
+    (42) estructura -> . PAR_IZQ mapas parclaves PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+    (27) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
+    (25) comparationLogic -> . PAR_IZQ operadorLogic valor valor PAR_DER
+    (26) comparationLogic -> . PAR_IZQ NOT valor PAR_DER
+    (18) if -> . PAR_IZQ IF booleanExpresion expresion expresion PAR_DER
+    (19) if -> . PAR_IZQ IF booleanExpresion expresion PAR_DER
+    (17) while -> . PAR_IZQ WHILE comparation PAR_IZQ DO algoritmo PAR_DER
+    (14) loop -> . PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER
+    (57) numero -> . ENTERO
+    (58) numero -> . FLOTANTE
+    (55) booleano -> . TRUE
+    (56) booleano -> . FALSE
+    (53) cadena -> . STRING
+    (54) cadena -> . PAR_IZQ STR STRING STRING PAR_DER
+
+    PAR_IZQ         shift and go to state 6
+    NOMBRE          shift and go to state 7
+    COM_SIM         shift and go to state 19
+    HASH            shift and go to state 20
+    COR_IZQ         shift and go to state 22
+    LLAV_IZQ        shift and go to state 21
+    ENTERO          shift and go to state 23
+    FLOTANTE        shift and go to state 24
+    TRUE            shift and go to state 25
+    FALSE           shift and go to state 26
+    STRING          shift and go to state 27
+
+    comparation                    shift and go to state 11
+    algoritmo                      shift and go to state 141
+    variable                       shift and go to state 2
+    expresion                      shift and go to state 3
+    imprimir                       shift and go to state 4
+    controlStructures              shift and go to state 5
+    valor                          shift and go to state 8
+    estructura                     shift and go to state 9
+    expresionAritmetica            shift and go to state 10
+    comparationLogic               shift and go to state 12
+    if                             shift and go to state 13
+    while                          shift and go to state 14
+    loop                           shift and go to state 15
+    numero                         shift and go to state 16
+    booleano                       shift and go to state 17
+    cadena                         shift and go to state 18
+
+state 141
+
+    (15) when -> PAR_IZQ WHEN comparation algoritmo . recur PAR_DER
+    (16) recur -> . PAR_IZQ RECUR expresionAritmetica PAR_DER
+
+    PAR_IZQ         shift and go to state 142
+
+    recur                          shift and go to state 143
+
+state 142
+
+    (16) recur -> PAR_IZQ . RECUR expresionAritmetica PAR_DER
+
+    RECUR           shift and go to state 144
+
+
+state 143
+
+    (15) when -> PAR_IZQ WHEN comparation algoritmo recur . PAR_DER
+
+    PAR_DER         shift and go to state 145
+
+
+state 144
+
+    (16) recur -> PAR_IZQ RECUR . expresionAritmetica PAR_DER
+    (28) expresionAritmetica -> . PAR_IZQ operadorMath numberSerie PAR_DER
+
+    PAR_IZQ         shift and go to state 72
+
+    expresionAritmetica            shift and go to state 146
+
+state 145
+
+    (15) when -> PAR_IZQ WHEN comparation algoritmo recur PAR_DER .
+
+    PAR_DER         reduce using rule 15 (when -> PAR_IZQ WHEN comparation algoritmo recur PAR_DER .)
+
+
+state 146
+
+    (16) recur -> PAR_IZQ RECUR expresionAritmetica . PAR_DER
+
+    PAR_DER         shift and go to state 147
+
+
+state 147
+
+    (16) recur -> PAR_IZQ RECUR expresionAritmetica PAR_DER .
+
+    PAR_DER         reduce using rule 16 (recur -> PAR_IZQ RECUR expresionAritmetica PAR_DER .)
 
