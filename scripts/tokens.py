@@ -1,3 +1,4 @@
+
 reservadas={
     "def": "DEF",
     "nil": "NULL",
@@ -19,13 +20,17 @@ reservadas={
     "list": "LISTA",
     "nth" : "NTH",
     "if":"IF",
-    "doseq": "DOSEQ", 
+    "doseq": "DOSEQ",
     "true": "TRUE",
     "false": "FALSE",
     "read-line": "READLINE",
     "not":"NOT",
     'and':'AND',
-    'or':"OR"
+    'or':"OR",
+    'cons':"CONS",
+    'get':"GET",
+    'conj':"CONJ",
+    'keys':"KEYS"
 }
 
 tokens = list(reservadas.values())+[
