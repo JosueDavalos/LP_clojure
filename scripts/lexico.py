@@ -41,21 +41,4 @@ def t_NOMBRE(t):
     return t
 
 
-# def t_METODONTH(t): luego mejorara con lexico de momento se declara solo la reservada nth
-#     r"nth\s[a-z][a-zA-Z0-9]+\s\[([a-z][a-zA-Z0-9](\s[a-z][a-zA-Z0-9])*)*\]"
-#     t.type = reservadas.get(t.value, 'METODONTH')  # Check for reserved words
-#     return t
-
-# def t_METODOFIRST(t):  luego mejorara con lexico de momento se declara solo la reservada first
-#     r"first\s[a-z][a-zA-Z0-9]+\s?"
-#     t.type = reservadas.get(t.value, 'METODOFIRST')  # Check for reserved words
-#     return t
-
-# def t_FUNCION(t):  luego mejorara con lexico de momento se declara solo la reservada defn
-#     r"defn\s[a-z][a-zA-Z0-9]+\s"
-#     t.type = reservadas.get(t.value, 'FUNCION')  # Check for reserved words
-#     return t
-
-
-
 lexer = lex.lex()
