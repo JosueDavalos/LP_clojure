@@ -17,18 +17,17 @@ import ply.yacc as yacc
 #     '''expresion : valor
 #                  | estructura
 #     '''
-# # cambie valor por compuesto aqui
+
 # def p_estructura_lista(p):
 #     '''estructura : PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
 #                   | COM_SIM PAR_IZQ compuesto PAR_DER
 #     '''
-# # cambie valor por compuesto aqui
+
 # def p_estructura_conjunto(p):
 #     '''estructura : PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
 #                   | HASH LLAV_IZQ compuesto LLAV_DER
 #     '''
 
-# # cambie valor por compuesto aqui
 # def p_estructura_vector(p):
 #     '''estructura : PAR_IZQ VECTOR compuesto PAR_DER
 #                   | COR_IZQ compuesto COR_DER

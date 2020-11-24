@@ -99,10 +99,6 @@ import ply.yacc as yacc
 # ## FIN Metodos para MAPAS
 
 
-
-# def p_variable(p):
-#     'variable : PAR_IZQ DEF NOMBRE expresion PAR_DER'
-
 # def p_expresion(p):
 #     '''expresion : valor
 #                  | estructura
@@ -122,24 +118,26 @@ import ply.yacc as yacc
 
 
 
-# # cambie valor por compuesto aqui y nombre de expresion (sebas)
+# # cambio nombre de expresion
 # def p_estructura_lista(p):
 #     '''estructura_lista : PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
 #                   | COM_SIM PAR_IZQ compuesto PAR_DER
 #                   | PAR_IZQ LISTA compuesto PAR_DER
 #     '''
-# # cambie valor por compuesto aqui y nombre de expresion (sebas)
+
+# # cambio nombre de expresion
 # def p_estructura_conjunto(p):
 #     '''estructura_conjunto : PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
 #                   | HASH LLAV_IZQ compuesto LLAV_DER
 #     '''
 
-# # cambie valor por compuesto aqui y nombre de expresion (sebas)
+# # cambio nombre de expresion
 # def p_estructura_vector(p):
 #     '''estructura_vector : PAR_IZQ VECTOR compuesto PAR_DER
 #                   | COR_IZQ compuesto COR_DER
 #     '''
-# # cambie nombre de expresion (sebas)
+
+# # cambio nombre de expresion
 # def p_estructura_mapa(p):
 #     '''estructura_mapa : LLAV_IZQ parclaves LLAV_DER
 #                   | PAR_IZQ mapas parclaves PAR_DER

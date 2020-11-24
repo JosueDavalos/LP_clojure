@@ -1,5 +1,6 @@
 import sys
 sys.path.append(".")
+
 from scripts.implementation import *
 
 
@@ -16,7 +17,7 @@ def run_test(file):
         setencia  = line.strip()
         if len(setencia)!=0 : 
             print('-'*5,setencia,'-'*5)
-            #t_analizar_lexico(setencia)
+            # t_analizar_lexico(setencia)
             t_analizar_sintaxis(setencia)
             print()
 
