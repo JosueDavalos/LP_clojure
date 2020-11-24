@@ -1,84 +1,10 @@
-(+ 1 1)
-(+ var 1)
-(+ var var)
-
-(- 1 0)
-(- var 0)
-(- var var)
-
-(/ 1 2)
-(/ 1 var)
-(/ var var)
-( / 1 2)
-( / 1 var)
-( / var var)
-
-(* 4 6)
-(- 4 x y 8 8)
-(+ 7 8 x)
-(- (* 10 9) 10)
-(+ 1 (- 3 2))
-
-(= 8 8)
-(= var 8)
-(= var1 var2)
-
-(< 1 0)
-(< var 0)
-(< var var)
-
-(> 1 0)
-(> var 0)
-(> var var)
-
-
-(<= 1 0)
-(<= var 1)
-(<= var var)
-
-(>= 1 0)
-(>= var 0)
-(>= var var)
-
-(not true)
-(not var)
-
-(or true var)
-(or true false)
-(or var var)
-
-(and true false)
-(and var var)
-(and false var)
-
-
-(defn funcion [var var2 var3] (def var 1) (+ 2 2))
-(defn funcion [a x y] (+ a x) (= x y))
-
-(first lst)
-(first (list 1 2 3))
-
-(nth lst index)
-(nth lst 1)
+(defn funcion [varLi varVe varCo varMa varVa] (defn funcion [var var2 var3] (def var 1) (+ 2 2)) (defn funcion [a x y] (+ a x) (= x y)) (first lst) (first (list 1 2 3)) (nth lst index) (nth lst 1) (nth (list 1 2 3) 1) (nth (list 1 2 3) index) (cons 0 lst) (cons element lst) (cons element (list 1 2 3)) (cons 0 (list 1 2 3)) (get (set '(3 2 1)) 2) (get (set '(3 2 1)) var) (conj (set '(3 2 1)) 5) (conj (set '(3 2 1)) var) (get (vector 3 2 1) 2) (get (vector 3 2 1) var) (conj (vector 3 2 1) 5) (conj (vector 3 2 1) var) (keys (hash-map "z" "1" "b" "2" "a" "3")) (keys mapa) (+ 1 1) (- var 0) (/ var var) ( / 1 2) (* 4 6) (- 4 x y 8 8) (+ 1 (- 3 2)) (= 8 8) (< var 0) (> var var) (<= 1 0) (>= var 0) (not true) (or true false) (and var var))
+(defn funcion [a x y] (+ a x) (= x y) (first lst) (nth lst index) (nth lst 1) (nth (list 1 2 3) index) )
+(defn funcion [lst element var] (cons element lst) (cons element (list 1 2 3)) (cons 0 (list 1 2 3)) (get (set '(3 2 1)) 2) (get (set '(3 2 1)) var))
+(print (- (* 10 9) 10))
 (nth (list 1 2 3) 1)
-(nth (list 1 2 3) index)
-
-(cons 0 lst)
-(cons element lst)
-(cons element (list 1 2 3))
-(cons 0 (list 1 2 3))
-
-(get (set '(3 2 1)) 2)
-(get (set '(3 2 1)) var)
-
-(conj (set '(3 2 1)) 5)
-(conj (set '(3 2 1)) var)
-
-(get (vector 3 2 1) 2)
-(get (vector 3 2 1) var)
-
-(conj (vector 3 2 1) 5)
-(conj (vector 3 2 1) var)
-
 (keys (hash-map "z" "1" "b" "2" "a" "3"))
-(keys mapa)
+(conj (set '(3 2 1)) 5)
+(while ( < i contador ) (do (println x))
+(defn nombrefuncion [i contador len] (loop [x len] (when (> contador i) (println "Soy un print, dentro de un loop, dentro de una funcion") (recur (- contador i)))))
+(def varMapa {"a" "b" "c" "d"})
