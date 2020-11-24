@@ -60,7 +60,7 @@ Rule 47    controlStructures -> if
 Rule 48    controlStructures -> while
 Rule 49    controlStructures -> loop
 Rule 50    loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER
-Rule 51    when -> PAR_IZQ WHEN comparation sentencia_compuesta recur PAR_DER
+Rule 51    when -> PAR_IZQ WHEN comparation algoritmo recur PAR_DER
 Rule 52    recur -> PAR_IZQ RECUR expresionAritmetica PAR_DER
 Rule 53    while -> PAR_IZQ WHILE comparation PAR_IZQ DO sentencia_compuesta PAR_DER PAR_DER
 Rule 54    if -> PAR_IZQ IF booleanExpresion sentencia_compuesta PAR_DER
@@ -179,7 +179,7 @@ error                :
 
 Nonterminals, with rules where they appear
 
-algoritmo            : 1 2
+algoritmo            : 1 2 51
 argumento            : 13 16
 argumentos           : 12
 booleanExpresion     : 54
@@ -213,7 +213,7 @@ operadorLogic        : 60
 operadorMath         : 63
 parclaves            : 77 78 84
 recur                : 51
-sentencia_compuesta  : 2 12 51 53 54 0
+sentencia_compuesta  : 2 12 53 54 0
 valor                : 23 24 27 30 38 60 60 61 62 62 81 82
 variable             : 3
 when                 : 50
@@ -419,7 +419,6 @@ state 2
     (75) estructura_vector -> . PAR_IZQ VECTOR compuesto PAR_DER
     (76) estructura_vector -> . COR_IZQ compuesto COR_DER
 
-  ! shift/reduce conflict for PAR_IZQ resolved as shift
     $end            reduce using rule 1 (sentencia_compuesta -> algoritmo .)
     PAR_DER         reduce using rule 1 (sentencia_compuesta -> algoritmo .)
     PAR_IZQ         shift and go to state 12
@@ -433,8 +432,6 @@ state 2
     COM_SIM         shift and go to state 36
     HASH            shift and go to state 37
     COR_IZQ         shift and go to state 31
-
-  ! PAR_IZQ         [ reduce using rule 1 (sentencia_compuesta -> algoritmo .) ]
 
     algoritmo                      shift and go to state 2
     sentencia_compuesta            shift and go to state 38
@@ -1205,7 +1202,6 @@ state 38
 
     $end            reduce using rule 2 (sentencia_compuesta -> algoritmo sentencia_compuesta .)
     PAR_DER         reduce using rule 2 (sentencia_compuesta -> algoritmo sentencia_compuesta .)
-    PAR_IZQ         reduce using rule 2 (sentencia_compuesta -> algoritmo sentencia_compuesta .)
 
 
 state 39
@@ -3973,7 +3969,7 @@ state 204
 state 205
 
     (50) loop -> PAR_IZQ LOOP COR_IZQ compuesto COR_DER . when PAR_DER
-    (51) when -> . PAR_IZQ WHEN comparation sentencia_compuesta recur PAR_DER
+    (51) when -> . PAR_IZQ WHEN comparation algoritmo recur PAR_DER
 
     PAR_IZQ         shift and go to state 213
 
@@ -4066,7 +4062,7 @@ state 212
 
 state 213
 
-    (51) when -> PAR_IZQ . WHEN comparation sentencia_compuesta recur PAR_DER
+    (51) when -> PAR_IZQ . WHEN comparation algoritmo recur PAR_DER
 
     WHEN            shift and go to state 218
 
@@ -4113,7 +4109,7 @@ state 217
 
 state 218
 
-    (51) when -> PAR_IZQ WHEN . comparation sentencia_compuesta recur PAR_DER
+    (51) when -> PAR_IZQ WHEN . comparation algoritmo recur PAR_DER
     (62) comparation -> . PAR_IZQ operadorCompare valor valor PAR_DER
 
     PAR_IZQ         shift and go to state 118
@@ -4179,9 +4175,7 @@ state 221
 
 state 222
 
-    (51) when -> PAR_IZQ WHEN comparation . sentencia_compuesta recur PAR_DER
-    (1) sentencia_compuesta -> . algoritmo
-    (2) sentencia_compuesta -> . algoritmo sentencia_compuesta
+    (51) when -> PAR_IZQ WHEN comparation . algoritmo recur PAR_DER
     (3) algoritmo -> . variable
     (4) algoritmo -> . expresion
     (5) algoritmo -> . imprimir
@@ -4266,8 +4260,7 @@ state 222
     COR_IZQ         shift and go to state 31
 
     comparation                    shift and go to state 17
-    sentencia_compuesta            shift and go to state 223
-    algoritmo                      shift and go to state 2
+    algoritmo                      shift and go to state 223
     variable                       shift and go to state 3
     expresion                      shift and go to state 4
     imprimir                       shift and go to state 5
@@ -4294,7 +4287,7 @@ state 222
 
 state 223
 
-    (51) when -> PAR_IZQ WHEN comparation sentencia_compuesta . recur PAR_DER
+    (51) when -> PAR_IZQ WHEN comparation algoritmo . recur PAR_DER
     (52) recur -> . PAR_IZQ RECUR expresionAritmetica PAR_DER
 
     PAR_IZQ         shift and go to state 224
@@ -4310,7 +4303,7 @@ state 224
 
 state 225
 
-    (51) when -> PAR_IZQ WHEN comparation sentencia_compuesta recur . PAR_DER
+    (51) when -> PAR_IZQ WHEN comparation algoritmo recur . PAR_DER
 
     PAR_DER         shift and go to state 227
 
@@ -4326,9 +4319,9 @@ state 226
 
 state 227
 
-    (51) when -> PAR_IZQ WHEN comparation sentencia_compuesta recur PAR_DER .
+    (51) when -> PAR_IZQ WHEN comparation algoritmo recur PAR_DER .
 
-    PAR_DER         reduce using rule 51 (when -> PAR_IZQ WHEN comparation sentencia_compuesta recur PAR_DER .)
+    PAR_DER         reduce using rule 51 (when -> PAR_IZQ WHEN comparation algoritmo recur PAR_DER .)
 
 
 state 228
@@ -4344,7 +4337,3 @@ state 229
 
     PAR_DER         reduce using rule 52 (recur -> PAR_IZQ RECUR expresionAritmetica PAR_DER .)
 
-WARNING: 
-WARNING: Conflicts:
-WARNING: 
-WARNING: shift/reduce conflict for PAR_IZQ in state 2 resolved as shift

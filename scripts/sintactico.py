@@ -119,7 +119,7 @@ def p_loop_statement(p):
     '''
 
 def p_when_loop_statement(p):
-    '''when : PAR_IZQ WHEN comparation sentencia_compuesta recur PAR_DER
+    '''when : PAR_IZQ WHEN comparation algoritmo recur PAR_DER
     '''
 
 def p_recur_loop_statement(p):
