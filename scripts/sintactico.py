@@ -1,5 +1,4 @@
-from scripts.tokens import tokens
-from scripts.implementation_josue import *
+from scripts.lexico import tokens
 import ply.yacc as yacc
 
 
