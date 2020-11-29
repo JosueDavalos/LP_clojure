@@ -8,3 +8,5 @@
 (defn Example [] (def x 1) (def y 1.25) (println x) (println y))
 (defn Example [] (if ( = 2 2) (println "Values are equal") (println "Values are not equal")))
 (defn Example [] (def x 1) (while ( < x 5 ) (do (println x) (+ x 1))))
+(println (read-line))
+(+ (- 9 20) 10)

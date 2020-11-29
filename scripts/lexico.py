@@ -3,7 +3,6 @@ import ply.lex as lex
 
 reservadas={
     "def": "DEF",
-    "nil": "NULL",
     "hash": "HASHMAP",
     "sorted": "SORTEDMAP",
     "map": "MAP",
@@ -22,10 +21,10 @@ reservadas={
     "list": "LISTA",
     "nth" : "NTH",
     "if":"IF",
-    "doseq": "DOSEQ",
     "true": "TRUE",
     "false": "FALSE",
-    "read-line": "READLINE",
+    'read':"READ",
+    'line':"LINE",
     "not":"NOT",
     'and':'AND',
     'or':"OR",
@@ -38,7 +37,6 @@ reservadas={
 tokens = list(reservadas.values())+[
     "ENTERO",
     "FLOTANTE",
-    "CHAR",
     "STRING",
     "PAR_DER",
     "PAR_IZQ",
@@ -58,14 +56,14 @@ tokens = list(reservadas.values())+[
     "NOMBRE",
     "HASH",
     "LLAV_IZQ",
-    "LLAV_DER"
+    "LLAV_DER",
+    "COMA"
 ]
 
 
 
 t_ENTERO = r"([1-9][0-9]*|0)"
 t_FLOTANTE = r"([1-9]\d*|0)+[.]\d+"
-t_CHAR = r"[/]\S"
 t_PAR_DER = r"[)]"
 t_PAR_IZQ = r"[(]"
 t_COR_DER = r"\]"
@@ -76,6 +74,7 @@ t_REST = r'\-'
 t_PRODUCT = r'\*'
 t_STRING = r'\"[^\"]*\"'
 t_DIVISION = r'\/'
+t_COMA = r','
 t_EQUAL = r'\='
 t_NOT_EQUAL = r'not\='
 t_GREATER_THAN = r'\>'
