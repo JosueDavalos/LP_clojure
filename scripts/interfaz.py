@@ -35,21 +35,32 @@ class Window:
 
     def check_code_lexico(self):
         text_code = self.code.get('1.0', 'end-1c')
+        ## line by line
+        # result = ''
+        # for text in text_code.split('\n'):
+        #     tokens = t_analizar_lexico(text)
+        #     for tok in tokens:
+        #         result += str(tok) + '\n'
+        #     result += '\n'
+
         result = ''
-        for text in text_code.split('\n'):
-            tokens = t_analizar_lexico(text)
-            for tok in tokens:
-                result += str(tok) + '\n'
-            result += '\n'
+        tokens = t_analizar_lexico(text_code)
+        for tok in tokens:
+            result += str(tok) + '\n'
         self.results.configure(text=result, justify='left')
+
 
     def check_code_sintactico(self):
         text_code = self.code.get('1.0', 'end-1c')
-        result = ''
-        for text in text_code.split('\n'):
-            if len(text) != 0: 
-                sintaxis = t_analizar_sintaxis(text)
-                result +=  '%s ...... '%text + ( 'WRONG' if sintaxis else 'OK' ) + '\n'
+        ##line by line
+        # result = ''
+        # for text in text_code.split('\n'):
+        #     if len(text) != 0: 
+        #         sintaxis = t_analizar_sintaxis(text)
+        #         result +=  '%s ...... '%text + ( 'WRONG' if sintaxis else 'OK' ) + '\n'
+
+        sintaxis = t_analizar_sintaxis(text_code)
+        result =  'Sintáctico ...... ' + ( 'WRONG' if sintaxis else 'OK' ) + '\n'
         self.results.configure(text=result, justify='left')
 
 
