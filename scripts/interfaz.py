@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from scripts.lexico import errors
 from scripts.implementation import t_analizar_sintaxis, t_analizar_lexico
 
 
@@ -47,6 +48,11 @@ class Window:
         tokens = t_analizar_lexico(text_code)
         for tok in tokens:
             result += str(tok) + '\n'
+
+        result +=  'ERROR! Tokens no reconocidos: %s'% ', '.join(["'%s'"%x for x in errors['lexico']])
+        errors['lexico'] = []
+        errors['sintactico'] = []
+
         self.results.configure(text=result, justify='left')
 
 
@@ -59,8 +65,19 @@ class Window:
         #         sintaxis = t_analizar_sintaxis(text)
         #         result +=  '%s ...... '%text + ( 'WRONG' if sintaxis else 'OK' ) + '\n'
 
+
         sintaxis = t_analizar_sintaxis(text_code)
-        result =  'Sintáctico ...... ' + ( 'WRONG' if sintaxis else 'OK' ) + '\n'
+        there_are_error_lexico = len(errors['lexico'])!=0
+        there_are_error_sintactico =  len(errors['sintactico'])!=0
+        there_are_errors = there_are_error_lexico or there_are_error_sintactico
+
+        result =  'Sintáctico ...... ' + ( 'WRONG' if sintaxis or there_are_errors else 'OK' ) + '\n'
+
+        if there_are_error_lexico:
+            result +=  'ERROR! Tokens no reconocidos: %s'% ', '.join(["'%s'"%x for x in errors['lexico']])
+
+        errors['lexico'] = []
+        errors['sintactico'] = []
         self.results.configure(text=result, justify='left')
 
 
