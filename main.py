@@ -1,5 +1,5 @@
 from os import system
-from scripts.implementation import *
+from scripts.interfaz import *
 import sys
 
 if __name__ == "__main__":
@@ -12,5 +12,7 @@ if __name__ == "__main__":
 
     #normal flow
     else:
-        print('The best project than ever!')
+        app = tk.Tk()
+        window = Window(app)
+        app.mainloop()
     
