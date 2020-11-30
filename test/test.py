@@ -16,9 +16,8 @@ def run_test(file):
     for line in test:
         setencia  = line.strip()
         if len(setencia)!=0 : 
-            print('-'*0,setencia,'-'*0, end='  ==>>   ')
+            print('-'*0,setencia,'-'*0,end='  ==>>   ')
             # t_analizar_lexico(setencia)
             t_analizar_sintaxis(setencia)
-            # print()
-
+            
 run_test(name_file)

@@ -5,6 +5,6 @@
 (nth (list 1 2 3) 1)
 (keys (hash-map "z" "1" "b" "2" "a" "3"))
 (conj (set '(3 2 1)) 5)
-(while ( < i contador ) (do (println x))
+(while ( < i contador ) (do (println x)))
 (defn nombrefuncion [i contador len] (loop [x len] (when (> contador i) (println "Soy un print, dentro de un loop, dentro de una funcion") (recur (- contador i)))))
 (def varMapa {"a" "b" "c" "d"})

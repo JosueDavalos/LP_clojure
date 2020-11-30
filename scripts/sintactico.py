@@ -4,14 +4,14 @@ import ply.yacc as yacc
 
 def p_sentencia_compuesta(p):
     '''sentencia_compuesta : algoritmo
-                            | algoritmo sentencia_compuesta
+                           | algoritmo sentencia_compuesta
     '''
 
 def p_algoritmo(p):
     '''algoritmo : variable
                  | expresion
                  | imprimir
-                 | controlStructures
+                 | estructurasControl
                  | funcion
                  | metodo_lista
                  | metodo_conjunto
@@ -54,7 +54,7 @@ def p_metodo_lista_cons(p):
 # (get setofelements index)
 def p_metodo_conjunto_get(p):
     '''metodo_conjunto : PAR_IZQ GET estructura_conjunto NOMBRE PAR_DER
-                        | PAR_IZQ GET estructura_conjunto ENTERO PAR_DER
+                       | PAR_IZQ GET estructura_conjunto ENTERO PAR_DER
     '''
 
 # (conj setofelements x)
@@ -65,7 +65,7 @@ def p_metodo_conjunto_conj(p):
 # (get vec index)
 def p_metodo_vector_get(p):
     '''metodo_vector : PAR_IZQ GET estructura_vector NOMBRE PAR_DER
-                        | PAR_IZQ GET estructura_vector ENTERO PAR_DER
+                     | PAR_IZQ GET estructura_vector ENTERO PAR_DER
     '''
 
 # (conj vec x)
@@ -95,8 +95,9 @@ def p_expresion(p):
     '''expresion : valor
                  | estructura
                  | expresionAritmetica
-                 | comparation
-                 | comparationLogic
+                 | comparacion
+                 | comparacionLogica
+                 | input
     '''
 
 def p_estructura(p):
@@ -107,87 +108,90 @@ def p_estructura(p):
 
 
 
-def p_control_structures(p):
-    ''' controlStructures : if
-                          | while
-                          | loop
+def p_control_estructuras(p):
+    ''' estructurasControl : if
+                           | while
+                           | loop
     '''
 
-def p_loop_statement(p):
+def p_loop_sentencia(p):
     '''loop : PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER
     '''
 
-def p_when_loop_statement(p):
-    '''when : PAR_IZQ WHEN comparation algoritmo recur PAR_DER
+def p_when_loop_sentencia(p):
+    '''when : PAR_IZQ WHEN comparacion algoritmo recur PAR_DER
     '''
 
-def p_recur_loop_statement(p):
+def p_recur_loop_sentencia(p):
     '''recur : PAR_IZQ RECUR expresionAritmetica PAR_DER
     '''
 
-def p_while_statement(p):
-    '''while : PAR_IZQ WHILE comparation PAR_IZQ DO sentencia_compuesta PAR_DER PAR_DER
+def p_while_sentencia(p):
+    '''while : PAR_IZQ WHILE comparacion PAR_IZQ DO sentencia_compuesta PAR_DER PAR_DER
     '''
 
-def p_if_statement(p):
-    '''if : PAR_IZQ IF booleanExpresion sentencia_compuesta PAR_DER'''
+def p_if_sentencia(p):
+    '''if : PAR_IZQ IF expresionBooleana sentencia_compuesta PAR_DER'''
 
 def p_boolean_expresion(p):
-    '''booleanExpresion : FALSE
-                        | TRUE
-                        | comparationLogic
-                        | comparation
+    '''expresionBooleana : FALSE
+                         | TRUE
+                         | comparacionLogica
+                         | comparacion
     '''
+
+def p_input(p):
+    'input : PAR_IZQ READ REST LINE PAR_DER'
 
 def p_imprimir(p):
-    '''imprimir : PAR_IZQ imprimirOptions expresion PAR_DER
+    '''imprimir : PAR_IZQ opcionesImprimir expresion PAR_DER
     '''
 
-def p_comparation_logic(p):
-    '''comparationLogic :  PAR_IZQ operadorLogic valor valor PAR_DER
-                      | PAR_IZQ NOT valor PAR_DER
+def p_comparacion_logica(p):
+    '''comparacionLogica :  PAR_IZQ operadorLogico valor valor PAR_DER
+                         | PAR_IZQ NOT valor PAR_DER
     '''
 
-def p_comparation(p):
-    'comparation : PAR_IZQ operadorCompare valor valor PAR_DER'
+def p_comparacion(p):
+    'comparacion : PAR_IZQ operadorComparacion valor valor PAR_DER'
 
 
-def p_expresion_aritmetic(p):
-    '''expresionAritmetica : PAR_IZQ operadorMath numberSerie PAR_DER
+def p_expresion_aritmetica(p):
+    '''expresionAritmetica : PAR_IZQ operadorMat numberoSerie PAR_DER
     '''
 
-def p_number_serie(p):
-    '''numberSerie : numero
+def p_numbero_serie(p):
+    '''numberoSerie : numero
                     | NOMBRE
                     | expresionAritmetica
-                    | numero numberSerie
-                    | NOMBRE numberSerie
-                    | expresionAritmetica numberSerie
+                    | numero numberoSerie
+                    | NOMBRE numberoSerie
+                    | expresionAritmetica numberoSerie
     '''
 
 
 
 def p_estructura_lista(p):
     '''estructura_lista : PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
-                  | COM_SIM PAR_IZQ compuesto PAR_DER
-                  | PAR_IZQ LISTA compuesto PAR_DER
+                        | COM_SIM PAR_IZQ compuesto PAR_DER
+                        | PAR_IZQ LISTA compuesto PAR_DER
     '''
 
 def p_estructura_conjunto(p):
     '''estructura_conjunto : PAR_IZQ CONJUNTO COM_SIM PAR_IZQ compuesto PAR_DER PAR_DER
-                  | HASH LLAV_IZQ compuesto LLAV_DER
+                           | HASH LLAV_IZQ compuesto LLAV_DER
     '''
 
 
 def p_estructura_vector(p):
     '''estructura_vector : PAR_IZQ VECTOR compuesto PAR_DER
-                  | COR_IZQ compuesto COR_DER
+                         | COR_IZQ compuesto COR_DER
     '''
 
 
 def p_estructura_mapa(p):
     '''estructura_mapa : LLAV_IZQ parclaves LLAV_DER
-                  | PAR_IZQ mapas parclaves PAR_DER
+                       | PAR_IZQ mapas parclaves PAR_DER
     '''
 
 def p_mapas(p):
@@ -202,6 +206,7 @@ def p_compuesto(p):
 
 def p_parclaves(p):
     '''parclaves : STRING STRING
+                 | STRING STRING COMA parclaves
                  | STRING STRING parclaves
     '''
 
@@ -228,30 +233,30 @@ def p_numero(p):
     '''
 
 
-def p_operador_math(p):
-    '''operadorMath : SUM
-                    | REST
-                    | PRODUCT
-                    | DIVISION
+def p_operador_mat(p):
+    '''operadorMat : SUM
+                   | REST
+                   | PRODUCT
+                   | DIVISION
     '''
 
 
-def p_operador_comparation(p):
-    '''operadorCompare : EQUAL
-                        | NOT_EQUAL
-                        | GREATER_THAN
-                        | LESS_THAN
-                        | GREATER_THAN_EQUAL
-                        | LESS_THAN_EQUAL
+def p_operador_comparacion(p):
+    '''operadorComparacion : EQUAL
+                           | NOT_EQUAL
+                           | GREATER_THAN
+                           | LESS_THAN
+                           | GREATER_THAN_EQUAL
+                           | LESS_THAN_EQUAL
     '''
 
-def p_operador_logic(p):
-    '''operadorLogic : AND
-                     | OR
+def p_operador_logico(p):
+    '''operadorLogico : AND
+                      | OR
     '''
 
-def p_imprimir_options(p):
-    '''imprimirOptions : PRINT
+def p_imprimir_opciones(p):
+    '''opcionesImprimir : PRINT
                         | PRINTLN
     '''
 
