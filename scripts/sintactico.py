@@ -19,6 +19,8 @@ def p_algoritmo(p):
                  | metodo_mapas
     '''
 
+def p_llamar_funcion(p):
+    'funcion : PAR_IZQ NOMBRE PAR_DER'
 
 def p_funcion(p):
     'funcion : PAR_IZQ DEFN NOMBRE argumentos sentencia_compuesta PAR_DER'
