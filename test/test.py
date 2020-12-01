@@ -18,6 +18,6 @@ def run_test(file):
         if len(setencia)!=0 : 
             print('-'*0,setencia,'-'*0,end='  ==>>   ')
             # t_analizar_lexico(setencia)
-            t_analizar_sintaxis(setencia)
+            print(t_analizar_sintaxis(setencia))
             
 run_test(name_file)
