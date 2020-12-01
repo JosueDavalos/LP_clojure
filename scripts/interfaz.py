@@ -7,27 +7,24 @@ from scripts.implementation import t_analizar_sintaxis, t_analizar_lexico
 class Window:
     def __init__(self, root):
         root.configure(background='#ECECEC')
+
         #Wightes
-        self.welcome_lb = tk.Label(root, text='Analizador Clojure')
         self.code = tk.Text(root, height=25, width=60)
         self.lexico_btn = tk.Button(root, text='Revisar Léxico', command=self.check_code_lexico, bg = "#0A0A2A", fg = "white")
         self.sintaxis_btn = tk.Button(root, text='Revisar Sintáctico', command=self.check_code_sintactico, bg = "#0A0A2A", fg = "white")
-        self.results = tk.Label(root, text='Resultados de los analísis')
-        self.results.config(width=50, height=26)
+        self.results = tk.Label(root, text='Resultados de los análisis')
+        self.results.config(width=60, height=25)
 
 
         #Propertiers of the windows
-        root.title('Clojure ❤')
-        root.geometry('900x500')
-        self.welcome_lb.config(font=("Arial", 15))
+        root.title('Analizador Clojure ❤')
+        root.geometry('1055x550')
 
         #position Wightes
-        self.welcome_lb.grid(sticky = tk.E, pady = 5)
-        self.code.grid()
-        self.sintaxis_btn.grid(column=0, row=2,  sticky = tk.E)
-        self.lexico_btn.grid(column=0, row=2,  sticky = tk.W, pady = 20)
-        self.results.grid(column=1, row=1)
-
+        self.code.grid(column=0, row=1,padx=20, pady=20)
+        self.sintaxis_btn.grid(column=0, row=2,  sticky = tk.E, padx = 75, pady=10)
+        self.lexico_btn.grid(column=1, row=2,  sticky = tk.W, padx = 75)
+        self.results.grid(column=1, row=1, padx=20)
 
         #icon
         icon = tk.PhotoImage(file = "scripts/Clojure_logo.png")
@@ -49,7 +46,11 @@ class Window:
         for tok in tokens:
             result += str(tok) + '\n'
 
-        result +=  'ERROR! Tokens no reconocidos: %s'% ', '.join(["'%s'"%x for x in errors['lexico']])
+        there_are_error_lexico = len(errors['lexico'])!=0
+
+        if there_are_error_lexico:
+            result +=  'ERROR! Tokens no reconocidos: %s'% ', '.join(["'%s'"%x for x in errors['lexico']])
+
         errors['lexico'] = []
         errors['sintactico'] = []
 

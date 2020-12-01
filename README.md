@@ -11,7 +11,7 @@ Es necesario instalar los siguientes paquetes y/o dependencias, estas se encuent
 ```
 pip install -r requiments.txt
 ```
-## Correr test
+## Ejectuar test con archivos
 ```
 python .\main.py test name_file
 ```
@@ -20,3 +20,19 @@ Existe 4 archivos de testing, estos son:
 - sebas.txt
 - nico.txt
 - sentencias.txt
+
+## Probar con GUI
+```
+python main.py
+```
+![GUI](./GUI.png)
+
+En la sección numero 1 se debe ingresar el código en Clojure a validar, dando click en cualquiera de los botones mostrara en la sección numero 2 el análisis ya sea léxico o sintáctico.
+
+- Si es válido se mostrará:
+  - Léxico: Todos los tokens que son validos.
+  - Sintáctico: Ok.
+
+- Si no es valido:
+  - Léxico: Los tokens que no reconoce el analizador.
+  - Sintáctivo: Error.
