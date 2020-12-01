@@ -10,11 +10,17 @@ class Window:
 
         #Wightes
         self.code = tk.Text(root, height=25, width=60)
-        self.lexico_btn = tk.Button(root, text='Revisar Léxico', command=self.check_code_lexico, bg = "#0A0A2A", fg = "white")
-        self.sintaxis_btn = tk.Button(root, text='Revisar Sintáctico', command=self.check_code_sintactico, bg = "#0A0A2A", fg = "white")
+        self.lexico_btn = tk.Button(root, text='Análisis Léxico', command=self.check_code_lexico, bg = "#0A0A2A", fg = "white")
+        self.sintaxis_btn = tk.Button(root, text='Análisis Sintáctico', command=self.check_code_sintactico, bg = "#0A0A2A", fg = "white")
         self.results = tk.Label(root, text='Resultados de los análisis')
-        self.results.config(width=60, height=25)
-
+        self.results.config(width=70, height=25)
+        #self.frame = tk.Frame(root)
+        #self.canvas = tk.Canvas(self.frame)
+        #self.scroll = tk.Scrollbar(self.frame, orient="vertical", command=canvas.yview)
+        #self.scroll.grid(row=0, column=1)
+        #self.results = tk.Label(self.canvas, text='Resultados de los análisis')
+        #self.results.config(width=70, height=25)
+        #self.results.grid(column=0, row=1, padx=20)
 
         #Propertiers of the windows
         root.title('Analizador Clojure ❤')
@@ -72,7 +78,7 @@ class Window:
         there_are_error_sintactico =  len(errors['sintactico'])!=0
         there_are_errors = there_are_error_lexico or there_are_error_sintactico
 
-        result =  'Sintáctico ...... ' + ( 'WRONG' if sintaxis or there_are_errors else 'OK' ) + '\n'
+        result =  'Sintáctico ...... ' + ( 'ERROR' if sintaxis or there_are_errors else 'OK' ) + '\n'
 
         if there_are_error_lexico:
             result +=  'ERROR! Tokens no reconocidos: %s'% ', '.join(["'%s'"%x for x in errors['lexico']])
