@@ -88,12 +88,15 @@ t_LLAV_DER = r'}'
 t_ignore = ' \t'
 t_ignore_CM = r";.+"
 
+errors = {'lexico': [], 'sintactico':[]}
+
 def t_newline(t):
     r"\n+"
     t.lexer.lineno += len(t.value)
 
 def t_error(t):
     print("No es reconocido '%s'" % t.value[0])
+    errors['lexico'].append(t.value[0])
     t.lexer.skip(1)
 
 def t_NOMBRE(t):
