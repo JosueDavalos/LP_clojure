@@ -3,4 +3,4 @@ env/
 *.out
 parsetab.py 
 *.pyc
-
+.vscode/
