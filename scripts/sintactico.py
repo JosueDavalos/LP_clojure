@@ -271,12 +271,6 @@ def p_imprimir_opciones(p):
 def p_error(p):
     print('sintaxis error')
     errors['sintactico'].append(p)
-    # if p:
-    #     print("Syntax error at token", p.type)
-    #     parser.errok()
-    # else:
-    #     print(p)
-    #     print("Syntax error at EOF")
 
 
 

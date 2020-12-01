@@ -39,54 +39,34 @@ class Window:
 
     def check_code_lexico(self):
         text_code = self.code.get('1.0', 'end-1c')
-        ## line by line
-        # result = ''
-        # for text in text_code.split('\n'):
-        #     tokens = t_analizar_lexico(text)
-        #     for tok in tokens:
-        #         result += str(tok) + '\n'
-        #     result += '\n'
-
         result = ''
         tokens = t_analizar_lexico(text_code)
         for tok in tokens:
             result += str(tok) + '\n'
 
         there_are_error_lexico = len(errors['lexico'])!=0
-
         if there_are_error_lexico:
             result +=  'ERROR! Tokens no reconocidos: %s'% ', '.join(["'%s'"%x for x in errors['lexico']])
 
         errors['lexico'] = []
         errors['sintactico'] = []
-
         self.results.configure(text=result, justify='left')
 
 
     def check_code_sintactico(self):
         text_code = self.code.get('1.0', 'end-1c')
-        ##line by line
-        # result = ''
-        # for text in text_code.split('\n'):
-        #     if len(text) != 0: 
-        #         sintaxis = t_analizar_sintaxis(text)
-        #         result +=  '%s ...... '%text + ( 'WRONG' if sintaxis else 'OK' ) + '\n'
-
-
         sintaxis = t_analizar_sintaxis(text_code)
         there_are_error_lexico = len(errors['lexico'])!=0
         there_are_error_sintactico =  len(errors['sintactico'])!=0
         there_are_errors = there_are_error_lexico or there_are_error_sintactico
 
         result =  'Sintáctico ...... ' + ( 'ERROR' if sintaxis or there_are_errors else 'OK' ) + '\n'
-
         if there_are_error_lexico:
             result +=  'ERROR! Tokens no reconocidos: %s'% ', '.join(["'%s'"%x for x in errors['lexico']])
 
         errors['lexico'] = []
         errors['sintactico'] = []
         self.results.configure(text=result, justify='left')
-
 
 
 
