@@ -9,7 +9,7 @@ def p_sentencia_compuesta(p):
 
 def p_algoritmo(p):
     '''algoritmo : variable
-                 | sentencia
+                 | expresion
                  | imprimir
                  | estructurasControl
                  | funcion
@@ -96,16 +96,12 @@ def p_variable(p):
     'variable : PAR_IZQ DEF NOMBRE expresion PAR_DER'
 
 def p_expresion(p):
-    '''expresion : sentencia
-                 | valor
-    '''
-
-def p_sentencia(p):
-    '''sentencia :  estructura
+    '''expresion :  estructura
                  | expresionAritmetica
                  | comparacion
                  | comparacionLogica
                  | input
+                 | valor
     '''
 
 def p_estructura(p):
