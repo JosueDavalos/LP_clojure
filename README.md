@@ -33,6 +33,6 @@ En la sección numero 1 se debe ingresar el código en Clojure a validar, dando 
   - Léxico: Todos los tokens que son validos.
   - Sintáctico: Ok.
 
-- Si no es valido:
+- Si no es válido:
   - Léxico: Los tokens que no reconoce el analizador.
   - Sintáctivo: Error.
