@@ -9,14 +9,11 @@ def p_sentencia_compuesta(p):
 
 def p_algoritmo(p):
     '''algoritmo : variable
-                 | expresion
+                 | sentencia
                  | imprimir
                  | estructurasControl
                  | funcion
-                 | metodo_lista
-                 | metodo_conjunto
-                 | metodo_vector
-                 | metodo_mapas
+                 | metodos
     '''
 
 def p_llamar_funcion(p):
@@ -34,6 +31,12 @@ def p_argumento(p):
     '''argumento : NOMBRE
                  | NOMBRE argumento
     '''
+
+def p_metodos(p):
+    '''metodos : metodo_lista
+               | metodo_conjunto
+               | metodo_vector
+               | metodo_mapas'''
 
 # (first lst)
 def p_metodo_lista_first(p):
@@ -92,10 +95,13 @@ def p_metodo_mapas_conj(p):
 def p_variable(p):
     'variable : PAR_IZQ DEF NOMBRE expresion PAR_DER'
 
-
 def p_expresion(p):
-    '''expresion : valor
-                 | estructura
+    '''expresion : sentencia
+                 | valor
+    '''
+
+def p_sentencia(p):
+    '''sentencia :  estructura
                  | expresionAritmetica
                  | comparacion
                  | comparacionLogica
