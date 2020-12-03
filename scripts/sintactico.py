@@ -120,11 +120,12 @@ def p_control_estructuras(p):
     '''
 
 def p_loop_sentencia(p):
-    '''loop : PAR_IZQ LOOP COR_IZQ compuesto COR_DER when PAR_DER
+    '''loop : PAR_IZQ LOOP estructura_vector when PAR_DER
+            | PAR_IZQ LOOP estructura_lista when PAR_DER
     '''
 
 def p_when_loop_sentencia(p):
-    '''when : PAR_IZQ WHEN comparacion algoritmo recur PAR_DER
+    '''when : PAR_IZQ WHEN expresionBooleana algoritmo recur PAR_DER
     '''
 
 def p_recur_loop_sentencia(p):
@@ -132,7 +133,7 @@ def p_recur_loop_sentencia(p):
     '''
 
 def p_while_sentencia(p):
-    '''while : PAR_IZQ WHILE comparacion PAR_IZQ DO sentencia_compuesta PAR_DER PAR_DER
+    '''while : PAR_IZQ WHILE expresionBooleana PAR_IZQ DO sentencia_compuesta PAR_DER PAR_DER
     '''
 
 def p_if_sentencia(p):
@@ -141,6 +142,7 @@ def p_if_sentencia(p):
 def p_boolean_expresion(p):
     '''expresionBooleana : FALSE
                          | TRUE
+                         | NOMBRE
                          | comparacionLogica
                          | comparacion
     '''
@@ -201,7 +203,7 @@ def p_mapas(p):
              | HASHMAP REST MAP
     '''
 
-def p_compuesto(p):
+def p_compuesto(p): #ojo
     '''compuesto : valor
                  | valor compuesto
     '''
