@@ -137,7 +137,7 @@ def p_while_sentencia(p):
     '''
 
 def p_if_sentencia(p):
-    '''if : PAR_IZQ IF expresionBooleana sentencia_compuesta PAR_DER'''
+    '''if : PAR_IZQ IF expresionBooleana algoritmo algoritmo PAR_DER'''
 
 def p_boolean_expresion(p):
     '''expresionBooleana : FALSE
