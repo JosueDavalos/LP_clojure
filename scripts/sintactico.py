@@ -14,6 +14,7 @@ def p_algoritmo(p):
                  | estructurasControl
                  | funcion
                  | metodos
+                 | COMMENT
     '''
 
 def p_llamar_funcion(p):

@@ -57,7 +57,8 @@ tokens = list(reservadas.values())+[
     "HASH",
     "LLAV_IZQ",
     "LLAV_DER",
-    "COMA"
+    "COMA",
+    "COMMENT"
 ]
 
 
@@ -84,9 +85,10 @@ t_LESS_THAN_EQUAL = r'\<\='
 t_HASH = r'\#'
 t_LLAV_IZQ = r'{' 
 t_LLAV_DER = r'}'
+t_COMMENT = r";.+"
 
 t_ignore = ' \t'
-t_ignore_CM = r";.+"
+
 
 errors = {'lexico': [], 'sintactico':[]}
 
