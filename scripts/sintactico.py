@@ -174,11 +174,8 @@ def p_numbero_serie(p):
                     | expresionAritmetica numberoSerie
     '''
 
-
-
 def p_estructura_lista(p):
-    '''estructura_lista : PAR_IZQ LISTA PAR_IZQ compuesto PAR_DER PAR_DER
-                        | COM_SIM PAR_IZQ compuesto PAR_DER
+    '''estructura_lista : COM_SIM PAR_IZQ compuesto PAR_DER
                         | PAR_IZQ LISTA compuesto PAR_DER
     '''
 
@@ -224,8 +221,12 @@ def p_valor(p):
 
 def p_cadena(p):
     '''cadena : STRING
-              | PAR_IZQ STR STRING STRING PAR_DER
+              | PAR_IZQ STR cadCompuesta PAR_DER
     '''
+
+def p_cadena_compuesta(p):
+    '''cadCompuesta : STRING
+                    | STRING cadCompuesta'''
 
 def p_booleano(p):
     '''booleano : TRUE
